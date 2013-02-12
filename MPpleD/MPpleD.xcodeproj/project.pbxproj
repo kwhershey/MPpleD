@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1ACFBCF316CABCB000EAEDD9 /* libMpdDispatch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ACFBCF216CABCB000EAEDD9 /* libMpdDispatch.a */; };
 		5017D2CC16C960080046DB49 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5017D2CB16C960080046DB49 /* UIKit.framework */; };
 		5017D2CE16C960080046DB49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5017D2CD16C960080046DB49 /* Foundation.framework */; };
 		5017D2D016C960080046DB49 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5017D2CF16C960080046DB49 /* CoreGraphics.framework */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1ACFBCF216CABCB000EAEDD9 /* libMpdDispatch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMpdDispatch.a; path = ../libMpdDispatch.a; sourceTree = "<group>"; };
 		5017D2C816C960080046DB49 /* MPpleD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPpleD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5017D2CB16C960080046DB49 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5017D2CD16C960080046DB49 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -75,6 +77,7 @@
 				5017D2CC16C960080046DB49 /* UIKit.framework in Frameworks */,
 				5017D2CE16C960080046DB49 /* Foundation.framework in Frameworks */,
 				5017D2D016C960080046DB49 /* CoreGraphics.framework in Frameworks */,
+				1ACFBCF316CABCB000EAEDD9 /* libMpdDispatch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +116,7 @@
 		5017D2CA16C960080046DB49 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1ACFBCF216CABCB000EAEDD9 /* libMpdDispatch.a */,
 				5017D2CB16C960080046DB49 /* UIKit.framework */,
 				5017D2CD16C960080046DB49 /* Foundation.framework */,
 				5017D2CF16C960080046DB49 /* CoreGraphics.framework */,
@@ -399,6 +403,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MPpleD/MPpleD-Prefix.pch";
 				INFOPLIST_FILE = "MPpleD/MPpleD-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/..\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -410,6 +419,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MPpleD/MPpleD-Prefix.pch";
 				INFOPLIST_FILE = "MPpleD/MPpleD-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/..\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -426,6 +440,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MPpleD/MPpleD-Prefix.pch";
 				INFOPLIST_FILE = "MPpleDTests/MPpleDTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -443,6 +458,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MPpleD/MPpleD-Prefix.pch";
 				INFOPLIST_FILE = "MPpleDTests/MPpleDTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -468,6 +484,7 @@
 				5017D30D16C960080046DB49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5017D30E16C960080046DB49 /* Build configuration list for PBXNativeTarget "MPpleDTests" */ = {
 			isa = XCConfigurationList;
@@ -476,6 +493,7 @@
 				5017D31016C960080046DB49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
