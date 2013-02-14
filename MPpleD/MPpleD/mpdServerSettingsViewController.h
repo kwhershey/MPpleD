@@ -11,5 +11,11 @@
 #import <mpd/client.h>
 
 @interface mpdServerSettingsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *ipTextField;
+@property (weak, nonatomic) IBOutlet UITextField *portTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passTextField;
+@property (weak, nonatomic) IBOutlet UILabel *connectionLabel;
+
+static int handle_error(struct mpd_connection *c);
 
 @end
