@@ -1,5 +1,5 @@
 //
-//  mpdServerSettingsViewController.h
+//  mpdPlaylistTableViewController.h
 //  MPpleD
 //
 //  Created by KYLE HERSHEY on 2/14/13.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import <mpd/client.h>
-
-@interface mpdServerSettingsViewController : UIViewController
+@interface mpdPlaylistTableViewController : UITableViewController
 
 @end

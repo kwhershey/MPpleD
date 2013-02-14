@@ -1,18 +1,18 @@
 //
-//  mpdArtistViewController.m
+//  mpdPlaylistTableViewController.m
 //  MPpleD
 //
-//  Created by Mary Beth McWhinney on 2/11/13.
+//  Created by KYLE HERSHEY on 2/14/13.
 //  Copyright (c) 2013 Kyle Hershey. All rights reserved.
 //
 
-#import "mpdArtistViewController.h"
+#import "mpdPlaylistTableViewController.h"
 
-@interface mpdArtistViewController ()
+@interface mpdPlaylistTableViewController ()
 
 @end
 
-@implementation mpdArtistViewController
+@implementation mpdPlaylistTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

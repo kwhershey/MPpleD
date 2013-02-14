@@ -396,8 +396,8 @@
 		18886535157D287C00ACBDD0 = {
 			isa = PBXGroup;
 			children = (
-				188865C1157D29CA00ACBDD0 /* libmpdclient */,
 				18828466157DFA4A005542AE /* MpdDispatch */,
+				188865C1157D29CA00ACBDD0 /* libmpdclient */,
 				18886542157D287C00ACBDD0 /* Frameworks */,
 				18886541157D287C00ACBDD0 /* Products */,
 			);

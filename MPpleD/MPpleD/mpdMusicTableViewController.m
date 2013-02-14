@@ -1,18 +1,18 @@
 //
-//  mpdAlbumViewController.m
+//  mpdMusicTableViewController.m
 //  MPpleD
 //
-//  Created by KYLE HERSHEY on 2/13/13.
+//  Created by KYLE HERSHEY on 2/14/13.
 //  Copyright (c) 2013 Kyle Hershey. All rights reserved.
 //
 
-#import "mpdAlbumViewController.h"
+#import "mpdMusicTableViewController.h"
 
-@interface mpdAlbumViewController ()
+@interface mpdMusicTableViewController ()
 
 @end
 
-@implementation mpdAlbumViewController
+@implementation mpdMusicTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
