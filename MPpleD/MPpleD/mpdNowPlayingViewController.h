@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <mpd/client.h>
+#import <mpd/status.h>
 
 @interface mpdNowPlayingViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *songInfo;
+
 
 @end
