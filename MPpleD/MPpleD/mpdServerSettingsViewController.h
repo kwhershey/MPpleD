@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *portTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passTextField;
 @property (weak, nonatomic) IBOutlet UILabel *connectionLabel;
+@property const char *host;
 
 static int handle_error(struct mpd_connection *c);
 

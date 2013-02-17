@@ -11,7 +11,11 @@
 #import <mpd/status.h>
 
 @interface mpdNowPlayingViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *songInfo;
+@property (weak, nonatomic) IBOutlet UILabel *songTitle;
+@property (weak, nonatomic) IBOutlet UILabel *artistText;
+@property (weak, nonatomic) IBOutlet UILabel *albumText;
+@property (weak, nonatomic) IBOutlet UILabel *trackText;
+@property struct mpd_connection *conn;
 
 
 @end

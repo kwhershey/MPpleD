@@ -17,40 +17,111 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    struct mpd_connection *conn;
+    /*
+    [self initializeConnection];    
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error on load");
+        mpd_connection_free(self.conn);
+    }
+     */
+    [self updateView];
+     
+    [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector:@selector(updateView) userInfo: nil repeats:YES];
+}
+
+-(void)initializeConnection
+{
     NSString *host = @"192.168.1.2";
-    conn = mpd_connection_new([host UTF8String], 6600, 30000);
-    if (mpd_connection_get_error(conn) != MPD_ERROR_SUCCESS)
+    self.conn = mpd_connection_new([host UTF8String], 6600, 30000);
+}
+
+
+-(void)updateView
+{
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
         NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
     struct mpd_status * status;
     struct mpd_song *song;
-    mpd_command_list_begin(conn, true);
-    mpd_send_status(conn);
-    mpd_send_current_song(conn);
-    mpd_command_list_end(conn);
+    mpd_command_list_begin(self.conn, true);
+    mpd_send_status(self.conn);
+    mpd_send_current_song(self.conn);
+    mpd_command_list_end(self.conn);
     
-    status = mpd_recv_status(conn);
-    
-    //song = mpd_recv_song(conn);
+
+    status = mpd_recv_status(self.conn);
     
     if (status == NULL)
     {
-        self.songInfo.text = @"Connection Error";
+        NSLog(@"Connection error status");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+        NSLog(@"didn't return");
     }
-    if(mpd_status_get_state(status) == MPD_STATE_PLAY)
-    {
-        mpd_status_free(status);
-        mpd_response_next(conn);
-        song = mpd_recv_song(conn);
-        self.songInfo.text = [[NSString alloc] initWithUTF8String:mpd_song_get_uri(song)];
+    else{
+        if(mpd_status_get_state(status) == MPD_STATE_PLAY || mpd_status_get_state(status) == MPD_STATE_PAUSE)
+        {
+            
+            if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+            {
+                NSLog(@"Connection error free");
+                mpd_connection_free(self.conn);
+                [self initializeConnection];
+                return;
+            }
+            mpd_status_free(status);
+            mpd_response_next(self.conn);
+            song = mpd_recv_song(self.conn);
+            @try {
+                self.songTitle.text = [[NSString alloc] initWithUTF8String:mpd_song_get_tag(song, MPD_TAG_TITLE, 0)];
+            }
+            @catch (NSException *e) {
+            
+                self.songTitle.text = @"";
+            }
+            @try {
+                self.artistText.text = [[NSString alloc] initWithUTF8String:mpd_song_get_tag(song, MPD_TAG_ARTIST, 0)];
+            }
+            @catch (NSException *e) {
+            
+                self.artistText.text = @"";
+            }
+            @try {
+                self.albumText.text = [[NSString alloc] initWithUTF8String:mpd_song_get_tag(song, MPD_TAG_ALBUM, 0)];
+            }
+            @catch (NSException *e) {
+            
+                self.albumText.text = @"";
+            }
+            @try {
+                self.trackText.text = [[NSString alloc] initWithUTF8String:mpd_song_get_tag(song, MPD_TAG_TRACK, 0)];
+            }
+            @catch (NSException *e) {
+                self.trackText.text = @"";
+            }
+        
+        }
+        else
+        {
+            self.songTitle.text = @"Stopped";
+            self.artistText.text = @"";
+            self.albumText.text = @"";
+            self.trackText.text = @"";
+        }
     }
-    else if(mpd_status_get_state(status) == MPD_STATE_PAUSE)
-    {
-        self.songInfo.text = @"Paused";
-    }
+    mpd_connection_free(self.conn);
+    
     
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -12,7 +12,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Now Playing" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="20">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Song" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="20">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -34,25 +34,49 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Artist" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHh-hD-HHI">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Album" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75p-WC-Qly">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Track number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUz-VO-2j2">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="EUz-VO-2j2" firstAttribute="centerX" secondItem="75p-WC-Qly" secondAttribute="centerX" type="default" id="1UZ-zK-oqR"/>
                             <constraint firstAttribute="trailing" secondItem="R8T-fz-e4a" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="3n7-S4-cYO"/>
                             <constraint firstItem="n0v-gx-6v1" firstAttribute="centerX" secondItem="9GU-Gt-KvN" secondAttribute="centerX" type="default" id="6en-jk-ter"/>
+                            <constraint firstItem="75p-WC-Qly" firstAttribute="top" secondItem="IHh-hD-HHI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Mkw-Wi-p22"/>
+                            <constraint firstItem="IHh-hD-HHI" firstAttribute="top" secondItem="20" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="N5K-FW-Uo9"/>
                             <constraint firstAttribute="trailing" secondItem="20" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Qxj-1L-2Yh"/>
                             <constraint firstItem="20" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Ty9-wx-CyI"/>
+                            <constraint firstItem="EUz-VO-2j2" firstAttribute="top" secondItem="75p-WC-Qly" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="XbD-Pk-UV3"/>
                             <constraint firstAttribute="bottom" secondItem="R8T-fz-e4a" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="d7B-AK-DQD"/>
                             <constraint firstItem="9GU-Gt-KvN" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="fnH-LH-0B5"/>
+                            <constraint firstItem="75p-WC-Qly" firstAttribute="centerX" secondItem="IHh-hD-HHI" secondAttribute="centerX" type="default" id="jUu-Vv-ZcU"/>
                             <constraint firstAttribute="trailing" secondItem="9GU-Gt-KvN" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="jja-cI-shq"/>
                             <constraint firstAttribute="bottom" secondItem="n0v-gx-6v1" secondAttribute="bottom" constant="90" id="kuJ-RY-jYn"/>
                             <constraint firstItem="R8T-fz-e4a" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="tCw-U8-JK9"/>
+                            <constraint firstItem="IHh-hD-HHI" firstAttribute="centerX" secondItem="20" secondAttribute="centerX" type="default" id="yDi-Hc-uoS"/>
                             <constraint firstItem="20" firstAttribute="top" secondItem="16" secondAttribute="top" constant="20" symbolic="YES" type="default" id="zDn-ue-7hk"/>
                             <constraint firstAttribute="bottom" secondItem="9GU-Gt-KvN" secondAttribute="bottom" constant="53" id="zHe-a1-0Wv"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Now Playing" id="7"/>
                     <connections>
-                        <outlet property="songInfo" destination="20" id="9Mr-pV-hTk"/>
+                        <outlet property="albumText" destination="75p-WC-Qly" id="aVa-aR-ZwK"/>
+                        <outlet property="artistText" destination="IHh-hD-HHI" id="fhQ-dk-on6"/>
+                        <outlet property="songTitle" destination="20" id="vOM-BD-Vd9"/>
+                        <outlet property="trackText" destination="EUz-VO-2j2" id="8iW-3n-NYi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>

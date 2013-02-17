@@ -126,7 +126,7 @@ int main(int argc, char ** argv) {
 
 		while ((song = mpd_recv_song(conn)) != NULL) {
 			printf("uri: %s\n", mpd_song_get_uri(song));
-			print_tag(song, MPD_TAG_ARTIST, "artist");
+			print_tag(song, MPD_TAG_ARTIST, "artist");//(song, MPD_TAG_ARTIST, "artist");
 			print_tag(song, MPD_TAG_ALBUM, "album");
 			print_tag(song, MPD_TAG_TITLE, "title");
 			print_tag(song, MPD_TAG_TRACK, "track");
