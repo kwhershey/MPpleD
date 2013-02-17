@@ -119,11 +119,101 @@
 
 
 
+
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+-(IBAction)playPausePush:(id)sender
+{
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    struct mpd_status * status;
+    mpd_command_list_begin(self.conn, true);
+    mpd_send_status(self.conn);
+    mpd_command_list_end(self.conn);
+    
+    
+    status = mpd_recv_status(self.conn);
+    if (status == NULL)
+    {
+        NSLog(@"Connection error status");
+        mpd_connection_free(self.conn);
+        return;
+    }
+    else
+    {
+        if(mpd_status_get_state(status) == MPD_STATE_PLAY || mpd_status_get_state(status) == MPD_STATE_PAUSE)
+        {
+
+            mpd_response_finish(self.conn);
+            mpd_status_free(status);
+            mpd_run_toggle_pause(self.conn);
+        }
+        else
+        {
+            mpd_response_finish(self.conn);
+            mpd_status_free(status);
+            mpd_run_play(self.conn);
+        }
+    }
+}
+
+-(IBAction)nextPush:(id)sender
+{
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    mpd_run_next(self.conn);
+    
+}
+
+-(IBAction)prevPush:(id)sender
+{
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    mpd_run_previous(self.conn);
+    
+}
+
+-(IBAction)getPlaylist:(id)sender
+{
+    [self initializeConnection];
+    mpd_send_list_queue_meta(self.conn);
+    struct mpd_pair *newPair = mpd_recv_pair(self.conn);
+    NSString *name = [[NSString alloc] initWithUTF8String:newPair->name];
+    NSString *value = [[NSString alloc] initWithUTF8String:newPair->value];
+    NSLog(name);
+    NSLog(value);
+    newPair = mpd_recv_pair(self.conn);
+    name = [[NSString alloc] initWithUTF8String:newPair->name];
+    value = [[NSString alloc] initWithUTF8String:newPair->value];
+    NSLog(name);
+    NSLog(value);
+
+    
+
+}
 
 @end
