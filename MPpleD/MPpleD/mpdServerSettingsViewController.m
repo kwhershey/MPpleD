@@ -48,12 +48,15 @@ static int handle_error(struct mpd_connection *c)
 -(IBAction)connectPush:(id)sender
 {
     struct mpd_connection *conn;
-    
+    mpdConnectionData *globalConnection = [mpdConnectionData sharedManager];
+    globalConnection.host = self.ipTextField.text;
+    globalConnection.port = [[NSNumber alloc] initWithInt:[self.portTextField.text intValue]];
     self.host = [self.ipTextField.text UTF8String];
+    self.port = [self.portTextField.text intValue];
     //NSLog(@"Assigned to c-string");
     
     
-	conn = mpd_connection_new(self.host, [self.portTextField.text intValue], 30000);
+	conn = mpd_connection_new(self.host, self.port, 30000);
     
 	if (mpd_connection_get_error(conn) != MPD_ERROR_SUCCESS)
         self.connectionLabel.text = @"Connection Failed";

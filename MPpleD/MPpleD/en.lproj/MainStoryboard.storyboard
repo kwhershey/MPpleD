@@ -72,6 +72,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Now Playing" id="7"/>
+                    <navigationItem key="navigationItem" id="8VS-yz-5d8"/>
                     <connections>
                         <outlet property="albumText" destination="75p-WC-Qly" id="aVa-aR-ZwK"/>
                         <outlet property="artistText" destination="IHh-hD-HHI" id="fhQ-dk-on6"/>
@@ -168,7 +169,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="192.168.0.1" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f4l-dC-K4S">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="181" id="3bG-75-gqq"/>
-                                    <constraint firstAttribute="height" constant="30" id="eXJ-9g-cSG"/>
+                                    <constraint firstAttribute="height" constant="30" id="SFv-co-YcC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -178,17 +179,17 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="6600" borderStyle="roundedRect" placeholder="8000" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oWL-AV-MDr">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="z1V-I0-0zi"/>
+                                    <constraint firstAttribute="height" constant="30" id="Epu-H3-K9h"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <outlet property="delegate" destination="CzO-kD-D8Y" id="Y37-XH-WBz"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TUF-0R-vJ6">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="qId-iw-chu"/>
+                                    <constraint firstAttribute="height" constant="30" id="qdM-kr-IcQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -211,20 +212,20 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="NSR-wB-oNc" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="08a-Zp-W8T"/>
                             <constraint firstItem="maG-f1-J4g" firstAttribute="centerX" secondItem="NSR-wB-oNc" secondAttribute="centerX" type="default" id="50f-b9-w3R"/>
-                            <constraint firstItem="f4l-dC-K4S" firstAttribute="top" secondItem="kfI-B4-GZ1" secondAttribute="top" constant="16" id="6w8-07-dzS"/>
                             <constraint firstItem="3Tf-2w-PHU" firstAttribute="leading" secondItem="kfI-B4-GZ1" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ALi-sZ-WgV"/>
                             <constraint firstItem="3Tf-2w-PHU" firstAttribute="top" secondItem="kfI-B4-GZ1" secondAttribute="top" constant="96" id="DZc-0w-cec"/>
+                            <constraint firstItem="f4l-dC-K4S" firstAttribute="top" secondItem="kfI-B4-GZ1" secondAttribute="top" constant="16" id="IsI-vg-Wpr"/>
                             <constraint firstItem="bVC-g2-QxJ" firstAttribute="leading" secondItem="kfI-B4-GZ1" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="JCl-w6-bjT"/>
                             <constraint firstItem="JJU-lk-QQf" firstAttribute="top" secondItem="kfI-B4-GZ1" secondAttribute="top" constant="20" symbolic="YES" type="default" id="K02-FU-Psf"/>
                             <constraint firstItem="bVC-g2-QxJ" firstAttribute="top" secondItem="kfI-B4-GZ1" secondAttribute="top" constant="58" id="Kq4-Sb-Pwj"/>
+                            <constraint firstAttribute="bottom" secondItem="NSR-wB-oNc" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="LVd-1n-qCS"/>
                             <constraint firstAttribute="trailing" secondItem="f4l-dC-K4S" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="SuB-Kv-9ey"/>
                             <constraint firstAttribute="trailing" secondItem="TUF-0R-vJ6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Xwc-W4-MuK"/>
                             <constraint firstItem="NSR-wB-oNc" firstAttribute="leading" secondItem="kfI-B4-GZ1" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Yn7-P8-J9Z"/>
-                            <constraint firstItem="NSR-wB-oNc" firstAttribute="top" secondItem="maG-f1-J4g" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ZL2-Wy-dV8"/>
                             <constraint firstAttribute="trailing" secondItem="oWL-AV-MDr" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="b2D-MF-41f"/>
                             <constraint firstItem="TUF-0R-vJ6" firstAttribute="leading" secondItem="oWL-AV-MDr" secondAttribute="leading" type="default" id="ci4-aU-iJN"/>
-                            <constraint firstAttribute="bottom" secondItem="NSR-wB-oNc" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="dNb-fn-TFR"/>
                             <constraint firstItem="3Tf-2w-PHU" firstAttribute="baseline" secondItem="TUF-0R-vJ6" secondAttribute="baseline" type="default" id="dtr-hT-RaF"/>
+                            <constraint firstItem="NSR-wB-oNc" firstAttribute="top" secondItem="maG-f1-J4g" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="jF0-R5-ett"/>
                             <constraint firstItem="TUF-0R-vJ6" firstAttribute="top" secondItem="oWL-AV-MDr" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="lQw-0F-CmG"/>
                             <constraint firstItem="oWL-AV-MDr" firstAttribute="leading" secondItem="f4l-dC-K4S" secondAttribute="leading" type="default" id="qD8-ms-6DE"/>
                             <constraint firstItem="oWL-AV-MDr" firstAttribute="top" secondItem="f4l-dC-K4S" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="rlJ-qq-9g1"/>
@@ -277,6 +278,30 @@
     <resources>
         <image name="play.jpg" width="256" height="256"/>
     </resources>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="mpdNowPlayingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdNowPlayingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="albumText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="artistText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="songTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="trackText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="mpdServerSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdServerSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="connectPush:"/>
+                <relationship kind="outlet" name="connectionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ipTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="portTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

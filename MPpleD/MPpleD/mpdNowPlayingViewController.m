@@ -7,6 +7,7 @@
 //
 
 #import "mpdNowPlayingViewController.h"
+#import "mpdServerSettingsViewController.h"
 
 @interface mpdNowPlayingViewController ()
 
@@ -17,14 +18,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    /*
-    [self initializeConnection];    
-    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
-    {
-        NSLog(@"Connection error on load");
-        mpd_connection_free(self.conn);
-    }
-     */
     [self updateView];
      
     [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector:@selector(updateView) userInfo: nil repeats:YES];
@@ -32,8 +25,12 @@
 
 -(void)initializeConnection
 {
-    NSString *host = @"192.168.1.2";
-    self.conn = mpd_connection_new([host UTF8String], 6600, 30000);
+    mpdConnectionData *connection = [mpdConnectionData sharedManager];
+    //NSString *host = @"192.168.1.2";
+    self.host = [connection.host UTF8String];
+    self.port = [connection.port intValue];
+    //self.conn = mpd_connection_new([host UTF8String], 6600, 30000);
+    self.conn = mpd_connection_new(self.host, self.port, 30000);
 }
 
 
@@ -63,7 +60,6 @@
         mpd_connection_free(self.conn);
         [self initializeConnection];
         return;
-        NSLog(@"didn't return");
     }
     else{
         if(mpd_status_get_state(status) == MPD_STATE_PLAY || mpd_status_get_state(status) == MPD_STATE_PAUSE)
@@ -128,5 +124,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

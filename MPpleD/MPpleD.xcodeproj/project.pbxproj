@@ -27,6 +27,7 @@
 		5017D2FD16C960080046DB49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5017D2CD16C960080046DB49 /* Foundation.framework */; };
 		5017D30516C960080046DB49 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5017D30316C960080046DB49 /* InfoPlist.strings */; };
 		5017D30816C960080046DB49 /* MPpleDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5017D30716C960080046DB49 /* MPpleDTests.m */; };
+		507CA14916D063B100249B70 /* mpdConnectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 507CA14816D063B100249B70 /* mpdConnectionData.m */; };
 		508AB28B16CDE3DE0085EA15 /* libMpdDispatch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 508AB28A16CDE3DE0085EA15 /* libMpdDispatch.a */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,8 @@
 		5017D30416C960080046DB49 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5017D30616C960080046DB49 /* MPpleDTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPpleDTests.h; sourceTree = "<group>"; };
 		5017D30716C960080046DB49 /* MPpleDTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPpleDTests.m; sourceTree = "<group>"; };
+		507CA14716D063B100249B70 /* mpdConnectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdConnectionData.h; sourceTree = "<group>"; };
+		507CA14816D063B100249B70 /* mpdConnectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdConnectionData.m; sourceTree = "<group>"; };
 		508AB28A16CDE3DE0085EA15 /* libMpdDispatch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMpdDispatch.a; path = "../../../../Library/Developer/Xcode/DerivedData/MPpledWorkspace-dmegsajohbeynvgurnwxpeljxckk/Build/Products/Debug-iphonesimulator/libMpdDispatch.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +145,8 @@
 				5017D2DA16C960080046DB49 /* mpdAppDelegate.h */,
 				5017D2DB16C960080046DB49 /* mpdAppDelegate.m */,
 				5017D2E316C960080046DB49 /* MainStoryboard.storyboard */,
+				507CA14716D063B100249B70 /* mpdConnectionData.h */,
+				507CA14816D063B100249B70 /* mpdConnectionData.m */,
 				5017D2E616C960080046DB49 /* mpdNowPlayingViewController.h */,
 				5017D2E716C960080046DB49 /* mpdNowPlayingViewController.m */,
 				5017D2D216C960080046DB49 /* Supporting Files */,
@@ -300,6 +305,7 @@
 				1A74460B16CD53C70005AE05 /* mpdServerSettingsViewController.m in Sources */,
 				1A1EFD9E16CD5C8B0081B395 /* mpdPlaylistTableViewController.m in Sources */,
 				1A1EFDA116CD5CA10081B395 /* mpdMusicTableViewController.m in Sources */,
+				507CA14916D063B100249B70 /* mpdConnectionData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
