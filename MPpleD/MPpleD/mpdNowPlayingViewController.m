@@ -7,7 +7,8 @@
 //
 
 #import "mpdNowPlayingViewController.h"
-#import "mpdServerSettingsViewController.h"
+//#import "mpdServerSettingsViewController.h"
+#import <mpd/client.h>
 
 @interface mpdNowPlayingViewController ()
 
@@ -197,34 +198,5 @@
     
 }
 
--(IBAction)getPlaylist:(id)sender
-{
-    /*
-    [self initializeConnection];
-    mpd_send_list_queue_meta(self.conn);
-    struct mpd_pair *newPair = mpd_recv_pair(self.conn);
-    NSString *name = [[NSString alloc] initWithUTF8String:newPair->name];
-    NSString *value = [[NSString alloc] initWithUTF8String:newPair->value];
-    NSLog(name);
-    NSLog(value);
-    newPair = mpd_recv_pair(self.conn);
-    name = [[NSString alloc] initWithUTF8String:newPair->name];
-    value = [[NSString alloc] initWithUTF8String:newPair->value];
-    NSLog(name);
-    NSLog(value);
-*/
-    
-    [self initializeConnection];
-    struct mpd_song *nextSong = malloc(sizeof(struct mpd_song));
-    NSString *title;
-    unsigned int pos=0;
-    while((nextSong=mpd_run_get_queue_song_pos(self.conn, pos)))
-    {
-        title=[[NSString alloc] initWithUTF8String:mpd_song_get_tag(nextSong, MPD_TAG_TITLE, 0)];
-        NSLog(title);
-        pos++;
-    }
-
-  }
 
 @end

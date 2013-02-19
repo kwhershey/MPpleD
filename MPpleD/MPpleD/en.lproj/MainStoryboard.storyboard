@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Mpd Now Playing View Controller - Now Playing-->
@@ -78,31 +78,16 @@
                                     <action selector="prevPush:" destination="2" eventType="touchUpInside" id="kJF-Ql-ZIc"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rr4-DV-j2t">
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="getPlaylist:" destination="2" eventType="touchUpInside" id="WcZ-Ol-Jae"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EUz-VO-2j2" firstAttribute="centerX" secondItem="75p-WC-Qly" secondAttribute="centerX" type="default" id="1UZ-zK-oqR"/>
+                            <constraint firstItem="9GU-Gt-KvN" firstAttribute="centerX" secondItem="16" secondAttribute="centerX" type="default" id="34S-DS-AlV"/>
                             <constraint firstItem="bfg-2Z-thm" firstAttribute="baseline" secondItem="Zb9-Gp-EuF" secondAttribute="baseline" type="default" id="6M8-Zh-KmW"/>
-                            <constraint firstItem="n0v-gx-6v1" firstAttribute="centerX" secondItem="9GU-Gt-KvN" secondAttribute="centerX" type="default" id="6en-jk-ter"/>
                             <constraint firstItem="bfg-2Z-thm" firstAttribute="bottom" secondItem="n0v-gx-6v1" secondAttribute="bottom" type="default" id="7mw-iL-N4U"/>
                             <constraint firstItem="20" firstAttribute="trailing" secondItem="Zb9-Gp-EuF" secondAttribute="trailing" type="default" id="7yW-v2-9Xi"/>
-                            <constraint firstItem="Rr4-DV-j2t" firstAttribute="centerX" secondItem="16" secondAttribute="centerX" type="default" id="ATZ-en-t2M"/>
                             <constraint firstItem="20" firstAttribute="centerX" secondItem="IHh-hD-HHI" secondAttribute="centerX" type="default" id="BQl-He-upN"/>
-                            <constraint firstItem="Rr4-DV-j2t" firstAttribute="top" secondItem="EUz-VO-2j2" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Dt2-Gv-xtJ"/>
-                            <constraint firstItem="Rr4-DV-j2t" firstAttribute="centerX" secondItem="EUz-VO-2j2" secondAttribute="centerX" type="default" id="FN2-T2-TVA"/>
+                            <constraint firstItem="IHh-hD-HHI" firstAttribute="leading" secondItem="n0v-gx-6v1" secondAttribute="leading" type="default" id="DLT-pg-YdX"/>
                             <constraint firstItem="bfg-2Z-thm" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="I1I-cP-MCN"/>
                             <constraint firstItem="75p-WC-Qly" firstAttribute="top" secondItem="IHh-hD-HHI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Mkw-Wi-p22"/>
                             <constraint firstItem="IHh-hD-HHI" firstAttribute="top" secondItem="20" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="N5K-FW-Uo9"/>
@@ -162,7 +147,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="playlist" textLabel="P1x-Si-SlM" detailTextLabel="4vv-zv-7VT" style="IBUITableViewCellStyleSubtitle" id="CwT-3C-x5V">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="playlistItem" textLabel="P1x-Si-SlM" detailTextLabel="4vv-zv-7VT" style="IBUITableViewCellStyleSubtitle" id="CwT-3C-x5V">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -304,21 +289,28 @@
             </objects>
             <point key="canvasLocation" x="655" y="1355"/>
         </scene>
-        <!--Table View Controller - Music-->
+        <!--Mpd Music Table View Controller - Music-->
         <scene sceneID="tYM-rd-AvD">
             <objects>
-                <tableViewController id="oOI-E4-cfS" sceneMemberID="viewController">
+                <tableViewController id="oOI-E4-cfS" customClass="mpdMusicTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0c8-Qo-FL8">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="music" id="gIq-e7-4nq">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="musicType" textLabel="40D-8d-di5" style="IBUITableViewCellStyleDefault" id="gIq-e7-4nq">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40D-8d-di5">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
@@ -338,32 +330,6 @@
     <resources>
         <image name="play.jpg" width="256" height="256"/>
     </resources>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="mpdNowPlayingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdNowPlayingViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="albumText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="artistText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="songTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="trackText" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="mpdPlaylistTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdPlaylistTableViewController.h"/>
-        </class>
-        <class className="mpdServerSettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdServerSettingsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="connectionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="ipTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="portTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -14,5 +14,7 @@
 @property struct mpd_connection *conn;
 @property const char* host;
 @property int port;
+@property NSInteger rowCount;
+@property NSInteger prevRowCount;
 
 @end

@@ -64,31 +64,68 @@
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
+    NSInteger pos;
     [self initializeConnection];
-    struct mpd_song *nextSong = malloc(sizeof(struct mpd_song));
-    unsigned int pos=0;
-    while((nextSong=mpd_run_get_queue_song_pos(self.conn, pos)))
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
     {
-        pos++;
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return 0;
     }
+    struct mpd_status * status;
+    mpd_send_status(self.conn);
+
+    status = mpd_recv_status(self.conn);
+    
+    if (status == NULL)
+    {
+        NSLog(@"Connection error status");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return 0;
+    }
+
+    pos = mpd_status_get_queue_length(status);
+    mpd_connection_free(self.conn);
+    self.prevRowCount = self.rowCount;
+    self.rowCount = pos;
     return pos;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"playlistItem";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    //NSLog([[NSString alloc] initWithFormat:@"%i",indexPath.row]);
     
-    // Configure the cell...
-    [self initializeConnection];
-    struct mpd_song *nextSong = malloc(sizeof(struct mpd_song));
-    nextSong=mpd_run_get_queue_song_pos(self.conn, indexPath.row);
-    cell.textLabel.text=[[NSString alloc] initWithUTF8String:mpd_song_get_tag(nextSong, MPD_TAG_ARTIST, 0)];
-    cell.detailTextLabel.text=[[NSString alloc] initWithUTF8String:mpd_song_get_tag(nextSong, MPD_TAG_TITLE, 0)];
-
+    //if([tableView numberOfRowsInSection:0]!=self.prevRowCount)
+    //{
+    //    [tableView reloadData];
+    //    NSLog(@"reloading");
+    //}
+        //[tableView reloadData];
+    @try{
+    if(indexPath.row <[tableView numberOfRowsInSection:0])
+    {
+        NSLog(@"loading cell");
+        // Configure the cell...
+        [self initializeConnection];
+        struct mpd_song *nextSong = malloc(sizeof(struct mpd_song));
+        nextSong=mpd_run_get_queue_song_pos(self.conn, indexPath.row);
+        [[cell detailTextLabel] setText:[[NSString alloc] initWithUTF8String:mpd_song_get_tag(nextSong, MPD_TAG_ARTIST, 0)]];
+        [[cell textLabel] setText:[[NSString alloc] initWithUTF8String:mpd_song_get_tag(nextSong, MPD_TAG_TITLE, 0)]];
+        mpd_connection_free(self.conn);
+    }
+    }
+    @catch(NSException *e)
+    {
+        [tableView reloadData];
+    }
     
     return cell;
 }
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -141,5 +178,9 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
+
+
+
 
 @end
