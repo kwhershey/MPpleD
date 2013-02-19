@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Mpd Now Playing View Controller - Now Playing-->
@@ -153,21 +153,33 @@
             </objects>
             <point key="canvasLocation" x="40" y="254"/>
         </scene>
-        <!--Table View Controller - Playlist-->
+        <!--Mpd Playlist Table View Controller - Playlist-->
         <scene sceneID="k28-PP-zMu">
             <objects>
-                <tableViewController id="6dD-X0-xxp" sceneMemberID="viewController">
+                <tableViewController id="6dD-X0-xxp" customClass="mpdPlaylistTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bUG-tF-xqT">
                         <rect key="frame" x="0.0" y="20" width="320" height="499"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="playlist" id="CwT-3C-x5V">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="playlist" textLabel="P1x-Si-SlM" detailTextLabel="4vv-zv-7VT" style="IBUITableViewCellStyleSubtitle" id="CwT-3C-x5V">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P1x-Si-SlM">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vv-zv-7VT">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                             </tableViewCell>
@@ -333,20 +345,18 @@
         <class className="mpdNowPlayingViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdNowPlayingViewController.h"/>
             <relationships>
-                <relationship kind="action" name="getPlaylist:"/>
-                <relationship kind="action" name="nextPush:"/>
-                <relationship kind="action" name="playPausePush:"/>
-                <relationship kind="action" name="prevPush:"/>
                 <relationship kind="outlet" name="albumText" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="artistText" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="songTitle" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="trackText" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="mpdPlaylistTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdPlaylistTableViewController.h"/>
+        </class>
         <class className="mpdServerSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdServerSettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="connectPush:"/>
                 <relationship kind="outlet" name="connectionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ipTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passTextField" candidateClass="UITextField"/>

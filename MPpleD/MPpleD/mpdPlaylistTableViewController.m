@@ -7,6 +7,7 @@
 //
 
 #import "mpdPlaylistTableViewController.h"
+#import <mpd/client.h>
 
 @interface mpdPlaylistTableViewController ()
 
@@ -34,6 +35,16 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+-(void)initializeConnection
+{
+    mpdConnectionData *connection = [mpdConnectionData sharedManager];
+    //NSString *host = @"192.168.1.2";
+    self.host = [connection.host UTF8String];
+    self.port = [connection.port intValue];
+    //self.conn = mpd_connection_new([host UTF8String], 6600, 30000);
+    self.conn = mpd_connection_new(self.host, self.port, 30000);
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -44,16 +55,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
+//#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
+//#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    [self initializeConnection];
+    struct mpd_song *nextSong = malloc(sizeof(struct mpd_song));
+    unsigned int pos=0;
+    while((nextSong=mpd_run_get_queue_song_pos(self.conn, pos)))
+    {
+        pos++;
+    }
+    return pos;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,6 +80,12 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
+    [self initializeConnection];
+    struct mpd_song *nextSong = malloc(sizeof(struct mpd_song));
+    nextSong=mpd_run_get_queue_song_pos(self.conn, indexPath.row);
+    cell.textLabel.text=[[NSString alloc] initWithUTF8String:mpd_song_get_tag(nextSong, MPD_TAG_ARTIST, 0)];
+    cell.detailTextLabel.text=[[NSString alloc] initWithUTF8String:mpd_song_get_tag(nextSong, MPD_TAG_TITLE, 0)];
+
     
     return cell;
 }
