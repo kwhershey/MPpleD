@@ -27,12 +27,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.navigationItem.leftBarButtonItem=self.editButtonItem;
+    
 }
 
 -(void)initializeConnection
@@ -62,6 +66,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
+
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
     NSInteger pos;
@@ -95,20 +101,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+
     static NSString *CellIdentifier = @"playlistItem";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     //NSLog([[NSString alloc] initWithFormat:@"%i",indexPath.row]);
     
-    //if([tableView numberOfRowsInSection:0]!=self.prevRowCount)
-    //{
-    //    [tableView reloadData];
-    //    NSLog(@"reloading");
-    //}
-        //[tableView reloadData];
-    @try{
+    [self updateRowCount];
+    if(self.rowCount!=self.prevRowCount)
+    {
+        [self.tableView reloadData];
+    }
+     
+    //[self.tableView reloadData];
     if(indexPath.row <[tableView numberOfRowsInSection:0])
     {
-        NSLog(@"loading cell");
+        //NSLog(@"loading cell");
         // Configure the cell...
         [self initializeConnection];
         struct mpd_song *nextSong = malloc(sizeof(struct mpd_song));
@@ -117,38 +125,45 @@
         [[cell textLabel] setText:[[NSString alloc] initWithUTF8String:mpd_song_get_tag(nextSong, MPD_TAG_TITLE, 0)]];
         mpd_connection_free(self.conn);
     }
-    }
-    @catch(NSException *e)
-    {
-        [tableView reloadData];
-    }
+
     
     return cell;
 }
 
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
+        [self initializeConnection];
+        if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+        {
+            NSLog(@"Connection error");
+            mpd_connection_free(self.conn);
+            [self initializeConnection];
+            return;
+        }
+        
+        if(mpd_run_delete(self.conn, indexPath.row)){
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        }
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -179,6 +194,36 @@
      */
 }
 
+-(void)updateRowCount
+{
+    NSInteger pos;
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    struct mpd_status * status;
+    mpd_send_status(self.conn);
+    
+    status = mpd_recv_status(self.conn);
+    
+    if (status == NULL)
+    {
+        NSLog(@"Connection error status");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    
+    pos = mpd_status_get_queue_length(status);
+    mpd_connection_free(self.conn);
+    self.prevRowCount = self.rowCount;
+    self.rowCount = pos;
+    
+}
 
 
 

@@ -11,6 +11,7 @@
 		1A1EFDA116CD5CA10081B395 /* mpdMusicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EFDA016CD5CA10081B395 /* mpdMusicTableViewController.m */; };
 		1A48669316CC97F8007B5146 /* play.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A48669216CC97F8007B5146 /* play.jpg */; };
 		1A74460B16CD53C70005AE05 /* mpdServerSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A74460A16CD53C70005AE05 /* mpdServerSettingsViewController.m */; };
+		1AD3027116D5A88200B72660 /* libMpdDispatch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AD3027016D5A88200B72660 /* libMpdDispatch.a */; };
 		5017D2CC16C960080046DB49 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5017D2CB16C960080046DB49 /* UIKit.framework */; };
 		5017D2CE16C960080046DB49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5017D2CD16C960080046DB49 /* Foundation.framework */; };
 		5017D2D016C960080046DB49 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5017D2CF16C960080046DB49 /* CoreGraphics.framework */; };
@@ -27,7 +28,6 @@
 		5017D2FD16C960080046DB49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5017D2CD16C960080046DB49 /* Foundation.framework */; };
 		5017D30516C960080046DB49 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5017D30316C960080046DB49 /* InfoPlist.strings */; };
 		5017D30816C960080046DB49 /* MPpleDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5017D30716C960080046DB49 /* MPpleDTests.m */; };
-		50679FE616D408E900717498 /* libMpdDispatch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50679FE516D408E900717498 /* libMpdDispatch.a */; };
 		507CA14916D063B100249B70 /* mpdConnectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 507CA14816D063B100249B70 /* mpdConnectionData.m */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +49,7 @@
 		1A48669216CC97F8007B5146 /* play.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = play.jpg; path = Buttons/play.jpg; sourceTree = SOURCE_ROOT; };
 		1A74460916CD53C70005AE05 /* mpdServerSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdServerSettingsViewController.h; sourceTree = "<group>"; };
 		1A74460A16CD53C70005AE05 /* mpdServerSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdServerSettingsViewController.m; sourceTree = "<group>"; };
+		1AD3027016D5A88200B72660 /* libMpdDispatch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMpdDispatch.a; path = "../../../Library/Developer/Xcode/DerivedData/MPpledWorkspace-ewzceagsrbahkbdxeukjtkftxlbl/Build/Products/Debug-iphonesimulator/libMpdDispatch.a"; sourceTree = "<group>"; };
 		5017D2C816C960080046DB49 /* MPpleD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPpleD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5017D2CB16C960080046DB49 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5017D2CD16C960080046DB49 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -71,7 +72,6 @@
 		5017D30416C960080046DB49 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5017D30616C960080046DB49 /* MPpleDTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPpleDTests.h; sourceTree = "<group>"; };
 		5017D30716C960080046DB49 /* MPpleDTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPpleDTests.m; sourceTree = "<group>"; };
-		50679FE516D408E900717498 /* libMpdDispatch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMpdDispatch.a; path = "../../../../Library/Developer/Xcode/DerivedData/MPpledWorkspace-dmegsajohbeynvgurnwxpeljxckk/Build/Products/Debug-iphonesimulator/libMpdDispatch.a"; sourceTree = "<group>"; };
 		507CA14716D063B100249B70 /* mpdConnectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdConnectionData.h; sourceTree = "<group>"; };
 		507CA14816D063B100249B70 /* mpdConnectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdConnectionData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,7 +84,7 @@
 				5017D2CC16C960080046DB49 /* UIKit.framework in Frameworks */,
 				5017D2CE16C960080046DB49 /* Foundation.framework in Frameworks */,
 				5017D2D016C960080046DB49 /* CoreGraphics.framework in Frameworks */,
-				50679FE616D408E900717498 /* libMpdDispatch.a in Frameworks */,
+				1AD3027116D5A88200B72660 /* libMpdDispatch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +123,7 @@
 		5017D2CA16C960080046DB49 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				50679FE516D408E900717498 /* libMpdDispatch.a */,
+				1AD3027016D5A88200B72660 /* libMpdDispatch.a */,
 				5017D2CB16C960080046DB49 /* UIKit.framework */,
 				5017D2CD16C960080046DB49 /* Foundation.framework */,
 				5017D2CF16C960080046DB49 /* CoreGraphics.framework */,
@@ -416,13 +416,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MPpleD/MPpleD-Prefix.pch";
-				HEADER_SEARCH_PATHS = /Users/MegaByte/Desktop/Kyle_Code/MPpleD/MpdDispatch/libmpdclient;
+				HEADER_SEARCH_PATHS = /Users/kwhershey/Desktop/MPpleD/MpdDispatch/libmpdclient/;
 				INFOPLIST_FILE = "MPpleD/MPpleD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/MPpledWorkspace-dmegsajohbeynvgurnwxpeljxckk/Build/Products/Debug-iphonesimulator\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -433,13 +430,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MPpleD/MPpleD-Prefix.pch";
-				HEADER_SEARCH_PATHS = /Users/MegaByte/Desktop/Kyle_Code/MPpleD/MpdDispatch/libmpdclient;
+				HEADER_SEARCH_PATHS = /Users/kwhershey/Desktop/MPpleD/MpdDispatch/libmpdclient/;
 				INFOPLIST_FILE = "MPpleD/MPpleD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/MPpledWorkspace-dmegsajohbeynvgurnwxpeljxckk/Build/Products/Debug-iphonesimulator\"",
-				);
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
