@@ -71,6 +71,8 @@
         //NSLog([[NSNumber alloc] initWithUnsignedInteger:[self artistCount]]);
         mpd_return_pair(self.conn, pair);
     }
+    
+    [self.artists sortUsingSelector:@selector(compare:)];
 
     
 }

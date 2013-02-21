@@ -35,12 +35,13 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     //self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    //self.navigationItem.leftBarButtonItem=self.editButtonItem;
+    self.navigationItem.leftBarButtonItem=self.editButtonItem;
     
 }
 
 -(void)initializeConnection
 {
+    NSLog(@"connection initialized");
     mpdConnectionData *connection = [mpdConnectionData sharedManager];
     //NSString *host = @"192.168.1.2";
     self.host = [connection.host UTF8String];
@@ -70,6 +71,8 @@
 
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
+    
+    NSLog(@"rows in section");
     NSInteger pos;
     [self initializeConnection];
     if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
@@ -165,12 +168,24 @@
 }
 
 
-/*
+
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    mpd_run_move(self.conn, fromIndexPath.row, toIndexPath.row);
+    [self.tableView reloadData];
+    
+    
 }
-*/
+
 
 /*
 // Override to support conditional rearranging of the table view.

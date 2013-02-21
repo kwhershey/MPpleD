@@ -72,6 +72,7 @@
         mpd_return_pair(self.conn, pair);
     }
     
+    [self.albums sortUsingSelector:@selector(compare:)];
     
 }
 
