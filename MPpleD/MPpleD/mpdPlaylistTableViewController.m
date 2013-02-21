@@ -192,6 +192,19 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+
+    mpd_run_play_pos(self.conn,indexPath.row);
+    mpd_connection_free(self.conn);
+    
 }
 
 -(void)updateRowCount
@@ -224,6 +237,7 @@
     self.rowCount = pos;
     
 }
+
 
 
 

@@ -1,18 +1,18 @@
 //
-//  mpdMusicTableViewController.m
+//  mpdAlbumViewController.m
 //  MPpleD
 //
-//  Created by KYLE HERSHEY on 2/14/13.
+//  Created by KYLE HERSHEY on 2/20/13.
 //  Copyright (c) 2013 Kyle Hershey. All rights reserved.
 //
 
-#import "mpdMusicTableViewController.h"
+#import "mpdAlbumViewController.h"
 
-@interface mpdMusicTableViewController ()
+@interface mpdAlbumViewController ()
 
 @end
 
-@implementation mpdMusicTableViewController
+@implementation mpdAlbumViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -46,28 +46,25 @@
 {
 //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
-/*
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 2;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"musicType";
+    static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     
-    
-    
     return cell;
 }
- */
 
 /*
 // Override to support conditional editing of the table view.
@@ -119,11 +116,6 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-}
-
--(IBAction)backClick:(UIStoryboardSegue *)segue
-{
-    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

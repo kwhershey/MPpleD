@@ -1,18 +1,18 @@
 //
-//  mpdMusicTableViewController.m
+//  mpdArtistViewController.m
 //  MPpleD
 //
-//  Created by KYLE HERSHEY on 2/14/13.
+//  Created by KYLE HERSHEY on 2/20/13.
 //  Copyright (c) 2013 Kyle Hershey. All rights reserved.
 //
 
-#import "mpdMusicTableViewController.h"
+#import "mpdArtistViewController.h"
 
-@interface mpdMusicTableViewController ()
+@interface mpdArtistViewController ()
 
 @end
 
-@implementation mpdMusicTableViewController
+@implementation mpdArtistViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,6 +29,7 @@
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
+    
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -46,28 +47,25 @@
 {
 //#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
-/*
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 2;
+    return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"musicType";
+    static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
     
-    
-    
     return cell;
 }
- */
 
 /*
 // Override to support conditional editing of the table view.
@@ -121,9 +119,8 @@
      */
 }
 
--(IBAction)backClick:(UIStoryboardSegue *)segue
-{
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
+
+
+
 
 @end

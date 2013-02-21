@@ -63,9 +63,11 @@
         return;
     }
     else{
-        if(mpd_status_get_state(status) == MPD_STATE_PLAY || mpd_status_get_state(status) == MPD_STATE_PAUSE)
+        enum mpd_state playerState;
+        if((playerState= mpd_status_get_state(status)) == MPD_STATE_PLAY || mpd_status_get_state(status) == MPD_STATE_PAUSE)
         {
-            
+            //if(playerState==MPD_STATE_PAUSE)
+//[self.play setImage:((playerState==MPD_STATE_PAUSE) ? pauseBtnBG : playBtnBG) forState:UIControlStateNormal];
             if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
             {
                 NSLog(@"Connection error free");

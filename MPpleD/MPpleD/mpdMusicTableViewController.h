@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "mpdArtistViewController.h"
+#import "mpdAlbumViewController.h"
 
 @interface mpdMusicTableViewController : UITableViewController
+
+-(IBAction)backClick:(UIStoryboardSegue *)segue;
 
 @end
