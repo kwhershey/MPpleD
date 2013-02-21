@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "artistList.h"
 
 @interface mpdArtistViewController : UITableViewController
 
-
+@property (strong, nonatomic) artistList *dataController;
 
 @end

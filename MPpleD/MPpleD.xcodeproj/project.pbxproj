@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		1A1EFD9E16CD5C8B0081B395 /* mpdPlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EFD9D16CD5C8B0081B395 /* mpdPlaylistTableViewController.m */; };
 		1A1EFDA116CD5CA10081B395 /* mpdMusicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EFDA016CD5CA10081B395 /* mpdMusicTableViewController.m */; };
-		1A48669316CC97F8007B5146 /* play.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1A48669216CC97F8007B5146 /* play.jpg */; };
 		1A74460B16CD53C70005AE05 /* mpdServerSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A74460A16CD53C70005AE05 /* mpdServerSettingsViewController.m */; };
 		1AD3027116D5A88200B72660 /* libMpdDispatch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AD3027016D5A88200B72660 /* libMpdDispatch.a */; };
 		1AD3027816D5C16900B72660 /* mpdArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3027716D5C16900B72660 /* mpdArtistViewController.m */; };
 		1AD3027B16D5C44800B72660 /* mpdAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3027A16D5C44800B72660 /* mpdAlbumViewController.m */; };
+		1ADFD1DC16D68C13005DCBD0 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFD1DB16D68C13005DCBD0 /* pause.png */; };
+		1ADFD1DE16D68C1B005DCBD0 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ADFD1DD16D68C1B005DCBD0 /* play.png */; };
+		1ADFD1E116D690C2005DCBD0 /* artistList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADFD1E016D690C2005DCBD0 /* artistList.m */; };
+		1ADFD1E816D69AF0005DCBD0 /* albumList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADFD1E716D69AF0005DCBD0 /* albumList.m */; };
 		5017D2CC16C960080046DB49 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5017D2CB16C960080046DB49 /* UIKit.framework */; };
 		5017D2CE16C960080046DB49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5017D2CD16C960080046DB49 /* Foundation.framework */; };
 		5017D2D016C960080046DB49 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5017D2CF16C960080046DB49 /* CoreGraphics.framework */; };
@@ -48,7 +51,6 @@
 		1A1EFD9D16CD5C8B0081B395 /* mpdPlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdPlaylistTableViewController.m; sourceTree = "<group>"; };
 		1A1EFD9F16CD5CA10081B395 /* mpdMusicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdMusicTableViewController.h; sourceTree = "<group>"; };
 		1A1EFDA016CD5CA10081B395 /* mpdMusicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdMusicTableViewController.m; sourceTree = "<group>"; };
-		1A48669216CC97F8007B5146 /* play.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = play.jpg; path = Buttons/play.jpg; sourceTree = SOURCE_ROOT; };
 		1A74460916CD53C70005AE05 /* mpdServerSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdServerSettingsViewController.h; sourceTree = "<group>"; };
 		1A74460A16CD53C70005AE05 /* mpdServerSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdServerSettingsViewController.m; sourceTree = "<group>"; };
 		1AD3027016D5A88200B72660 /* libMpdDispatch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMpdDispatch.a; path = "../../../Library/Developer/Xcode/DerivedData/MPpledWorkspace-ewzceagsrbahkbdxeukjtkftxlbl/Build/Products/Debug-iphonesimulator/libMpdDispatch.a"; sourceTree = "<group>"; };
@@ -56,6 +58,12 @@
 		1AD3027716D5C16900B72660 /* mpdArtistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdArtistViewController.m; sourceTree = "<group>"; };
 		1AD3027916D5C44800B72660 /* mpdAlbumViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdAlbumViewController.h; sourceTree = "<group>"; };
 		1AD3027A16D5C44800B72660 /* mpdAlbumViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdAlbumViewController.m; sourceTree = "<group>"; };
+		1ADFD1DB16D68C13005DCBD0 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pause.png; path = Buttons/pause.png; sourceTree = SOURCE_ROOT; };
+		1ADFD1DD16D68C1B005DCBD0 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = Buttons/play.png; sourceTree = SOURCE_ROOT; };
+		1ADFD1DF16D690C2005DCBD0 /* artistList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = artistList.h; sourceTree = "<group>"; };
+		1ADFD1E016D690C2005DCBD0 /* artistList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = artistList.m; sourceTree = "<group>"; };
+		1ADFD1E616D69AF0005DCBD0 /* albumList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = albumList.h; sourceTree = "<group>"; };
+		1ADFD1E716D69AF0005DCBD0 /* albumList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = albumList.m; sourceTree = "<group>"; };
 		5017D2C816C960080046DB49 /* MPpleD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPpleD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5017D2CB16C960080046DB49 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5017D2CD16C960080046DB49 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -141,24 +149,29 @@
 		5017D2D116C960080046DB49 /* MPpleD */ = {
 			isa = PBXGroup;
 			children = (
+				5017D2E616C960080046DB49 /* mpdNowPlayingViewController.h */,
+				5017D2E716C960080046DB49 /* mpdNowPlayingViewController.m */,
 				1A1EFD9C16CD5C8B0081B395 /* mpdPlaylistTableViewController.h */,
 				1A1EFD9D16CD5C8B0081B395 /* mpdPlaylistTableViewController.m */,
 				1A1EFD9F16CD5CA10081B395 /* mpdMusicTableViewController.h */,
 				1A1EFDA016CD5CA10081B395 /* mpdMusicTableViewController.m */,
 				1AD3027616D5C16900B72660 /* mpdArtistViewController.h */,
 				1AD3027716D5C16900B72660 /* mpdArtistViewController.m */,
+				1ADFD1DF16D690C2005DCBD0 /* artistList.h */,
+				1ADFD1E016D690C2005DCBD0 /* artistList.m */,
+				1AD3027916D5C44800B72660 /* mpdAlbumViewController.h */,
+				1AD3027A16D5C44800B72660 /* mpdAlbumViewController.m */,
+				1ADFD1E616D69AF0005DCBD0 /* albumList.h */,
+				1ADFD1E716D69AF0005DCBD0 /* albumList.m */,
 				1A74460916CD53C70005AE05 /* mpdServerSettingsViewController.h */,
 				1A74460A16CD53C70005AE05 /* mpdServerSettingsViewController.m */,
-				1A48669216CC97F8007B5146 /* play.jpg */,
 				5017D2DA16C960080046DB49 /* mpdAppDelegate.h */,
 				5017D2DB16C960080046DB49 /* mpdAppDelegate.m */,
 				5017D2E316C960080046DB49 /* MainStoryboard.storyboard */,
-				1AD3027916D5C44800B72660 /* mpdAlbumViewController.h */,
-				1AD3027A16D5C44800B72660 /* mpdAlbumViewController.m */,
 				507CA14716D063B100249B70 /* mpdConnectionData.h */,
 				507CA14816D063B100249B70 /* mpdConnectionData.m */,
-				5017D2E616C960080046DB49 /* mpdNowPlayingViewController.h */,
-				5017D2E716C960080046DB49 /* mpdNowPlayingViewController.m */,
+				1ADFD1DB16D68C13005DCBD0 /* pause.png */,
+				1ADFD1DD16D68C1B005DCBD0 /* play.png */,
 				5017D2D216C960080046DB49 /* Supporting Files */,
 			);
 			path = MPpleD;
@@ -274,7 +287,8 @@
 				5017D2E016C960080046DB49 /* Default@2x.png in Resources */,
 				5017D2E216C960080046DB49 /* Default-568h@2x.png in Resources */,
 				5017D2E516C960080046DB49 /* MainStoryboard.storyboard in Resources */,
-				1A48669316CC97F8007B5146 /* play.jpg in Resources */,
+				1ADFD1DC16D68C13005DCBD0 /* pause.png in Resources */,
+				1ADFD1DE16D68C1B005DCBD0 /* play.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +332,8 @@
 				507CA14916D063B100249B70 /* mpdConnectionData.m in Sources */,
 				1AD3027816D5C16900B72660 /* mpdArtistViewController.m in Sources */,
 				1AD3027B16D5C44800B72660 /* mpdAlbumViewController.m in Sources */,
+				1ADFD1E116D690C2005DCBD0 /* artistList.m in Sources */,
+				1ADFD1E816D69AF0005DCBD0 /* albumList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

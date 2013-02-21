@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "albumList.h"
 
 @interface mpdAlbumViewController : UITableViewController
+
+@property (strong, nonatomic) albumList *dataController;
 
 @end

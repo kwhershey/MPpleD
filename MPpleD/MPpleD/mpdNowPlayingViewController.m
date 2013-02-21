@@ -66,7 +66,10 @@
         enum mpd_state playerState;
         if((playerState= mpd_status_get_state(status)) == MPD_STATE_PLAY || mpd_status_get_state(status) == MPD_STATE_PAUSE)
         {
-            //if(playerState==MPD_STATE_PAUSE)
+            if(playerState==MPD_STATE_PAUSE)
+                self.play.image =[UIImage imageNamed:@"play.png"];
+            else
+                self.play.image = [UIImage imageNamed:@"pause.png"];
 //[self.play setImage:((playerState==MPD_STATE_PAUSE) ? pauseBtnBG : playBtnBG) forState:UIControlStateNormal];
             if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
             {
@@ -170,6 +173,7 @@
             mpd_run_play(self.conn);
         }
     }
+    [self updateView];
 }
 
 -(IBAction)nextPush:(id)sender
@@ -183,7 +187,7 @@
         return;
     }
     mpd_run_next(self.conn);
-    
+    [self updateView];
 }
 
 -(IBAction)prevPush:(id)sender
@@ -197,7 +201,7 @@
         return;
     }
     mpd_run_previous(self.conn);
-    
+    [self updateView];
 }
 
 
