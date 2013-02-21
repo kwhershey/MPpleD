@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     
-
+    [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector:@selector(updateInfo) userInfo: nil repeats:YES];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -39,9 +39,14 @@
     
 }
 
+-(void)updateInfo
+{
+    [self.tableView reloadData];
+}
+
 -(void)initializeConnection
 {
-    NSLog(@"connection initialized");
+    //NSLog(@"connection initialized");
     mpdConnectionData *connection = [mpdConnectionData sharedManager];
     //NSString *host = @"192.168.1.2";
     self.host = [connection.host UTF8String];
@@ -126,10 +131,31 @@
         nextSong=mpd_run_get_queue_song_pos(self.conn, indexPath.row);
         [[cell detailTextLabel] setText:[[NSString alloc] initWithUTF8String:mpd_song_get_tag(nextSong, MPD_TAG_ARTIST, 0)]];
         [[cell textLabel] setText:[[NSString alloc] initWithUTF8String:mpd_song_get_tag(nextSong, MPD_TAG_TITLE, 0)]];
-        mpd_connection_free(self.conn);
+        
+    }
+    struct mpd_status * status;
+    mpd_send_status(self.conn);  
+    
+    status = mpd_recv_status(self.conn);
+    
+    if (status != NULL)
+    {
+        if(mpd_status_get_song_pos(status)==indexPath.row)
+        {
+            [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
+            cell.textLabel.font  = [UIFont boldSystemFontOfSize:18];
+            cell.detailTextLabel.font = [UIFont boldSystemFontOfSize:14];
+        }
+        else
+        {
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+            cell.textLabel.font = [UIFont systemFontOfSize:18];
+            cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
+        }
     }
 
-    
+
+    mpd_connection_free(self.conn);
     return cell;
 }
 
@@ -219,6 +245,7 @@
 
     mpd_run_play_pos(self.conn,indexPath.row);
     mpd_connection_free(self.conn);
+    [self.tableView reloadData];
     
 }
 
