@@ -1,21 +1,21 @@
 //
-//  albumList.m
+//  songList.m
 //  MPpleD
 //
-//  Created by KYLE HERSHEY on 2/21/13.
+//  Created by Mary Beth McWhinney on 2/22/13.
 //  Copyright (c) 2013 Kyle Hershey. All rights reserved.
 //
 
-#import "albumList.h"
-#import "mpdConnectionData.h"
+#import "songList.h"
 
-@interface albumList ()
+@interface songList ()
 
 - (void)initializeDefaultDataList;
 
 @end
 
-@implementation albumList
+
+@implementation songList
 
 - (id)init {
     
@@ -44,6 +44,19 @@
     return nil;
 }
 
+-(id)initWithAlbum:(NSString *)album
+{
+    if (self = [super init]) {
+        
+        [self initializeAlbumDataList:album];
+        
+        return self;
+        
+    }
+    
+    return nil;
+}
+
 
 -(void)initializeConnection
 {
@@ -59,7 +72,7 @@
 -(void)initializeDefaultDataList
 {
     NSMutableArray *list = [[NSMutableArray alloc] init];
-    self.albums = list;
+    self.songs = list;
     
     //NSLog(@"initializing list");
     [self initializeConnection];
@@ -72,29 +85,29 @@
     }
     struct mpd_pair *pair;
     
-    if (!mpd_search_db_tags(self.conn, MPD_TAG_ALBUM) ||
+    if (!mpd_search_db_tags(self.conn, MPD_TAG_TITLE) ||
         !mpd_search_commit(self.conn))
         return;
     
-    while ((pair = mpd_recv_pair_tag(self.conn, MPD_TAG_ALBUM)) != NULL)
+    while ((pair = mpd_recv_pair_tag(self.conn, MPD_TAG_TITLE)) != NULL)
     {
         //NSLog(@"adding artist");
-        NSString *albumString = [[NSString alloc] initWithUTF8String:pair->value];
+        NSString *songString = [[NSString alloc] initWithUTF8String:pair->value];
         //NSLog(albumString);
-        [self.albums addObject:albumString];
+        [self.songs addObject:songString];
         //NSLog([[NSNumber alloc] initWithUnsignedInteger:[self artistCount]]);
         mpd_return_pair(self.conn, pair);
     }
     
     mpd_connection_free(self.conn);
-    [self.albums sortUsingSelector:@selector(compare:)];
+    [self.songs sortUsingSelector:@selector(compare:)];
     
 }
 
 -(void)initializeArtistDataList:(NSString *)artist
 {
     NSMutableArray *list = [[NSMutableArray alloc] init];
-    self.albums = list;
+    self.songs = list;
     
     //NSLog(@"initializing list");
     [self initializeConnection];
@@ -108,7 +121,7 @@
     
     const char *cArtist = [artist UTF8String];
     mpd_command_list_begin(self.conn, true);
-    mpd_search_db_tags(self.conn, MPD_TAG_ALBUM);
+    mpd_search_db_tags(self.conn, MPD_TAG_TITLE);
     mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ARTIST, cArtist);
     mpd_search_commit(self.conn);
     mpd_command_list_end(self.conn);
@@ -116,30 +129,73 @@
     struct mpd_pair *pair;
     
     
-    while ((pair = mpd_recv_pair_tag(self.conn, MPD_TAG_ALBUM)) != NULL)
+    while ((pair = mpd_recv_pair_tag(self.conn, MPD_TAG_TITLE)) != NULL)
     {
         //NSLog(@"adding artist");
-        NSString *albumString = [[NSString alloc] initWithUTF8String:pair->value];
+        NSString *songString = [[NSString alloc] initWithUTF8String:pair->value];
         //NSLog(albumString);
-        [self.albums addObject:albumString];
+        [self.songs addObject:songString];
         //NSLog([[NSNumber alloc] initWithUnsignedInteger:[self artistCount]]);
         mpd_return_pair(self.conn, pair);
     }
     
     mpd_connection_free(self.conn);
-    [self.albums sortUsingSelector:@selector(compare:)];
-
+    //[self.songs sortUsingSelector:@selector(compare:)];
+    
 }
 
--(NSString*)albumAtIndex:(NSUInteger)row
+-(void)initializeAlbumDataList:(NSString *)album
 {
-    return [self.albums objectAtIndex:row];
+    NSMutableArray *list = [[NSMutableArray alloc] init];
+    self.songs = list;
+    
+    //NSLog(@"initializing list");
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    
+    const char *cAlbum = [album UTF8String];
+    mpd_command_list_begin(self.conn, true);
+    mpd_search_db_tags(self.conn, MPD_TAG_TITLE);
+    mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ALBUM, cAlbum);
+    mpd_search_commit(self.conn);
+    mpd_command_list_end(self.conn);
+    
+    struct mpd_pair *pair;
+    
+    
+    while ((pair = mpd_recv_pair_tag(self.conn, MPD_TAG_TITLE)) != NULL)
+    {
+        //NSLog(@"adding artist");
+        NSString *songString = [[NSString alloc] initWithUTF8String:pair->value];
+        //NSLog(albumString);
+        [self.songs addObject:songString];
+        //NSLog([[NSNumber alloc] initWithUnsignedInteger:[self artistCount]]);
+        mpd_return_pair(self.conn, pair);
+    }
+    
+    mpd_connection_free(self.conn);
+    //[self.songs sortUsingSelector:@selector(compare:)];
+    
 }
 
--(NSUInteger)albumCount
+
+-(NSString*)songAtIndex:(NSUInteger)row
 {
-    return [self.albums count];
+    return [self.songs objectAtIndex:row];
 }
+
+-(NSUInteger)songCount
+{
+    return [self.songs count];
+}
+
+
+
 
 @end
-

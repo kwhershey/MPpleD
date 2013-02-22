@@ -1,30 +1,24 @@
 //
-//  mpdAlbumViewController.m
+//  mpdSongTableViewController.m
 //  MPpleD
 //
-//  Created by KYLE HERSHEY on 2/20/13.
+//  Created by Mary Beth McWhinney on 2/22/13.
 //  Copyright (c) 2013 Kyle Hershey. All rights reserved.
 //
 
-#import "mpdAlbumViewController.h"
 #import "mpdSongTableViewController.h"
 
-@interface mpdAlbumViewController ()
+@interface mpdSongTableViewController ()
 
 @end
 
-@implementation mpdAlbumViewController
+@implementation mpdSongTableViewController
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    if(self.artistFilter)
-    {
-        self.dataController = [[albumList alloc] initWithArtist:self.artistFilter];
-    }
-    else{
-        self.dataController = [[albumList alloc] init];
-    }
+        self.dataController = [[songList alloc] init];
+
 }
 
 -(void)setArtistFilter:(NSString *)newArtistFilter
@@ -34,7 +28,20 @@
         
         _artistFilter = newArtistFilter;
         
-        self.dataController = [[albumList alloc] initWithArtist:newArtistFilter];
+        self.dataController = [[songList alloc] initWithArtist:newArtistFilter];
+        
+    }
+    
+}
+
+-(void)setAlbumFilter:(NSString *)newAlbumFilter
+{
+    
+    if (_albumFilter != newAlbumFilter) {
+        
+        _albumFilter = newAlbumFilter;
+        
+        self.dataController = [[songList alloc] initWithAlbum:newAlbumFilter];
         
     }
     
@@ -79,16 +86,16 @@
 {
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [self.dataController albumCount];
+    return [self.dataController songCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"albumItem";
+    static NSString *CellIdentifier = @"songItem";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    [[cell textLabel] setText:[self.dataController albumAtIndex:indexPath.row]];
+    [[cell textLabel] setText:[self.dataController songAtIndex:indexPath.row]];
     
     return cell;
 }
@@ -143,25 +150,6 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if ([[segue identifier] isEqualToString:@"ShowAlbumSongs"]) {
-        
-        mpdSongTableViewController *songViewController = [segue destinationViewController];
-        
-        
-        
-        songViewController.albumFilter = [self.dataController albumAtIndex:[self.tableView indexPathForSelectedRow].row];
-        
-    }
-    
-}
-
--(IBAction)backToAlbumClick:(UIStoryboardSegue *)segue
-{
-    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

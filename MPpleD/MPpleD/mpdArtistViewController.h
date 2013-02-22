@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) artistList *dataController;
 
+-(IBAction)backToArtistClick:(UIStoryboardSegue *)segue;
+
 @end

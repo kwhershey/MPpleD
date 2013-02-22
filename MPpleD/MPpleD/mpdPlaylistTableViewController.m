@@ -77,7 +77,7 @@
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
     
-    NSLog(@"rows in section");
+    //NSLog(@"rows in section");
     NSInteger pos;
     [self initializeConnection];
     if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)

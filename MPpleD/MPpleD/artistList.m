@@ -72,6 +72,7 @@
         mpd_return_pair(self.conn, pair);
     }
     
+    mpd_connection_free(self.conn);
     [self.artists sortUsingSelector:@selector(compare:)];
 
     

@@ -228,7 +228,7 @@
             <objects>
                 <tableViewController id="TxT-Hs-a9Q" customClass="mpdArtistViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="3kw-D0-J2j">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -247,6 +247,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="VLt-xk-7vx" kind="push" identifier="ShowArtistAlbums" id="rgj-XI-7CB"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -257,18 +260,110 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uy1-3s-5zU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="qZf-TU-NY9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2212" y="283"/>
+            <point key="canvasLocation" x="1885" y="6"/>
         </scene>
-        <!--Mpd Music Table View Controller - Root View Controller-->
+        <!--Mpd Album View Controller - Albums-->
+        <scene sceneID="vkH-Na-zL3">
+            <objects>
+                <tableViewController id="VLt-xk-7vx" customClass="mpdAlbumViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="o4u-4E-KKy">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="albumItem" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="albumItem" textLabel="tEf-7o-wb3" style="IBUITableViewCellStyleDefault" id="m6z-Id-ApK">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEf-7o-wb3">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="bp1-s7-FRe" kind="push" identifier="ShowAlbumSongs" id="X10-W7-aMm"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VLt-xk-7vx" id="Yqh-Yy-usk"/>
+                            <outlet property="delegate" destination="VLt-xk-7vx" id="pBE-yz-5f3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Albums" id="OJf-q2-bOn">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="jB3-2l-fIZ">
+                            <connections>
+                                <segue destination="nyW-td-5N7" kind="unwind" unwindAction="backToArtistClick:" id="Gn6-SW-5AN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bvf-1H-mwj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nyW-td-5N7" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2299" y="6"/>
+        </scene>
+        <!--Mpd Song Table View Controller - Songs-->
+        <scene sceneID="wEO-Un-jyJ">
+            <objects>
+                <tableViewController id="bp1-s7-FRe" customClass="mpdSongTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="87W-m1-hEN">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="songItem" textLabel="XwY-ST-COr" style="IBUITableViewCellStyleDefault" id="YJH-8C-zCG">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XwY-ST-COr">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bp1-s7-FRe" id="obO-OL-mNC"/>
+                            <outlet property="delegate" destination="bp1-s7-FRe" id="Ues-RA-ZpN"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Songs" id="rgh-Ea-vnP">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="6Rd-sK-uYm">
+                            <connections>
+                                <segue destination="UL3-EG-MX9" kind="unwind" unwindAction="backToAlbumClick:" id="Scs-SO-IX9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FNY-qY-Pzl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="UL3-EG-MX9" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2724" y="6"/>
+        </scene>
+        <!--Mpd Music Table View Controller - Music-->
         <scene sceneID="ZWd-rI-q7e">
             <objects>
                 <tableViewController id="mAr-Ih-6bQ" customClass="mpdMusicTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="pgG-uB-gmF">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -290,7 +385,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="AZl-F7-Mwf" kind="modal" id="my8-Uo-36B"/>
+                                            <segue destination="TxT-Hs-a9Q" kind="push" id="3dF-KB-VOS"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="t2A-cU-J6e" style="IBUITableViewCellStyleDefault" id="euK-aq-ZPv">
@@ -309,15 +404,14 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="5Ur-vm-Kh0" kind="modal" id="Xn0-sG-1tE"/>
+                                            <segue destination="oXV-W2-UTi" kind="push" id="9av-dm-faw"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="CQw-oe-y6Y"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Music" id="CQw-oe-y6Y"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVy-Rh-0mi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -326,9 +420,8 @@
         <!--Navigation Controller - Music-->
         <scene sceneID="09d-Sf-TPh">
             <objects>
-                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="YZh-Bg-h2c" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="YZh-Bg-h2c" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Music" id="MHu-5c-mOa"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="psJ-gB-nWC">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -394,28 +487,12 @@
             </objects>
             <point key="canvasLocation" x="653" y="6"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="LLU-AA-NLM">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="AZl-F7-Mwf" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="AgQ-0w-mGa"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eNv-8k-Oof">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="TxT-Hs-a9Q" kind="relationship" relationship="rootViewController" id="rWi-5g-Zvk"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XOP-M0-hUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1693" y="283"/>
-        </scene>
         <!--Mpd Album View Controller - Albums-->
         <scene sceneID="tgQ-oI-00b">
             <objects>
                 <tableViewController id="oXV-W2-UTi" customClass="mpdAlbumViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="d6Q-v8-oV1">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -434,6 +511,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="geL-zc-hOX" kind="push" identifier="ShowAlbumSongs" id="rSw-sZ-fKg"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
@@ -444,27 +524,56 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKb-rA-cHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Ag4-2G-De3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2224" y="959"/>
+            <point key="canvasLocation" x="1885" y="693"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="mGe-OU-2yk">
+        <!--Mpd Song Table View Controller - Songs-->
+        <scene sceneID="Pa2-cU-bxQ">
             <objects>
-                <navigationController definesPresentationContext="YES" id="5Ur-vm-Kh0" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="KQe-Mh-Cl7"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="J8u-RI-Nyp">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="oXV-W2-UTi" kind="relationship" relationship="rootViewController" id="K03-bB-hRa"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cgK-Tt-yi1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="geL-zc-hOX" customClass="mpdSongTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="cPD-Tb-thR">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="songItem" textLabel="wiC-Xy-tP0" style="IBUITableViewCellStyleDefault" id="SsT-ol-54k">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wiC-Xy-tP0">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="geL-zc-hOX" id="ZqM-gC-jSK"/>
+                            <outlet property="delegate" destination="geL-zc-hOX" id="cRM-Ia-TJS"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Songs" id="v7L-iz-o8U">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="7Ks-aL-Yqf">
+                            <connections>
+                                <segue destination="wLW-2n-Jl9" kind="unwind" unwindAction="backToAlbumClick:" id="TuW-Rg-F4j"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a2b-ol-anq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="wLW-2n-Jl9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1693" y="959"/>
+            <point key="canvasLocation" x="2299" y="693"/>
         </scene>
     </scenes>
     <resources>
@@ -479,9 +588,15 @@
         </class>
         <class className="mpdAlbumViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdAlbumViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backToAlbumClick:" candidateClass="UIStoryboardSegue"/>
+            </relationships>
         </class>
         <class className="mpdArtistViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdArtistViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backToArtistClick:" candidateClass="UIStoryboardSegue"/>
+            </relationships>
         </class>
         <class className="mpdMusicTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdMusicTableViewController.h"/>
@@ -507,12 +622,14 @@
         <class className="mpdServerSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdServerSettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="connectPush:"/>
                 <relationship kind="outlet" name="connectionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ipTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="portTextField" candidateClass="UITextField"/>
             </relationships>
+        </class>
+        <class className="mpdSongTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdSongTableViewController.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

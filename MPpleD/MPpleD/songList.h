@@ -1,8 +1,8 @@
 //
-//  albumList.h
+//  songList.h
 //  MPpleD
 //
-//  Created by KYLE HERSHEY on 2/21/13.
+//  Created by Mary Beth McWhinney on 2/22/13.
 //  Copyright (c) 2013 Kyle Hershey. All rights reserved.
 //
 
@@ -11,16 +11,18 @@
 #import <mpd/client.h>
 #import "mpdConnectionData.h"
 
-@interface albumList : NSObject
+@interface songList : NSObject
 
 @property struct mpd_connection *conn;
 @property const char* host;
 @property int port;
 
-@property NSMutableArray *albums;
+@property NSMutableArray *songs;
 
 -(id)initWithArtist:(NSString *)artist;
--(NSString*)albumAtIndex:(NSUInteger)row;
--(NSUInteger)albumCount;
+-(id)initWithAlbum:(NSString *)album;
+
+-(NSString*)songAtIndex:(NSUInteger)row;
+-(NSUInteger)songCount;
 
 @end

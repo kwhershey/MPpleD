@@ -8,6 +8,7 @@
 
 #import "mpdArtistViewController.h"
 #import "artistList.h"
+#import "mpdAlbumViewController.h"
 
 @interface mpdArtistViewController ()
 
@@ -132,8 +133,24 @@
      */
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:@"ShowArtistAlbums"]) {
+        
+         mpdAlbumViewController *albumViewController = [segue destinationViewController];
+        
+        
+        
+        albumViewController.artistFilter = [self.dataController artistAtIndex:[self.tableView indexPathForSelectedRow].row];
+        
+    }
+    
+}
 
 
-
+    -(IBAction)backToArtistClick:(UIStoryboardSegue *)segue
+    {
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
 
 @end

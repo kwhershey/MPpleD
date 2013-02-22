@@ -33,6 +33,8 @@
 		5017D30516C960080046DB49 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5017D30316C960080046DB49 /* InfoPlist.strings */; };
 		5017D30816C960080046DB49 /* MPpleDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5017D30716C960080046DB49 /* MPpleDTests.m */; };
 		507CA14916D063B100249B70 /* mpdConnectionData.m in Sources */ = {isa = PBXBuildFile; fileRef = 507CA14816D063B100249B70 /* mpdConnectionData.m */; };
+		50D6A56B16D824D800BAE01C /* mpdSongTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D6A56A16D824D800BAE01C /* mpdSongTableViewController.m */; };
+		50D6A56E16D8252200BAE01C /* songList.m in Sources */ = {isa = PBXBuildFile; fileRef = 50D6A56D16D8252100BAE01C /* songList.m */; };
 		50F6E77816D6AC6E00CBD2D6 /* libMpdDispatch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F6E77716D6AC6E00CBD2D6 /* libMpdDispatch.a */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +89,10 @@
 		5017D30716C960080046DB49 /* MPpleDTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPpleDTests.m; sourceTree = "<group>"; };
 		507CA14716D063B100249B70 /* mpdConnectionData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdConnectionData.h; sourceTree = "<group>"; };
 		507CA14816D063B100249B70 /* mpdConnectionData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdConnectionData.m; sourceTree = "<group>"; };
+		50D6A56916D824D800BAE01C /* mpdSongTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdSongTableViewController.h; sourceTree = "<group>"; };
+		50D6A56A16D824D800BAE01C /* mpdSongTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdSongTableViewController.m; sourceTree = "<group>"; };
+		50D6A56C16D8252100BAE01C /* songList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = songList.h; sourceTree = "<group>"; };
+		50D6A56D16D8252100BAE01C /* songList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = songList.m; sourceTree = "<group>"; };
 		50F6E77716D6AC6E00CBD2D6 /* libMpdDispatch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMpdDispatch.a; path = "../../../../Library/Developer/Xcode/DerivedData/MPpledWorkspace-dmegsajohbeynvgurnwxpeljxckk/Build/Products/Debug-iphonesimulator/libMpdDispatch.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +169,10 @@
 				1AD3027A16D5C44800B72660 /* mpdAlbumViewController.m */,
 				1ADFD1E616D69AF0005DCBD0 /* albumList.h */,
 				1ADFD1E716D69AF0005DCBD0 /* albumList.m */,
+				50D6A56916D824D800BAE01C /* mpdSongTableViewController.h */,
+				50D6A56A16D824D800BAE01C /* mpdSongTableViewController.m */,
+				50D6A56C16D8252100BAE01C /* songList.h */,
+				50D6A56D16D8252100BAE01C /* songList.m */,
 				1A74460916CD53C70005AE05 /* mpdServerSettingsViewController.h */,
 				1A74460A16CD53C70005AE05 /* mpdServerSettingsViewController.m */,
 				5017D2DA16C960080046DB49 /* mpdAppDelegate.h */,
@@ -334,6 +344,8 @@
 				1AD3027B16D5C44800B72660 /* mpdAlbumViewController.m in Sources */,
 				1ADFD1E116D690C2005DCBD0 /* artistList.m in Sources */,
 				1ADFD1E816D69AF0005DCBD0 /* albumList.m in Sources */,
+				50D6A56B16D824D800BAE01C /* mpdSongTableViewController.m in Sources */,
+				50D6A56E16D8252200BAE01C /* songList.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

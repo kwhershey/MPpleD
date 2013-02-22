@@ -13,4 +13,8 @@
 
 @property (strong, nonatomic) albumList *dataController;
 
+@property (strong, nonatomic) NSString *artistFilter;
+
+-(IBAction)backToAlbumClick:(UIStoryboardSegue *)segue;
+
 @end
