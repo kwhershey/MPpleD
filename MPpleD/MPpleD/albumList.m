@@ -88,6 +88,7 @@
     
     mpd_connection_free(self.conn);
     [self.albums sortUsingSelector:@selector(compare:)];
+    [self.albums insertObject:@"All" atIndex:0];
     
 }
 
@@ -128,7 +129,7 @@
     
     mpd_connection_free(self.conn);
     [self.albums sortUsingSelector:@selector(compare:)];
-
+    [self.albums insertObject:@"All" atIndex:0];
 }
 
 -(NSString*)albumAtIndex:(NSUInteger)row

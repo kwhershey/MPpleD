@@ -142,6 +142,7 @@
         
         
         albumViewController.artistFilter = [self.dataController artistAtIndex:[self.tableView indexPathForSelectedRow].row];
+        albumViewController.navigationItem.title = [self.dataController artistAtIndex:[self.tableView indexPathForSelectedRow].row];
         
     }
     

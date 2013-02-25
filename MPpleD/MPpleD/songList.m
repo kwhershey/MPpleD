@@ -140,7 +140,7 @@
     }
     
     mpd_connection_free(self.conn);
-    //[self.songs sortUsingSelector:@selector(compare:)];
+    [self.songs sortUsingSelector:@selector(compare:)];
     
 }
 

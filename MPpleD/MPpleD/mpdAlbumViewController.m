@@ -152,9 +152,15 @@
         mpdSongTableViewController *songViewController = [segue destinationViewController];
         
         
-        
-        songViewController.albumFilter = [self.dataController albumAtIndex:[self.tableView indexPathForSelectedRow].row];
-        
+        if([self.tableView indexPathForSelectedRow].row==0)
+        {
+            songViewController.artistFilter = self.artistFilter;
+            songViewController.navigationItem.title = self.artistFilter;
+        }
+        else{
+            songViewController.albumFilter = [self.dataController albumAtIndex:[self.tableView indexPathForSelectedRow].row];
+            songViewController.navigationItem.title = [self.dataController albumAtIndex:[self.tableView indexPathForSelectedRow].row];
+        }
     }
     
 }

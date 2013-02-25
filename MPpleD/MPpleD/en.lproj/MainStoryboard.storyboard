@@ -77,7 +77,7 @@
                             <constraint firstItem="20" firstAttribute="centerX" secondItem="IHh-hD-HHI" secondAttribute="centerX" type="default" id="zfN-E5-zQe"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Now Playing" id="7"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" image="play.png" id="7"/>
                     <navigationItem key="navigationItem" id="8VS-yz-5d8"/>
                     <connections>
                         <outlet property="albumText" destination="75p-WC-Qly" id="aVa-aR-ZwK"/>
@@ -148,7 +148,6 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="192.168.0.1" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f4l-dC-K4S">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="181" id="3bG-75-gqq"/>
-                                    <constraint firstAttribute="height" constant="30" id="SFv-co-YcC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -157,30 +156,12 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="6600" borderStyle="roundedRect" placeholder="8000" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oWL-AV-MDr">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Epu-H3-K9h"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <outlet property="delegate" destination="CzO-kD-D8Y" id="Y37-XH-WBz"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TUF-0R-vJ6">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="qdM-kr-IcQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="CzO-kD-D8Y" id="AXG-kK-47E"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Tf-2w-PHU">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Connection Status" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="maG-f1-J4g">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -191,31 +172,24 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="NSR-wB-oNc" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="08a-Zp-W8T"/>
                             <constraint firstItem="maG-f1-J4g" firstAttribute="centerX" secondItem="NSR-wB-oNc" secondAttribute="centerX" type="default" id="50f-b9-w3R"/>
-                            <constraint firstItem="3Tf-2w-PHU" firstAttribute="leading" secondItem="kfI-B4-GZ1" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ALi-sZ-WgV"/>
-                            <constraint firstItem="3Tf-2w-PHU" firstAttribute="top" secondItem="kfI-B4-GZ1" secondAttribute="top" constant="96" id="DZc-0w-cec"/>
                             <constraint firstItem="f4l-dC-K4S" firstAttribute="top" secondItem="kfI-B4-GZ1" secondAttribute="top" constant="16" id="IsI-vg-Wpr"/>
                             <constraint firstItem="bVC-g2-QxJ" firstAttribute="leading" secondItem="kfI-B4-GZ1" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="JCl-w6-bjT"/>
                             <constraint firstItem="JJU-lk-QQf" firstAttribute="top" secondItem="kfI-B4-GZ1" secondAttribute="top" constant="20" symbolic="YES" type="default" id="K02-FU-Psf"/>
                             <constraint firstItem="bVC-g2-QxJ" firstAttribute="top" secondItem="kfI-B4-GZ1" secondAttribute="top" constant="58" id="Kq4-Sb-Pwj"/>
                             <constraint firstAttribute="bottom" secondItem="NSR-wB-oNc" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="LVd-1n-qCS"/>
                             <constraint firstAttribute="trailing" secondItem="f4l-dC-K4S" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="SuB-Kv-9ey"/>
-                            <constraint firstAttribute="trailing" secondItem="TUF-0R-vJ6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Xwc-W4-MuK"/>
                             <constraint firstItem="NSR-wB-oNc" firstAttribute="leading" secondItem="kfI-B4-GZ1" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Yn7-P8-J9Z"/>
                             <constraint firstAttribute="trailing" secondItem="oWL-AV-MDr" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="b2D-MF-41f"/>
-                            <constraint firstItem="TUF-0R-vJ6" firstAttribute="leading" secondItem="oWL-AV-MDr" secondAttribute="leading" type="default" id="ci4-aU-iJN"/>
-                            <constraint firstItem="3Tf-2w-PHU" firstAttribute="baseline" secondItem="TUF-0R-vJ6" secondAttribute="baseline" type="default" id="dtr-hT-RaF"/>
                             <constraint firstItem="NSR-wB-oNc" firstAttribute="top" secondItem="maG-f1-J4g" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="jF0-R5-ett"/>
-                            <constraint firstItem="TUF-0R-vJ6" firstAttribute="top" secondItem="oWL-AV-MDr" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="lQw-0F-CmG"/>
                             <constraint firstItem="oWL-AV-MDr" firstAttribute="leading" secondItem="f4l-dC-K4S" secondAttribute="leading" type="default" id="qD8-ms-6DE"/>
                             <constraint firstItem="oWL-AV-MDr" firstAttribute="top" secondItem="f4l-dC-K4S" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="rlJ-qq-9g1"/>
                             <constraint firstItem="JJU-lk-QQf" firstAttribute="leading" secondItem="kfI-B4-GZ1" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="wcO-11-Dbm"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Server" id="fLG-t3-L2g"/>
+                    <tabBarItem key="tabBarItem" title="Server" image="gear.png" id="fLG-t3-L2g"/>
                     <connections>
                         <outlet property="connectionLabel" destination="maG-f1-J4g" id="w6c-2M-5Tc"/>
                         <outlet property="ipTextField" destination="f4l-dC-K4S" id="QYc-rI-V3e"/>
-                        <outlet property="passTextField" destination="TUF-0R-vJ6" id="flc-gM-HQh"/>
                         <outlet property="portTextField" destination="oWL-AV-MDr" id="hUe-K1-DEJ"/>
                     </connections>
                 </viewController>
@@ -254,16 +228,11 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Artists" id="GB4-Qs-b6Q">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="nJc-ia-xH7">
-                            <connections>
-                                <segue destination="qZf-TU-NY9" kind="unwind" unwindAction="backClick:" id="FcJ-hf-acT"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title="Music" id="zQA-jW-6fD"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uy1-3s-5zU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="qZf-TU-NY9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1885" y="6"/>
         </scene>
@@ -302,15 +271,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Albums" id="OJf-q2-bOn">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="jB3-2l-fIZ">
-                            <connections>
-                                <segue destination="nyW-td-5N7" kind="unwind" unwindAction="backToArtistClick:" id="Gn6-SW-5AN"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title="Artists" id="gnp-ck-xtM"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bvf-1H-mwj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="nyW-td-5N7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2299" y="6"/>
         </scene>
@@ -346,15 +310,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Songs" id="rgh-Ea-vnP">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="6Rd-sK-uYm">
-                            <connections>
-                                <segue destination="UL3-EG-MX9" kind="unwind" unwindAction="backToAlbumClick:" id="Scs-SO-IX9"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title="Albums" id="FfF-dt-Q6i"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FNY-qY-Pzl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="UL3-EG-MX9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2724" y="6"/>
         </scene>
@@ -407,6 +366,25 @@
                                             <segue destination="oXV-W2-UTi" kind="push" id="9av-dm-faw"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="dgK-Tg-a1F" style="IBUITableViewCellStyleDefault" id="ihC-f1-vt9">
+                                        <rect key="frame" x="0.0" y="88" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Songs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgK-Tg-a1F">
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <segue destination="HRc-DO-u9y" kind="push" id="nEM-co-jWp"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -421,7 +399,7 @@
         <scene sceneID="09d-Sf-TPh">
             <objects>
                 <navigationController definesPresentationContext="YES" id="YZh-Bg-h2c" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Music" id="MHu-5c-mOa"/>
+                    <tabBarItem key="tabBarItem" title="Music" image="note.png" id="MHu-5c-mOa"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="psJ-gB-nWC">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -475,7 +453,7 @@
         <scene sceneID="wfG-SF-Czq">
             <objects>
                 <navigationController definesPresentationContext="YES" id="DGe-Wi-TLZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Queue" id="mQz-gD-GBc"/>
+                    <tabBarItem key="tabBarItem" title="Queue" image="queue.png" id="mQz-gD-GBc"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4eO-Kc-SN8">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -518,18 +496,57 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="Albums" id="R3n-du-9nm">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="cDQ-Uh-ZaT">
-                            <connections>
-                                <segue destination="Ag4-2G-De3" kind="unwind" unwindAction="backClick:" id="m8r-uK-ksT"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title="Music" id="Ghw-Q2-lJP"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKb-rA-cHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Ag4-2G-De3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1885" y="693"/>
+        </scene>
+        <!--Mpd Song Table View Controller - Songs-->
+        <scene sceneID="NnD-Me-Re2">
+            <objects>
+                <tableViewController id="HRc-DO-u9y" customClass="mpdSongTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="usr-BH-YYP">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="songItem" textLabel="MGN-tQ-3YZ" style="IBUITableViewCellStyleDefault" id="bSv-bK-93t">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGN-tQ-3YZ">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="HRc-DO-u9y" id="vdB-kw-ywq"/>
+                            <outlet property="delegate" destination="HRc-DO-u9y" id="4DL-fV-clA"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Songs" id="akl-mG-8H4">
+                        <barButtonItem key="backBarButtonItem" title="Music" id="Tb2-kf-65h">
+                            <connections>
+                                <segue destination="eyg-vH-8lc" kind="unwind" unwindAction="backClick:" id="jbQ-Ot-hQC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OZ1-zR-43T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eyg-vH-8lc" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1885" y="1384"/>
         </scene>
         <!--Mpd Song Table View Controller - Songs-->
         <scene sceneID="Pa2-cU-bxQ">
@@ -563,21 +580,19 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Songs" id="v7L-iz-o8U">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="7Ks-aL-Yqf">
-                            <connections>
-                                <segue destination="wLW-2n-Jl9" kind="unwind" unwindAction="backToAlbumClick:" id="TuW-Rg-F4j"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="backBarButtonItem" title="Albums" id="pcg-hv-CAp"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2b-ol-anq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="wLW-2n-Jl9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2299" y="693"/>
         </scene>
     </scenes>
     <resources>
+        <image name="gear.png" width="30" height="30"/>
+        <image name="note.png" width="30" height="30"/>
         <image name="play.png" width="30" height="30"/>
+        <image name="queue.png" width="30" height="30"/>
     </resources>
     <classes>
         <class className="NSLayoutConstraint" superclassName="NSObject">
@@ -622,6 +637,7 @@
         <class className="mpdServerSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdServerSettingsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="connectPush:"/>
                 <relationship kind="outlet" name="connectionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ipTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passTextField" candidateClass="UITextField"/>
