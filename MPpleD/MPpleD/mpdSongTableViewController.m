@@ -97,6 +97,11 @@
     // Configure the cell...
     [[cell textLabel] setText:[self.dataController songAtIndex:indexPath.row]];
     
+    UILongPressGestureRecognizer *longPressGesture =
+    //[[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)] autorelease];
+    [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    [cell addGestureRecognizer:longPressGesture];
+    
     return cell;
 }
 
@@ -150,6 +155,22 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)longPress:(UILongPressGestureRecognizer *)gesture
+{
+	// only when gesture was recognized, not when ended
+	if (gesture.state == UIGestureRecognizerStateBegan)
+	{
+		// get affected cell
+		UITableViewCell *cell = (UITableViewCell *)[gesture view];
+        
+		// get indexPath of cell
+		NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        
+		// do something with this action
+		NSLog(@"Long-pressed cell at row %i", indexPath.row);
+	}
 }
 
 @end

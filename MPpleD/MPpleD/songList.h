@@ -25,4 +25,6 @@
 -(NSString*)songAtIndex:(NSUInteger)row;
 -(NSUInteger)songCount;
 
+-(void)addSongAtIndexToQueue:(NSUInteger)row artist:(NSString *)artist album:(NSString *)album;
+
 @end

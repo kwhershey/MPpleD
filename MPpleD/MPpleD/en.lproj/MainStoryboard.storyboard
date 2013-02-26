@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Mpd Now Playing View Controller - Now Playing-->
@@ -19,17 +19,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Artist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHh-hD-HHI">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="57" id="Rjz-au-0kS"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Album" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75p-WC-Qly">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="123" id="gTy-GH-L61"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -63,18 +57,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="75p-WC-Qly" firstAttribute="centerX" secondItem="IHh-hD-HHI" secondAttribute="centerX" type="default" id="ADk-Ul-pAM"/>
+                            <constraint firstAttribute="trailing" secondItem="IHh-hD-HHI" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="0CO-qL-9k6"/>
+                            <constraint firstItem="IHh-hD-HHI" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="7Zs-E2-egO"/>
+                            <constraint firstItem="75p-WC-Qly" firstAttribute="centerX" secondItem="EUz-VO-2j2" secondAttribute="centerX" type="default" id="BPF-Yl-NmA"/>
                             <constraint firstItem="75p-WC-Qly" firstAttribute="top" secondItem="IHh-hD-HHI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Mkw-Wi-p22"/>
                             <constraint firstItem="IHh-hD-HHI" firstAttribute="top" secondItem="20" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="N5K-FW-Uo9"/>
                             <constraint firstItem="20" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Ty9-wx-CyI"/>
                             <constraint firstItem="EUz-VO-2j2" firstAttribute="top" secondItem="75p-WC-Qly" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="XbD-Pk-UV3"/>
-                            <constraint firstItem="75p-WC-Qly" firstAttribute="centerX" secondItem="EUz-VO-2j2" secondAttribute="centerX" type="default" id="kjt-ue-BO8"/>
+                            <constraint firstItem="20" firstAttribute="centerX" secondItem="IHh-hD-HHI" secondAttribute="centerX" type="default" id="Xkk-9b-m8N"/>
+                            <constraint firstItem="75p-WC-Qly" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="aJf-N9-7Hb"/>
+                            <constraint firstAttribute="trailing" secondItem="75p-WC-Qly" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="cLJ-te-J6Q"/>
                             <constraint firstItem="KlZ-eq-Rig" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="nPS-JV-fGx"/>
                             <constraint firstItem="KlZ-eq-Rig" firstAttribute="trailing" secondItem="16" secondAttribute="trailing" type="default" id="qOU-8v-2Bh"/>
                             <constraint firstItem="KlZ-eq-Rig" firstAttribute="bottom" secondItem="16" secondAttribute="bottom" type="default" id="sgz-up-K3d"/>
-                            <constraint firstItem="EUz-VO-2j2" firstAttribute="centerX" secondItem="KlZ-eq-Rig" secondAttribute="centerX" type="default" id="yPc-CN-rSy"/>
                             <constraint firstItem="20" firstAttribute="top" secondItem="16" secondAttribute="top" constant="20" symbolic="YES" type="default" id="zDn-ue-7hk"/>
-                            <constraint firstItem="20" firstAttribute="centerX" secondItem="IHh-hD-HHI" secondAttribute="centerX" type="default" id="zfN-E5-zQe"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Now Playing" image="play.png" id="7"/>
@@ -637,7 +633,6 @@
         <class className="mpdServerSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdServerSettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="connectPush:"/>
                 <relationship kind="outlet" name="connectionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="ipTextField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passTextField" candidateClass="UITextField"/>
