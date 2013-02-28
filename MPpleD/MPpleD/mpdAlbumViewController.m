@@ -90,6 +90,14 @@
     // Configure the cell...
     [[cell textLabel] setText:[self.dataController albumAtIndex:indexPath.row]];
     
+    UILongPressGestureRecognizer *longPressGesture =
+    //[[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)] autorelease];
+    [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    [cell addGestureRecognizer:longPressGesture];
+    
+    return cell;
+
+    
     return cell;
 }
 
@@ -168,6 +176,23 @@
 -(IBAction)backToAlbumClick:(UIStoryboardSegue *)segue
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)longPress:(UILongPressGestureRecognizer *)gesture
+{
+	// only when gesture was recognized, not when ended
+	if (gesture.state == UIGestureRecognizerStateBegan)
+	{
+		// get affected cell
+		UITableViewCell *cell = (UITableViewCell *)[gesture view];
+        
+		// get indexPath of cell
+		NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        
+		// do something with this action
+		NSLog(@"Long-pressed cell at row %i", indexPath.row);
+        [self.dataController addAlbumAtIndexToQueue:indexPath.row artist:self.artistFilter];
+	}
 }
 
 @end

@@ -170,6 +170,7 @@
         
 		// do something with this action
 		NSLog(@"Long-pressed cell at row %i", indexPath.row);
+        [self.dataController addSongAtIndexToQueue:indexPath.row artist:self.artistFilter album:self.albumFilter];
 	}
 }
 

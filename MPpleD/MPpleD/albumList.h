@@ -19,8 +19,11 @@
 
 @property NSMutableArray *albums;
 
+@property NSString *artist;
+
 -(id)initWithArtist:(NSString *)artist;
 -(NSString*)albumAtIndex:(NSUInteger)row;
 -(NSUInteger)albumCount;
+-(void)addAlbumAtIndexToQueue:(NSUInteger)row artist:(NSString *)artist;
 
 @end

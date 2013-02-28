@@ -31,11 +31,13 @@
     
 }
 
--(id)initWithArtist:(NSString *)artist
+-(id)initWithArtist:(NSString *)initArtist
 {
     if (self = [super init]) {
         
-        [self initializeArtistDataList:artist];
+        [self initializeArtistDataList:initArtist];
+        self.artist = [[NSString alloc] initWithString:initArtist];
+        
         
         return self;
         
@@ -88,7 +90,7 @@
     
     mpd_connection_free(self.conn);
     [self.albums sortUsingSelector:@selector(compare:)];
-    [self.albums insertObject:@"All" atIndex:0];
+    //[self.albums insertObject:@"All" atIndex:0];
     
 }
 
@@ -140,6 +142,35 @@
 -(NSUInteger)albumCount
 {
     return [self.albums count];
+}
+
+-(void)addAlbumAtIndexToQueue:(NSUInteger)row artist:(NSString *)artist;
+{
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    
+    mpd_command_list_begin(self.conn, true);
+    //mpd_search_db_tags(self.conn, MPD_TAG_TITLE);
+    mpd_search_add_db_songs(self.conn, TRUE);  //BOGUS
+    
+    if(artist!=NULL)
+    {
+        mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ARTIST, [artist UTF8String]);
+    }
+    if((self.artist!=NULL && row!=0)|| self.artist==NULL )
+    {
+        mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ALBUM, [[self albumAtIndex:row] UTF8String]);
+    }
+    mpd_search_commit(self.conn);
+    mpd_command_list_end(self.conn);
+    mpd_connection_free(self.conn);
+    
 }
 
 @end
