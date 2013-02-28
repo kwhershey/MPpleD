@@ -21,5 +21,6 @@
 
 -(NSString*)artistAtIndex:(NSUInteger)row;
 -(NSUInteger)artistCount;
+-(void)addArtistAtIndexToQueue:(NSUInteger)row;
 
 @end

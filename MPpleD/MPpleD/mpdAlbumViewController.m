@@ -190,7 +190,7 @@
 		NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
 		// do something with this action
-		NSLog(@"Long-pressed cell at row %i", indexPath.row);
+		//NSLog(@"Long-pressed cell at row %i", indexPath.row);
         [self.dataController addAlbumAtIndexToQueue:indexPath.row artist:self.artistFilter];
 	}
 }

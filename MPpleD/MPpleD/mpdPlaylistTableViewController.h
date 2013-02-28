@@ -16,5 +16,8 @@
 @property int port;
 @property NSInteger rowCount;
 @property NSInteger prevRowCount;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *clear;
+
+-(IBAction)clearQueue:(id)sender;
 
 @end

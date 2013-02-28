@@ -280,6 +280,20 @@
     
 }
 
+-(IBAction)clearQueue:(id)sender
+{
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    mpd_send_clear(self.conn);
+    mpd_connection_free(self.conn);
+    [self.tableView reloadData];
+}
 
 
 
