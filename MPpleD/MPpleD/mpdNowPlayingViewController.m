@@ -63,6 +63,16 @@
         return;
     }
     else{
+        if(mpd_status_get_random(status))
+        {
+            [self.shuffle setImage:[UIImage imageNamed:@"shuffle-on.png"] forState:UIControlStateNormal];
+            self.random = TRUE;
+        }
+        else
+        {
+            [self.shuffle setImage:[UIImage imageNamed:@"shuffle.png"] forState:UIControlStateNormal];
+            self.random = FALSE;
+        }
         enum mpd_state playerState;
         if((playerState= mpd_status_get_state(status)) == MPD_STATE_PLAY || mpd_status_get_state(status) == MPD_STATE_PAUSE)
         {
@@ -173,6 +183,7 @@
             mpd_run_play(self.conn);
         }
     }
+    mpd_connection_free(self.conn);
     [self updateView];
 }
 
@@ -187,6 +198,7 @@
         return;
     }
     mpd_run_next(self.conn);
+    mpd_connection_free(self.conn);
     [self updateView];
 }
 
@@ -201,6 +213,25 @@
         return;
     }
     mpd_run_previous(self.conn);
+    mpd_connection_free(self.conn);
+    [self updateView];
+}
+
+-(IBAction)shufflePush:(id)sender
+{
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    if(self.random)
+        mpd_run_random(self.conn, FALSE);
+    else
+        mpd_run_random(self.conn, TRUE);
+    mpd_connection_free(self.conn);
     [self updateView];
 }
 
