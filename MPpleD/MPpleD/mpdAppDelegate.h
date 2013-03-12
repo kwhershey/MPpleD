@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "mpdConnectionData.h"
 
 @interface mpdAppDelegate : UIResponder <UIApplicationDelegate>
 

@@ -25,6 +25,7 @@
 @property const char* host;
 @property int port;
 @property BOOL random;
+@property NSTimer *updateTimer;
 
 
 @end

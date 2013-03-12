@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     
-    [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector:@selector(updateInfo) userInfo: nil repeats:YES];
+    //[NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector:@selector(updateInfo) userInfo: nil repeats:YES];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -38,6 +38,21 @@
     self.navigationItem.leftBarButtonItem=self.editButtonItem;
     
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"appeared");
+    [self updateInfo];
+    
+    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector:@selector(updateInfo) userInfo: nil repeats:YES];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    NSLog(@"disappeared");
+    [self.updateTimer invalidate];
+}
+
 
 -(void)updateInfo
 {
@@ -52,7 +67,7 @@
     self.host = [connection.host UTF8String];
     self.port = [connection.port intValue];
     //self.conn = mpd_connection_new([host UTF8String], 6600, 30000);
-    self.conn = mpd_connection_new(self.host, self.port, 30000);
+    self.conn = mpd_connection_new(self.host, self.port, 3000);
 }
 
 - (void)didReceiveMemoryWarning

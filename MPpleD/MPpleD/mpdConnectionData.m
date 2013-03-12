@@ -29,12 +29,41 @@
         host = @"0.0.0.0";
         port = @6600;
     }
+    NSLog(@"here");
+    
+    /*
+    UIApplication *myApp = [UIApplication sharedApplication];
+     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+    selector:@selector(applicationDidEnterBackground:)
+    name:UIApplicationDidEnterBackgroundNotification
+    object:myApp];
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"data.plist"];
+    if ([fileManager fileExistsAtPath:filePath] == YES)
+    {
+        NSMutableArray *data = [[NSMutableArray alloc]initWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:filePath]];
+        self.host=data[0];
+        self.port=data[1];
+        NSLog(@"here");
+    }
+     */
+    
     return self;
 }
+
+
 
 - (void)dealloc {
     // Should never be called, but just here for clarity really.
 }
+
+
+
+
 
 @end
 

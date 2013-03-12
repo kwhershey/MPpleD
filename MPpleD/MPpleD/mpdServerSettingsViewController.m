@@ -56,7 +56,7 @@ static int handle_error(struct mpd_connection *c)
     //NSLog(@"Assigned to c-string");
     
     
-	conn = mpd_connection_new(self.host, self.port, 30000);
+	conn = mpd_connection_new(self.host, self.port, 3000);
     
 	if (mpd_connection_get_error(conn) != MPD_ERROR_SUCCESS)
         self.connectionLabel.text = @"Connection Failed";
@@ -66,6 +66,8 @@ static int handle_error(struct mpd_connection *c)
         //[[NSNotificationCenter defaultCenter] postNotificationName:@"Some_Notification_Name"
                                                             //object:(__bridge id)(conn)];
     }
+    
+    mpd_connection_free(conn);
 }
 
 

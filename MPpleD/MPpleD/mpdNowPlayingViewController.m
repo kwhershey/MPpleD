@@ -19,9 +19,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    /*
     [self updateView];
      
     [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector:@selector(updateView) userInfo: nil repeats:YES];
+     */
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    NSLog(@"appeared");
+    [self updateView];
+    
+    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector:@selector(updateView) userInfo: nil repeats:YES];
+}
+
+-(void)viewDidDisappear:(BOOL)animated
+{
+    NSLog(@"disappeared");
+    [self.updateTimer invalidate];
 }
 
 -(void)initializeConnection
@@ -31,7 +47,7 @@
     self.host = [connection.host UTF8String];
     self.port = [connection.port intValue];
     //self.conn = mpd_connection_new([host UTF8String], 6600, 30000);
-    self.conn = mpd_connection_new(self.host, self.port, 30000);
+    self.conn = mpd_connection_new(self.host, self.port, 3000);
 }
 
 

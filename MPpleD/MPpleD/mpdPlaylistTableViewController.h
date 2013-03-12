@@ -19,5 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *clear;
 
 -(IBAction)clearQueue:(id)sender;
+@property NSTimer *updateTimer;
 
 @end
