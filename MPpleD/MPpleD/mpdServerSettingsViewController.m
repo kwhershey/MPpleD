@@ -29,6 +29,13 @@
 	// Do any additional setup after loading the view.
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    mpdConnectionData *globalConnection = [mpdConnectionData sharedManager];
+    self.ipTextField.text = globalConnection.host;
+    self.portTextField.text = [NSString stringWithFormat:@"%@", globalConnection.port];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

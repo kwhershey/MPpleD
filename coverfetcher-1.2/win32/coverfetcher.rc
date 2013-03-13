@@ -1,0 +1,25 @@
+id ICON "../icons/stamps.ico"
+1 VERSIONINFO
+FILEVERSION     1,2,0,0
+PRODUCTVERSION  1,2,0,0
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904E4"
+    BEGIN
+      VALUE "CompanyName", "Benjamin Johnson"
+      VALUE "FileDescription", "Cover Fetcher"
+      VALUE "FileVersion", "1.2"
+      VALUE "InternalName", "coverfetcher"
+      VALUE "LegalCopyright", "GNU GPL"
+      VALUE "OriginalFilename", "coverfetcher.exe"
+      VALUE "ProductName", "Cover Fetcher"
+      VALUE "ProductVersion", "1.2"
+    END
+  END
+
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x409, 1252
+  END
+END
