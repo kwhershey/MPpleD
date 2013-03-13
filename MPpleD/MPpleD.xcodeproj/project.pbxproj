@@ -17,6 +17,8 @@
 		1A0E579016DFD0BE004D0FA9 /* shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A0E578916DFD0BE004D0FA9 /* shuffle.png */; };
 		1A1EFD9E16CD5C8B0081B395 /* mpdPlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EFD9D16CD5C8B0081B395 /* mpdPlaylistTableViewController.m */; };
 		1A1EFDA116CD5CA10081B395 /* mpdMusicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EFDA016CD5CA10081B395 /* mpdMusicTableViewController.m */; };
+		1A4FF50716F0141B0008B880 /* mute.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4FF50616F0141B0008B880 /* mute.png */; };
+		1A4FF50A16F0150F0008B880 /* volume.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4FF50916F0150F0008B880 /* volume.png */; };
 		1A74460B16CD53C70005AE05 /* mpdServerSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A74460A16CD53C70005AE05 /* mpdServerSettingsViewController.m */; };
 		1A87F36B16EF8F2D00847A63 /* mpdArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3027716D5C16900B72660 /* mpdArtistViewController.m */; };
 		1AD3027816D5C16900B72660 /* mpdArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3027716D5C16900B72660 /* mpdArtistViewController.m */; };
@@ -67,6 +69,8 @@
 		1A1EFD9D16CD5C8B0081B395 /* mpdPlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdPlaylistTableViewController.m; sourceTree = "<group>"; };
 		1A1EFD9F16CD5CA10081B395 /* mpdMusicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdMusicTableViewController.h; sourceTree = "<group>"; };
 		1A1EFDA016CD5CA10081B395 /* mpdMusicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdMusicTableViewController.m; sourceTree = "<group>"; };
+		1A4FF50616F0141B0008B880 /* mute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mute.png; sourceTree = "<group>"; };
+		1A4FF50916F0150F0008B880 /* volume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volume.png; sourceTree = "<group>"; };
 		1A74460916CD53C70005AE05 /* mpdServerSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdServerSettingsViewController.h; sourceTree = "<group>"; };
 		1A74460A16CD53C70005AE05 /* mpdServerSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdServerSettingsViewController.m; sourceTree = "<group>"; };
 		1AD3027616D5C16900B72660 /* mpdArtistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdArtistViewController.h; sourceTree = "<group>"; };
@@ -135,6 +139,8 @@
 		1A0E578216DFD0BE004D0FA9 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				1A4FF50916F0150F0008B880 /* volume.png */,
+				1A4FF50616F0141B0008B880 /* mute.png */,
 				1A0E578316DFD0BE004D0FA9 /* gear.png */,
 				1A0E578416DFD0BE004D0FA9 /* note.png */,
 				1A0E578516DFD0BE004D0FA9 /* pause.png */,
@@ -328,6 +334,8 @@
 				1A0E578E16DFD0BE004D0FA9 /* queue.png in Resources */,
 				1A0E578F16DFD0BE004D0FA9 /* shuffle-on.png in Resources */,
 				1A0E579016DFD0BE004D0FA9 /* shuffle.png in Resources */,
+				1A4FF50716F0141B0008B880 /* mute.png in Resources */,
+				1A4FF50A16F0150F0008B880 /* volume.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

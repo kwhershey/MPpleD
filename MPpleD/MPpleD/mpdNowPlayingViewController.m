@@ -21,23 +21,25 @@
     [super viewDidLoad];
     /*
     [self updateView];
-     
-    [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector:@selector(updateView) userInfo: nil repeats:YES];
      */
+
+     
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"appeared");
+    //NSLog(@"appeared");
     [self updateView];
     
     self.updateTimer = [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector:@selector(updateView) userInfo: nil repeats:YES];
+    self.clockTimer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self selector:@selector(artificialClock) userInfo: nil repeats:YES];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
 {
-    NSLog(@"disappeared");
+    //NSLog(@"disappeared");
     [self.updateTimer invalidate];
+    [self.clockTimer invalidate];
 }
 
 -(void)initializeConnection
@@ -79,6 +81,13 @@
         return;
     }
     else{
+        [self.volume setValue:mpd_status_get_volume(status)];
+        self.currentTime = mpd_status_get_elapsed_time(status);
+        self.curPos.text = [NSString stringWithFormat:@"%u:%02u", self.currentTime/60,self.currentTime%60];
+        self.totalTime = mpd_status_get_total_time(status);
+        self.totTime.text = [NSString stringWithFormat:@"%u:%02u",self.totalTime/60,self.totalTime%60 ];
+        self.progressSlider.maximumValue = self.totalTime;
+        self.progressSlider.value = self.currentTime;
         if(mpd_status_get_random(status))
         {
             [self.shuffle setImage:[UIImage imageNamed:@"shuffle-on.png"] forState:UIControlStateNormal];
@@ -93,9 +102,15 @@
         if((playerState= mpd_status_get_state(status)) == MPD_STATE_PLAY || mpd_status_get_state(status) == MPD_STATE_PAUSE)
         {
             if(playerState==MPD_STATE_PAUSE)
+            {
                 self.play.image =[UIImage imageNamed:@"play.png"];
+                self.playing = false;
+            }
             else
+            {
                 self.play.image = [UIImage imageNamed:@"pause.png"];
+                self.playing = true;
+            }
 //[self.play setImage:((playerState==MPD_STATE_PAUSE) ? pauseBtnBG : playBtnBG) forState:UIControlStateNormal];
             if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
             {
@@ -142,6 +157,7 @@
             self.artistText.text = @"";
             self.albumText.text = @"";
             self.trackText.text = @"";
+            self.playing=false;
         }
     }
     mpd_connection_free(self.conn);
@@ -149,6 +165,22 @@
     
 }
 
+
+-(void)artificialClock
+{
+    if(self.playing)
+    {
+        if(self.currentTime<self.totalTime)
+        {
+            self.currentTime++;
+            self.curPos.text = [NSString stringWithFormat:@"%u:%02u", self.currentTime/60,self.currentTime%60];
+            self.progressSlider.maximumValue = self.totalTime;
+            self.progressSlider.value = self.currentTime;
+        }
+        else [self updateView];
+        
+    }
+}
 
 
 
@@ -249,6 +281,50 @@
         mpd_run_random(self.conn, TRUE);
     mpd_connection_free(self.conn);
     [self updateView];
+}
+
+- (IBAction) sliderValueChanged:(UISlider *)sender {
+    //myTextField.text = [NSString stringWithFormat:@"%.1f", [sender value]];
+    //NSLog([NSString stringWithFormat:@"%.2f", [sender value]]);
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    mpd_run_set_volume(self.conn, [sender value]);
+    mpd_connection_free(self.conn);
+    //[self updateView];
+}
+
+-(IBAction)positionValueChanged:(UISlider *)sender
+{
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    struct mpd_status * status;
+    //mpd_command_list_begin(self.conn, true);
+    mpd_send_status(self.conn);
+    //mpd_command_list_end(self.conn);
+    
+    status = mpd_recv_status(self.conn);
+    if(status!=NULL)
+    {
+        mpd_run_seek_pos(self.conn, mpd_status_get_song_pos(status), [sender value]);
+        self.currentTime=[sender value];
+    }
+    
+    //mpd_run_seek_pos(self.conn,
+    //                 unsigned song_pos, [sender value]);
+
+    mpd_connection_free(self.conn);
 }
 
 

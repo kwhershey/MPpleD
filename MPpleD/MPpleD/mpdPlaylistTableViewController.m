@@ -41,7 +41,7 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"appeared");
+    //NSLog(@"appeared");
     [self updateInfo];
     
     self.updateTimer = [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector:@selector(updateInfo) userInfo: nil repeats:YES];
@@ -49,7 +49,7 @@
 
 -(void)viewDidDisappear:(BOOL)animated
 {
-    NSLog(@"disappeared");
+    //NSLog(@"disappeared");
     [self.updateTimer invalidate];
 }
 

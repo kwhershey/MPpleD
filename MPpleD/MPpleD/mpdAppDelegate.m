@@ -48,7 +48,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    NSLog(@"Entering Background");
+    //NSLog(@"Entering Background");
     
     mpdConnectionData *globalConnection = [mpdConnectionData sharedManager];
     //NSLog(@"here");
@@ -68,7 +68,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     
-    NSLog(@"reload called");
+    //NSLog(@"reload called");
     
     mpdConnectionData *globalConnection = [mpdConnectionData sharedManager];
     
@@ -88,7 +88,9 @@
         NSMutableArray *data = [[NSMutableArray alloc]initWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:filePath]];
         globalConnection.host=data[0];
         globalConnection.port=data[1];
-        NSLog(@"here");
+        //NSLog(globalConnection.host);
+        //NSLog([NSString stringWithFormat:@"%@", globalConnection.port]);
+        //NSLog(@"here");
     }
 }
 
