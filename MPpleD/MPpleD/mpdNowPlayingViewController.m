@@ -17,7 +17,9 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];    
+    [super viewDidLoad];
+    [self updateView];
+    //self.artwork = NULL;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -140,7 +142,10 @@
             @catch (NSException *e) {
                 self.trackText.text = @"";
             }
-        
+            [self getArtwork:self.artistText.text :self.albumText.text];
+            //self.artViewer.image = self.artwork;
+            [self.artViewer setImage:self.artwork];
+            
         }
         else
         {
@@ -303,6 +308,25 @@
 
     mpd_connection_free(self.conn);
 }
+
+
+-(void)getArtwork:(NSString *) artist: (NSString *) album
+{
+    UIImage *newArtwork;
+    
+    id path = @"http://userserve-ak.last.fm/serve/64s/34811187.jpg";
+    if(path!=self.artworkPath)
+    {
+        self.artworkPath = path;
+        NSURL *url = [NSURL URLWithString:path];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        newArtwork = [[UIImage alloc] initWithData:data];
+        
+        //[self.artViewer setImage:newArtwork];
+        self.artwork = newArtwork;
+    }
+}
+
 
 
 @end

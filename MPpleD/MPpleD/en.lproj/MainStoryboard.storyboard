@@ -100,34 +100,42 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="defaultArt.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="FEa-2f-E98">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="67I-wm-Vhv"/>
+                                    <constraint firstAttribute="height" constant="72" id="Tmr-QF-bZ0"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="7cd-MW-krX" firstAttribute="top" secondItem="FEa-2f-E98" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="0t7-ob-nUD"/>
+                            <constraint firstItem="FEa-2f-E98" firstAttribute="centerX" secondItem="IYZ-nM-bIy" secondAttribute="centerX" type="default" id="3dU-wS-ywc"/>
                             <constraint firstItem="IHh-hD-HHI" firstAttribute="trailing" secondItem="75p-WC-Qly" secondAttribute="trailing" type="default" id="3pu-rC-5HI"/>
-                            <constraint firstItem="75p-WC-Qly" firstAttribute="centerX" secondItem="16" secondAttribute="centerX" type="default" id="4wS-dy-vVM"/>
-                            <constraint firstItem="IYZ-nM-bIy" firstAttribute="centerX" secondItem="7cd-MW-krX" secondAttribute="centerX" type="default" id="73d-UQ-IQF"/>
                             <constraint firstItem="IHh-hD-HHI" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="7Zs-E2-egO"/>
                             <constraint firstItem="75p-WC-Qly" firstAttribute="centerX" secondItem="EUz-VO-2j2" secondAttribute="centerX" type="default" id="BPF-Yl-NmA"/>
                             <constraint firstItem="4o0-Q5-4yd" firstAttribute="trailing" secondItem="hWv-IO-gVN" secondAttribute="trailing" type="default" id="Djj-jm-bds"/>
                             <constraint firstItem="hWv-IO-gVN" firstAttribute="centerX" secondItem="KlZ-eq-Rig" secondAttribute="centerX" type="default" id="EP2-BR-5Du"/>
                             <constraint firstItem="75p-WC-Qly" firstAttribute="top" secondItem="IHh-hD-HHI" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Mkw-Wi-p22"/>
                             <constraint firstItem="IHh-hD-HHI" firstAttribute="top" secondItem="20" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="N5K-FW-Uo9"/>
+                            <constraint firstItem="IYZ-nM-bIy" firstAttribute="centerX" secondItem="EUz-VO-2j2" secondAttribute="centerX" type="default" id="OAj-53-lSw"/>
                             <constraint firstItem="4o0-Q5-4yd" firstAttribute="trailing" secondItem="75p-WC-Qly" secondAttribute="trailing" type="default" id="Qrr-gn-oa7"/>
-                            <constraint firstItem="7cd-MW-krX" firstAttribute="centerX" secondItem="hWv-IO-gVN" secondAttribute="centerX" type="default" id="SEE-h6-deC"/>
-                            <constraint firstItem="7cd-MW-krX" firstAttribute="top" secondItem="IYZ-nM-bIy" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Sa8-tN-diu"/>
                             <constraint firstItem="20" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Ty9-wx-CyI"/>
+                            <constraint firstItem="hWv-IO-gVN" firstAttribute="centerX" secondItem="16" secondAttribute="centerX" type="default" id="V1Q-Ur-HIh"/>
                             <constraint firstItem="EUz-VO-2j2" firstAttribute="top" secondItem="75p-WC-Qly" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="XbD-Pk-UV3"/>
                             <constraint firstItem="20" firstAttribute="trailing" secondItem="IHh-hD-HHI" secondAttribute="trailing" type="default" id="ZCK-zh-htQ"/>
+                            <constraint firstItem="hWv-IO-gVN" firstAttribute="top" secondItem="7cd-MW-krX" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ZqC-GB-JFl"/>
                             <constraint firstItem="75p-WC-Qly" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="aJf-N9-7Hb"/>
                             <constraint firstItem="yiO-DN-x2Q" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="dfQ-WT-mWk"/>
-                            <constraint firstAttribute="bottom" secondItem="7cd-MW-krX" secondAttribute="bottom" constant="85" id="gva-BO-NZ7"/>
+                            <constraint firstItem="FEa-2f-E98" firstAttribute="top" secondItem="IYZ-nM-bIy" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="eNV-MB-KQb"/>
+                            <constraint firstItem="yiO-DN-x2Q" firstAttribute="top" secondItem="16" secondAttribute="top" constant="159" id="jFt-T1-WI9"/>
                             <constraint firstItem="KlZ-eq-Rig" firstAttribute="leading" secondItem="16" secondAttribute="leading" type="default" id="nPS-JV-fGx"/>
+                            <constraint firstItem="IYZ-nM-bIy" firstAttribute="top" secondItem="yiO-DN-x2Q" secondAttribute="top" type="default" id="qBV-WE-Iup"/>
                             <constraint firstItem="hWv-IO-gVN" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="sGh-h0-MQM"/>
-                            <constraint firstItem="yiO-DN-x2Q" firstAttribute="bottom" secondItem="IYZ-nM-bIy" secondAttribute="bottom" type="default" id="sga-Pq-nmM"/>
                             <constraint firstItem="KlZ-eq-Rig" firstAttribute="bottom" secondItem="16" secondAttribute="bottom" type="default" id="sgz-up-K3d"/>
+                            <constraint firstItem="hWv-IO-gVN" firstAttribute="centerX" secondItem="7cd-MW-krX" secondAttribute="centerX" type="default" id="t16-lH-xQo"/>
                             <constraint firstItem="4o0-Q5-4yd" firstAttribute="baseline" secondItem="yiO-DN-x2Q" secondAttribute="baseline" type="default" id="uWi-HM-1Qb"/>
                             <constraint firstItem="20" firstAttribute="top" secondItem="16" secondAttribute="top" constant="20" symbolic="YES" type="default" id="zDn-ue-7hk"/>
-                            <constraint firstAttribute="bottom" secondItem="hWv-IO-gVN" secondAttribute="bottom" constant="56" id="zJn-VU-f9H"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Now Playing" image="play.png" id="7"/>
@@ -656,6 +664,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="defaultArt.jpg" width="102" height="102"/>
         <image name="gear.png" width="30" height="30"/>
         <image name="mute.png" width="30" height="30"/>
         <image name="note.png" width="30" height="30"/>
@@ -664,6 +673,71 @@
         <image name="shuffle.png" width="30" height="30"/>
         <image name="volume.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="UIStoryboardSegue" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIStoryboardSegue.h"/>
+        </class>
+        <class className="mpdAlbumViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdAlbumViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backToAlbumClick:" candidateClass="UIStoryboardSegue"/>
+            </relationships>
+        </class>
+        <class className="mpdArtistViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdArtistViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backToArtistClick:" candidateClass="UIStoryboardSegue"/>
+            </relationships>
+        </class>
+        <class className="mpdMusicTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdMusicTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backClick:" candidateClass="UIStoryboardSegue"/>
+            </relationships>
+        </class>
+        <class className="mpdNowPlayingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdNowPlayingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="positionValueChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="sliderValueChanged:"/>
+                <relationship kind="outlet" name="albumText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="artViewer" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="artistText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="curPos" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="next" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="play" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="prev" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="progressSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="shuffle" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="songTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="totTime" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="trackText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="volume" candidateClass="UISlider"/>
+            </relationships>
+        </class>
+        <class className="mpdPlaylistTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdPlaylistTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="clearQueue:"/>
+                <relationship kind="outlet" name="clear" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="mpdServerSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdServerSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="connectionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="ipTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="portTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="mpdSongTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdSongTableViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

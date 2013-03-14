@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *shuffle;
 @property (weak, nonatomic) IBOutlet UISlider *volume;
 @property (weak, nonatomic) IBOutlet UISlider *progressSlider;
+@property (weak, nonatomic) IBOutlet UIImageView *artViewer;
+
 
 @property struct mpd_connection *conn;
 @property const char* host;
@@ -38,6 +40,9 @@
 
 @property int currentTime;
 @property int totalTime;
+
+@property UIImage *artwork;
+@property id artworkPath;
 
 -(IBAction) sliderValueChanged:(id)sender;
 -(IBAction) positionValueChanged:(UISlider *)sender;
