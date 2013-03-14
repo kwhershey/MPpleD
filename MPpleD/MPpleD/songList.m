@@ -2,7 +2,7 @@
 //  songList.m
 //  MPpleD
 //
-//  Created by Mary Beth McWhinney on 2/22/13.
+//  Created by Kyle Hershey on 2/22/13.
 //  Copyright (c) 2013 Kyle Hershey. All rights reserved.
 //
 
@@ -18,40 +18,27 @@
 @implementation songList
 
 - (id)init {
-    
-    if (self = [super init]) {
-        
+    if (self = [super init]) {        
         [self initializeDefaultDataList];
-        
         return self;
-        
     }
-    
     return nil;
-    
 }
 
 -(id)initWithArtist:(NSString *)artist
 {
     if (self = [super init]) {
-        
         [self initializeArtistDataList:artist];
-        
         return self;
-        
     }
-    
     return nil;
 }
 
 -(id)initWithAlbum:(NSString *)album
 {
     if (self = [super init]) {
-        
         [self initializeAlbumDataList:album];
-        
         return self;
-        
     }
     
     return nil;
@@ -61,10 +48,8 @@
 -(void)initializeConnection
 {
     mpdConnectionData *connection = [mpdConnectionData sharedManager];
-    //NSString *host = @"192.168.1.2";
     self.host = [connection.host UTF8String];
     self.port = [connection.port intValue];
-    //self.conn = mpd_connection_new([host UTF8String], 6600, 30000);
     self.conn = mpd_connection_new(self.host, self.port, 30000);
 }
 
@@ -74,7 +59,6 @@
     NSMutableArray *list = [[NSMutableArray alloc] init];
     self.songs = list;
     
-    //NSLog(@"initializing list");
     [self initializeConnection];
     if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
     {
@@ -91,11 +75,8 @@
     
     while ((pair = mpd_recv_pair_tag(self.conn, MPD_TAG_TITLE)) != NULL)
     {
-        //NSLog(@"adding artist");
         NSString *songString = [[NSString alloc] initWithUTF8String:pair->value];
-        //NSLog(albumString);
         [self.songs addObject:songString];
-        //NSLog([[NSNumber alloc] initWithUnsignedInteger:[self artistCount]]);
         mpd_return_pair(self.conn, pair);
     }
     
@@ -109,7 +90,6 @@
     NSMutableArray *list = [[NSMutableArray alloc] init];
     self.songs = list;
     
-    //NSLog(@"initializing list");
     [self initializeConnection];
     if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
     {
@@ -131,11 +111,8 @@
     
     while ((pair = mpd_recv_pair_tag(self.conn, MPD_TAG_TITLE)) != NULL)
     {
-        //NSLog(@"adding artist");
         NSString *songString = [[NSString alloc] initWithUTF8String:pair->value];
-        //NSLog(albumString);
         [self.songs addObject:songString];
-        //NSLog([[NSNumber alloc] initWithUnsignedInteger:[self artistCount]]);
         mpd_return_pair(self.conn, pair);
     }
     
@@ -149,7 +126,6 @@
     NSMutableArray *list = [[NSMutableArray alloc] init];
     self.songs = list;
     
-    //NSLog(@"initializing list");
     [self initializeConnection];
     if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
     {
@@ -162,7 +138,6 @@
     const char *cAlbum = [album UTF8String];
     mpd_command_list_begin(self.conn, true);
     mpd_search_db_tags(self.conn, MPD_TAG_TITLE);
-    //mpd_search_add_db_songs(self.conn, TRUE);  //BOGUS
     mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ALBUM, cAlbum);
 
     mpd_search_commit(self.conn);
@@ -173,17 +148,12 @@
     
     while ((pair = mpd_recv_pair_tag(self.conn, MPD_TAG_TITLE)) != NULL)
     {
-        //NSLog(@"adding artist");
         NSString *songString = [[NSString alloc] initWithUTF8String:pair->value];
-        //NSLog(albumString);
         [self.songs addObject:songString];
-        //NSLog([[NSNumber alloc] initWithUnsignedInteger:[self artistCount]]);
         mpd_return_pair(self.conn, pair);
     }
     
     mpd_connection_free(self.conn);
-    //[self.songs sortUsingSelector:@selector(compare:)];
-    
 }
 
 
@@ -209,8 +179,7 @@
     }
 
     mpd_command_list_begin(self.conn, true);
-    //mpd_search_db_tags(self.conn, MPD_TAG_TITLE);
-    mpd_search_add_db_songs(self.conn, TRUE);  //BOGUS
+    mpd_search_add_db_songs(self.conn, TRUE); 
     
     if(artist!=NULL)
         mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ARTIST, [artist UTF8String]);
@@ -220,10 +189,6 @@
     mpd_search_commit(self.conn);
     mpd_command_list_end(self.conn);
     mpd_connection_free(self.conn);
-
 }
-
-
-
 
 @end

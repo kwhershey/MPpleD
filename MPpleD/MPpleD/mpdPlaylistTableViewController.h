@@ -11,14 +11,17 @@
 
 @interface mpdPlaylistTableViewController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *clear;
+
 @property struct mpd_connection *conn;
 @property const char* host;
 @property int port;
+
 @property NSInteger rowCount;
 @property NSInteger prevRowCount;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *clear;
+
+@property NSTimer *updateTimer;
 
 -(IBAction)clearQueue:(id)sender;
-@property NSTimer *updateTimer;
 
 @end

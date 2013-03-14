@@ -18,7 +18,6 @@
 @property int port;
 
 @property NSMutableArray *albums;
-
 @property NSString *artist;
 
 -(id)initWithArtist:(NSString *)artist;

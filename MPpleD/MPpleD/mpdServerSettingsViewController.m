@@ -60,8 +60,6 @@ static int handle_error(struct mpd_connection *c)
     globalConnection.port = [[NSNumber alloc] initWithInt:[self.portTextField.text intValue]];
     self.host = [self.ipTextField.text UTF8String];
     self.port = [self.portTextField.text intValue];
-    //NSLog(@"Assigned to c-string");
-    
     
 	conn = mpd_connection_new(self.host, self.port, 3000);
     
@@ -70,8 +68,6 @@ static int handle_error(struct mpd_connection *c)
     else
     {
         self.connectionLabel.text = @"Connected to MPD!";
-        //[[NSNotificationCenter defaultCenter] postNotificationName:@"Some_Notification_Name"
-                                                            //object:(__bridge id)(conn)];
     }
     
     mpd_connection_free(conn);
@@ -81,18 +77,9 @@ static int handle_error(struct mpd_connection *c)
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
-    
- //   if (theTextField == self.textField) {
-        
-        
     [theTextField resignFirstResponder];
-        
-        
-        
- //   }
     
     return YES;
-    
 }
 
 

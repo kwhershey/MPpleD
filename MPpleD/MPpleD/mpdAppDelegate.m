@@ -2,7 +2,7 @@
 //  mpdAppDelegate.m
 //  MPpleD
 //
-//  Created by Mary Beth McWhinney on 2/11/13.
+//  Created by Kyle Hershey on 2/11/13.
 //  Copyright (c) 2013 Kyle Hershey. All rights reserved.
 //
 
@@ -88,9 +88,6 @@
         NSMutableArray *data = [[NSMutableArray alloc]initWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:filePath]];
         globalConnection.host=data[0];
         globalConnection.port=data[1];
-        //NSLog(globalConnection.host);
-        //NSLog([NSString stringWithFormat:@"%@", globalConnection.port]);
-        //NSLog(@"here");
     }
 }
 

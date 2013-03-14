@@ -2,12 +2,11 @@
 //  mpdFirstViewController.m
 //  MPpleD
 //
-//  Created by Mary Beth McWhinney on 2/11/13.
+//  Created by Kyle Hershey on 2/11/13.
 //  Copyright (c) 2013 Kyle Hershey. All rights reserved.
 //
 
 #import "mpdNowPlayingViewController.h"
-//#import "mpdServerSettingsViewController.h"
 #import <mpd/client.h>
 
 @interface mpdNowPlayingViewController ()
@@ -18,26 +17,21 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    /*
-    [self updateView];
-     */
-
-     
+    [super viewDidLoad];    
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    //NSLog(@"appeared");
     [self updateView];
     
+    //Start the timers
     self.updateTimer = [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector:@selector(updateView) userInfo: nil repeats:YES];
     self.clockTimer = [NSTimer scheduledTimerWithTimeInterval: 1.0 target: self selector:@selector(artificialClock) userInfo: nil repeats:YES];
 }
 
 -(void)viewDidDisappear:(BOOL)animated
 {
-    //NSLog(@"disappeared");
+    //Stop timers so doesn't waste resources
     [self.updateTimer invalidate];
     [self.clockTimer invalidate];
 }
@@ -45,13 +39,10 @@
 -(void)initializeConnection
 {
     mpdConnectionData *connection = [mpdConnectionData sharedManager];
-    //NSString *host = @"192.168.1.2";
     self.host = [connection.host UTF8String];
     self.port = [connection.port intValue];
-    //self.conn = mpd_connection_new([host UTF8String], 6600, 30000);
     self.conn = mpd_connection_new(self.host, self.port, 3000);
 }
-
 
 -(void)updateView
 {
@@ -63,16 +54,15 @@
         [self initializeConnection];
         return;
     }
+    
+    //get song and status
     struct mpd_status * status;
     struct mpd_song *song;
     mpd_command_list_begin(self.conn, true);
     mpd_send_status(self.conn);
     mpd_send_current_song(self.conn);
     mpd_command_list_end(self.conn);
-    
-
     status = mpd_recv_status(self.conn);
-    
     if (status == NULL)
     {
         NSLog(@"Connection error status");
@@ -81,6 +71,7 @@
         return;
     }
     else{
+        //get all of our status and song info
         [self.volume setValue:mpd_status_get_volume(status)];
         self.currentTime = mpd_status_get_elapsed_time(status);
         self.curPos.text = [NSString stringWithFormat:@"%u:%02u", self.currentTime/60,self.currentTime%60];
@@ -111,7 +102,7 @@
                 self.play.image = [UIImage imageNamed:@"pause.png"];
                 self.playing = true;
             }
-//[self.play setImage:((playerState==MPD_STATE_PAUSE) ? pauseBtnBG : playBtnBG) forState:UIControlStateNormal];
+            
             if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
             {
                 NSLog(@"Connection error free");
@@ -161,11 +152,10 @@
         }
     }
     mpd_connection_free(self.conn);
-    
-    
 }
 
 
+//updates the position bar and timers when playing
 -(void)artificialClock
 {
     if(self.playing)
@@ -182,14 +172,9 @@
     }
 }
 
-
-
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(IBAction)playPausePush:(id)sender
@@ -284,8 +269,6 @@
 }
 
 - (IBAction) sliderValueChanged:(UISlider *)sender {
-    //myTextField.text = [NSString stringWithFormat:@"%.1f", [sender value]];
-    //NSLog([NSString stringWithFormat:@"%.2f", [sender value]]);
     [self initializeConnection];
     if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
     {
@@ -296,7 +279,6 @@
     }
     mpd_run_set_volume(self.conn, [sender value]);
     mpd_connection_free(self.conn);
-    //[self updateView];
 }
 
 -(IBAction)positionValueChanged:(UISlider *)sender
@@ -310,9 +292,7 @@
         return;
     }
     struct mpd_status * status;
-    //mpd_command_list_begin(self.conn, true);
     mpd_send_status(self.conn);
-    //mpd_command_list_end(self.conn);
     
     status = mpd_recv_status(self.conn);
     if(status!=NULL)
@@ -320,9 +300,6 @@
         mpd_run_seek_pos(self.conn, mpd_status_get_song_pos(status), [sender value]);
         self.currentTime=[sender value];
     }
-    
-    //mpd_run_seek_pos(self.conn,
-    //                 unsigned song_pos, [sender value]);
 
     mpd_connection_free(self.conn);
 }

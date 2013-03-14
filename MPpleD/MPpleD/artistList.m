@@ -20,11 +20,8 @@
 - (id)init {
     
     if (self = [super init]) {
-        
         [self initializeDefaultDataList];
-        
-        return self;
-        
+        return self;        
     }
     
     return nil;
@@ -34,10 +31,8 @@
 -(void)initializeConnection
 {
     mpdConnectionData *connection = [mpdConnectionData sharedManager];
-    //NSString *host = @"192.168.1.2";
     self.host = [connection.host UTF8String];
     self.port = [connection.port intValue];
-    //self.conn = mpd_connection_new([host UTF8String], 6600, 30000);
     self.conn = mpd_connection_new(self.host, self.port, 30000);
 }
 
@@ -47,7 +42,6 @@
     NSMutableArray *list = [[NSMutableArray alloc] init];
     self.artists = list;
     
-    //NSLog(@"initializing list");
     [self initializeConnection];
     if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
     {
@@ -64,11 +58,8 @@
     
     while ((pair = mpd_recv_pair_tag(self.conn, MPD_TAG_ARTIST)) != NULL)
     {
-        //NSLog(@"adding artist");
         NSString *artistString = [[NSString alloc] initWithUTF8String:pair->value];
-        //NSLog(artistString);
         [self.artists addObject:artistString];
-        //NSLog([[NSNumber alloc] initWithUnsignedInteger:[self artistCount]]);
         mpd_return_pair(self.conn, pair);
     }
     
@@ -100,8 +91,7 @@
     }
     
     mpd_command_list_begin(self.conn, true);
-    //mpd_search_db_tags(self.conn, MPD_TAG_TITLE);
-    mpd_search_add_db_songs(self.conn, TRUE);  //BOGUS
+    mpd_search_add_db_songs(self.conn, TRUE);
     
     mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ARTIST, [[self artistAtIndex:row] UTF8String]);
     

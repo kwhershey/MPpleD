@@ -2,7 +2,7 @@
 //  mpdConnectionData.m
 //  MPpleD
 //
-//  Created by Mary Beth McWhinney on 2/16/13.
+//  Created by Kyle Hershey on 2/16/13.
 //  Copyright (c) 2013 Kyle Hershey. All rights reserved.
 //
 
@@ -29,7 +29,6 @@
         host = @"0.0.0.0";
         port = @6600;
     }
-    NSLog(@"here");
     
     /*
     UIApplication *myApp = [UIApplication sharedApplication];

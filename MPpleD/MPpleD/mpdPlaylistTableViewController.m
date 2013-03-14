@@ -27,21 +27,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //[NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector:@selector(updateInfo) userInfo: nil repeats:YES];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.leftBarButtonItem=self.editButtonItem;
     
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    //NSLog(@"appeared");
     [self updateInfo];
     
     self.updateTimer = [NSTimer scheduledTimerWithTimeInterval: 5.0 target: self selector:@selector(updateInfo) userInfo: nil repeats:YES];
@@ -49,7 +40,6 @@
 
 -(void)viewDidDisappear:(BOOL)animated
 {
-    //NSLog(@"disappeared");
     [self.updateTimer invalidate];
 }
 
@@ -61,12 +51,9 @@
 
 -(void)initializeConnection
 {
-    //NSLog(@"connection initialized");
     mpdConnectionData *connection = [mpdConnectionData sharedManager];
-    //NSString *host = @"192.168.1.2";
     self.host = [connection.host UTF8String];
     self.port = [connection.port intValue];
-    //self.conn = mpd_connection_new([host UTF8String], 6600, 30000);
     self.conn = mpd_connection_new(self.host, self.port, 3000);
 }
 
@@ -80,19 +67,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-
-//#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    
-    //NSLog(@"rows in section");
     NSInteger pos;
     [self initializeConnection];
     if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
@@ -128,7 +107,6 @@
 
     static NSString *CellIdentifier = @"playlistItem";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    //NSLog([[NSString alloc] initWithFormat:@"%i",indexPath.row]);
     
     [self updateRowCount];
     if(self.rowCount!=self.prevRowCount)
@@ -136,11 +114,8 @@
         [self.tableView reloadData];
     }
      
-    //[self.tableView reloadData];
     if(indexPath.row <[tableView numberOfRowsInSection:0])
     {
-        //NSLog(@"loading cell");
-        // Configure the cell...
         [self initializeConnection];
         struct mpd_song *nextSong = malloc(sizeof(struct mpd_song));
         nextSong=mpd_run_get_queue_song_pos(self.conn, indexPath.row);
@@ -179,7 +154,6 @@
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
 
@@ -189,7 +163,6 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
         [self initializeConnection];
         if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
         {
@@ -204,7 +177,6 @@
         }
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }
 }
 
@@ -240,15 +212,7 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-    
+{   
     [self initializeConnection];
     if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
     {
@@ -260,8 +224,7 @@
 
     mpd_run_play_pos(self.conn,indexPath.row);
     mpd_connection_free(self.conn);
-    [self.tableView reloadData];
-    
+    [self.tableView reloadData];    
 }
 
 -(void)updateRowCount

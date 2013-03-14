@@ -50,10 +50,8 @@
 -(void)initializeConnection
 {
     mpdConnectionData *connection = [mpdConnectionData sharedManager];
-    //NSString *host = @"192.168.1.2";
     self.host = [connection.host UTF8String];
     self.port = [connection.port intValue];
-    //self.conn = mpd_connection_new([host UTF8String], 6600, 30000);
     self.conn = mpd_connection_new(self.host, self.port, 30000);
 }
 
@@ -63,7 +61,6 @@
     NSMutableArray *list = [[NSMutableArray alloc] init];
     self.albums = list;
     
-    //NSLog(@"initializing list");
     [self initializeConnection];
     if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
     {
@@ -80,18 +77,13 @@
     
     while ((pair = mpd_recv_pair_tag(self.conn, MPD_TAG_ALBUM)) != NULL)
     {
-        //NSLog(@"adding artist");
         NSString *albumString = [[NSString alloc] initWithUTF8String:pair->value];
-        //NSLog(albumString);
         [self.albums addObject:albumString];
-        //NSLog([[NSNumber alloc] initWithUnsignedInteger:[self artistCount]]);
         mpd_return_pair(self.conn, pair);
     }
     
     mpd_connection_free(self.conn);
     [self.albums sortUsingSelector:@selector(compare:)];
-    //[self.albums insertObject:@"All" atIndex:0];
-    
 }
 
 -(void)initializeArtistDataList:(NSString *)artist
@@ -99,7 +91,6 @@
     NSMutableArray *list = [[NSMutableArray alloc] init];
     self.albums = list;
     
-    //NSLog(@"initializing list");
     [self initializeConnection];
     if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
     {
@@ -121,11 +112,8 @@
     
     while ((pair = mpd_recv_pair_tag(self.conn, MPD_TAG_ALBUM)) != NULL)
     {
-        //NSLog(@"adding artist");
         NSString *albumString = [[NSString alloc] initWithUTF8String:pair->value];
-        //NSLog(albumString);
         [self.albums addObject:albumString];
-        //NSLog([[NSNumber alloc] initWithUnsignedInteger:[self artistCount]]);
         mpd_return_pair(self.conn, pair);
     }
     
@@ -156,8 +144,8 @@
     }
     
     mpd_command_list_begin(self.conn, true);
-    //mpd_search_db_tags(self.conn, MPD_TAG_TITLE);
-    mpd_search_add_db_songs(self.conn, TRUE);  //BOGUS
+
+    mpd_search_add_db_songs(self.conn, TRUE); 
     
     if(artist!=NULL)
     {
