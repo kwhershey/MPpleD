@@ -97,13 +97,12 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
     if ([[segue identifier] isEqualToString:@"ShowAlbumSongs"]) {
         
         mpdSongTableViewController *songViewController = [segue destinationViewController];
         
         
-        if([self.tableView indexPathForSelectedRow].row==0)
+        if(self.artistFilter && [self.tableView indexPathForSelectedRow].row==0)
         {
             songViewController.artistFilter = self.artistFilter;
             songViewController.navigationItem.title = self.artistFilter;

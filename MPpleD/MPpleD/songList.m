@@ -82,7 +82,6 @@
     
     mpd_connection_free(self.conn);
     [self.songs sortUsingSelector:@selector(compare:)];
-    
 }
 
 -(void)initializeArtistDataList:(NSString *)artist
@@ -137,20 +136,17 @@
     
     const char *cAlbum = [album UTF8String];
     mpd_command_list_begin(self.conn, true);
-    mpd_search_db_tags(self.conn, MPD_TAG_TITLE);
+    //mpd_search_db_tags(self.conn, MPD_TAG_TITLE);
+    mpd_search_db_songs(self.conn, true);
     mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ALBUM, cAlbum);
 
     mpd_search_commit(self.conn);
     mpd_command_list_end(self.conn);
     
-    struct mpd_pair *pair;
-    
-    
-    while ((pair = mpd_recv_pair_tag(self.conn, MPD_TAG_TITLE)) != NULL)
+    struct mpd_song *song;
+    while((song=mpd_recv_song(self.conn))!=NULL)
     {
-        NSString *songString = [[NSString alloc] initWithUTF8String:pair->value];
-        [self.songs addObject:songString];
-        mpd_return_pair(self.conn, pair);
+        [self.songs addObject:[[NSString alloc] initWithUTF8String:mpd_song_get_tag(song, MPD_TAG_TITLE, 0)]];
     }
     
     mpd_connection_free(self.conn);
