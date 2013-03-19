@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *shuffle;
 @property (weak, nonatomic) IBOutlet UISlider *volume;
 @property (weak, nonatomic) IBOutlet UISlider *progressSlider;
-@property (weak, nonatomic) IBOutlet UIImageView *artViewer;
+@property (strong, nonatomic) IBOutlet UIImageView *artViewer;
 
 
 @property struct mpd_connection *conn;

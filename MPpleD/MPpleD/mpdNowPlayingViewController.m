@@ -20,6 +20,7 @@
     [super viewDidLoad];
     [self updateView];
     //self.artwork = NULL;
+    //[self getArtwork:self.artistText.text :self.albumText.text];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -145,6 +146,7 @@
             [self getArtwork:self.artistText.text :self.albumText.text];
             //self.artViewer.image = self.artwork;
             [self.artViewer setImage:self.artwork];
+            //[self.artViewer ]
             
         }
         else
@@ -313,6 +315,17 @@
 -(void)getArtwork:(NSString *) artist: (NSString *) album
 {
     UIImage *newArtwork;
+    NSMutableString *fetcherString=[[NSMutableString alloc] initWithString:@"http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=f3a26c7c8b4c4306bc382557d5c04ad5"];
+    [fetcherString appendString:@"&artist="];
+    [fetcherString appendString:self.artistText.text];
+    [fetcherString appendString:@"&album="];
+    [fetcherString appendString:self.albumText.text];
+    NSStringEncoding encoded = NSASCIIStringEncoding;
+    NSString *lfmpage = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:fetcherString] usedEncoding:&encoded error:NULL];
+    NSString *search = @"<image size=\"medium\">";
+    NSString *sub = [lfmpage substringFromIndex:NSMaxRange([lfmpage rangeOfString:search])];
+    NSLog(lfmpage);
+    NSLog(sub);
     
     id path = @"http://userserve-ak.last.fm/serve/64s/34811187.jpg";
     if(path!=self.artworkPath)
@@ -324,6 +337,8 @@
         
         //[self.artViewer setImage:newArtwork];
         self.artwork = newArtwork;
+        
+        //[self.artViewer setImage:self.artwork];
     }
 }
 
