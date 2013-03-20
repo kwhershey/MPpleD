@@ -320,12 +320,15 @@
     [fetcherString appendString:self.artistText.text];
     [fetcherString appendString:@"&album="];
     [fetcherString appendString:self.albumText.text];
-    NSStringEncoding encoded = NSASCIIStringEncoding;
-    NSString *lfmpage = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:fetcherString] usedEncoding:&encoded error:NULL];
+    [fetcherString appendString:@".xml"];
+    NSStringEncoding encoded = NSUTF8StringEncoding;
+    NSError *error = [[NSError alloc] init];
+    NSString *lfmpage = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:fetcherString] usedEncoding:&encoded error:&error];
     NSString *search = @"<image size=\"medium\">";
     NSString *sub = [lfmpage substringFromIndex:NSMaxRange([lfmpage rangeOfString:search])];
     NSLog(lfmpage);
     NSLog(sub);
+    
     
     id path = @"http://userserve-ak.last.fm/serve/64s/34811187.jpg";
     if(path!=self.artworkPath)
