@@ -82,6 +82,7 @@
         self.totTime.text = [NSString stringWithFormat:@"%u:%02u",self.totalTime/60,self.totalTime%60 ];
         self.progressSlider.maximumValue = self.totalTime;
         self.progressSlider.value = self.currentTime;
+        /*
         if(mpd_status_get_random(status))
         {
             [self.shuffle setImage:[UIImage imageNamed:@"shuffle-on.png"] forState:UIControlStateNormal];
@@ -92,6 +93,7 @@
             [self.shuffle setImage:[UIImage imageNamed:@"shuffle.png"] forState:UIControlStateNormal];
             self.random = FALSE;
         }
+         */
         enum mpd_state playerState;
         if((playerState= mpd_status_get_state(status)) == MPD_STATE_PLAY || mpd_status_get_state(status) == MPD_STATE_PAUSE)
         {
@@ -315,22 +317,24 @@
 -(void)getArtwork:(NSString *) artist: (NSString *) album
 {
     UIImage *newArtwork;
-    NSMutableString *fetcherString=[[NSMutableString alloc] initWithString:@"http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=f3a26c7c8b4c4306bc382557d5c04ad5"];
+    NSMutableString *fetcherString=[[NSMutableString alloc] initWithString:@"http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=892d8cc27ce29468dc4da6d03afc5da9"];
     [fetcherString appendString:@"&artist="];
     [fetcherString appendString:self.artistText.text];
     [fetcherString appendString:@"&album="];
     [fetcherString appendString:self.albumText.text];
-    [fetcherString appendString:@".xml"];
+    //[fetcherString appendString:@".xml"];
     NSStringEncoding encoded = NSUTF8StringEncoding;
     NSError *error = [[NSError alloc] init];
+    //NSLog(fetcherString);
     NSString *lfmpage = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:fetcherString] usedEncoding:&encoded error:&error];
     NSString *search = @"<image size=\"medium\">";
     NSString *sub = [lfmpage substringFromIndex:NSMaxRange([lfmpage rangeOfString:search])];
-    NSLog(lfmpage);
+    NSString *endSearch = @"</image>";
+    sub=[sub substringToIndex:[sub rangeOfString:endSearch].location];
     NSLog(sub);
     
-    
-    id path = @"http://userserve-ak.last.fm/serve/64s/34811187.jpg";
+    //id path = sub;
+    id path = @"http://userserve-ak.last.fm/serve/64s/40221935.png";
     if(path!=self.artworkPath)
     {
         self.artworkPath = path;
@@ -345,6 +349,11 @@
     }
 }
 
+
+-(IBAction)backToNowPlayingClick:(UIStoryboardSegue *)segue
+{
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
 
 
 @end

@@ -46,5 +46,6 @@
 
 -(IBAction) sliderValueChanged:(id)sender;
 -(IBAction) positionValueChanged:(UISlider *)sender;
+-(IBAction)backToNowPlayingClick:(UIStoryboardSegue *)segue;
 
 @end
