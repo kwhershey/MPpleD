@@ -99,76 +99,50 @@
             [self.shuffle setOn:FALSE animated:FALSE];
             self.randomState = FALSE;
         }
+        if(mpd_status_get_repeat(status))
+        {
+            [self.repeat setOn:TRUE animated:FALSE];
+            self.repeatState = TRUE;
+        }
+        else
+        {
+            [self.repeat setOn:FALSE animated:FALSE];
+            self.repeatState = FALSE;
+        }
+        if(mpd_status_get_consume(status))
+        {
+            [self.consume setOn:TRUE animated:FALSE];
+            self.consumeState = TRUE;
+        }
+        else
+        {
+            [self.consume setOn:FALSE animated:FALSE];
+            self.consumeState = FALSE;
+        }
+        if(mpd_status_get_single(status))
+        {
+            [self.singleMode setOn:TRUE animated:FALSE];
+            self.singleState = TRUE;
+        }
+        else
+        {
+            [self.singleMode setOn:FALSE animated:FALSE];
+            self.singleState = FALSE;
+        }
+        if(mpd_status_get_crossfade(status))
+        {
+            [self.crossfade setOn:TRUE animated:FALSE];
+            self.crossState = TRUE;
+        }
+        else
+        {
+            [self.crossfade setOn:FALSE animated:FALSE];
+            self.crossState = FALSE;
+        }
          mpd_status_free(status);
     }
     mpd_connection_free(self.conn);
 }
-
-
-#pragma mark - Table view data source
-/*
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-//#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-//#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 3;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 -(IBAction)shufflePush:(id)sender
 {
@@ -191,8 +165,89 @@
     [self updateView];
 }
 
+-(IBAction)repeatPush:(id)sender
+{
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    else
+    {
+        if(self.repeatState)
+            mpd_run_repeat(self.conn, FALSE);
+        else
+            mpd_run_repeat(self.conn, TRUE);
+    }
+    mpd_connection_free(self.conn);
+    [self updateView];
+}
 
+-(IBAction)consumePush:(id)sender
+{
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    else
+    {
+        if(self.consumeState)
+            mpd_run_consume(self.conn, FALSE);
+        else
+            mpd_run_consume(self.conn, TRUE);
+    }
+    mpd_connection_free(self.conn);
+    [self updateView];
+}
 
+-(IBAction)singlePush:(id)sender
+{
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    else
+    {
+        if(self.singleState)
+            mpd_run_single(self.conn, FALSE);
+        else
+            mpd_run_single(self.conn, TRUE);
+    }
+    mpd_connection_free(self.conn);
+    [self updateView];
+}
+
+-(IBAction)crossfadePush:(id)sender
+{
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    else
+    {
+        if(self.crossState)
+            mpd_run_crossfade(self.conn, 0);
+        else
+            mpd_run_crossfade(self.conn, 5);
+    }
+    mpd_connection_free(self.conn);
+    [self updateView];
+}
 
 #pragma mark - Table view delegate
 

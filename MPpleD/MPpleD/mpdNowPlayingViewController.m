@@ -317,43 +317,35 @@
 -(void)getArtwork:(NSString *) artist: (NSString *) album
 {
     UIImage *newArtwork;
+    
     NSMutableString *fetcherString=[[NSMutableString alloc] initWithString:@"http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=892d8cc27ce29468dc4da6d03afc5da9"];
     [fetcherString appendString:@"&artist="];
-    [fetcherString appendString:self.artistText.text];
+    [fetcherString appendString:[self.artistText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     [fetcherString appendString:@"&album="];
-    [fetcherString appendString:self.albumText.text];
-    //[fetcherString appendString:@".xml"];
-    NSStringEncoding encoded = NSUTF8StringEncoding;
+    [fetcherString appendString:[self.albumText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     NSError *error = [[NSError alloc] init];
-    //NSLog(fetcherString);
-    NSString *lfmpage = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:fetcherString] usedEncoding:&encoded error:&error];
+    NSString *lfmpage = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:fetcherString] encoding:NSUTF8StringEncoding error:&error];
     NSString *search = @"<image size=\"medium\">";
     NSString *sub = [lfmpage substringFromIndex:NSMaxRange([lfmpage rangeOfString:search])];
     NSString *endSearch = @"</image>";
     sub=[sub substringToIndex:[sub rangeOfString:endSearch].location];
-    NSLog(sub);
     
-    //id path = sub;
-    id path = @"http://userserve-ak.last.fm/serve/64s/40221935.png";
+    id path = sub;
     if(path!=self.artworkPath)
     {
         self.artworkPath = path;
         NSURL *url = [NSURL URLWithString:path];
         NSData *data = [NSData dataWithContentsOfURL:url];
         newArtwork = [[UIImage alloc] initWithData:data];
-        
-        //[self.artViewer setImage:newArtwork];
         self.artwork = newArtwork;
-        
-        //[self.artViewer setImage:self.artwork];
     }
 }
 
-
+/*
 -(IBAction)backToNowPlayingClick:(UIStoryboardSegue *)segue
 {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
-
+*/
 
 @end

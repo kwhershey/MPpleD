@@ -18,11 +18,22 @@
 @property int port;
 
 @property NSTimer *updateTimer;
--(IBAction)shufflePush:(id)sender;
+
 @property BOOL randomState;
+@property BOOL repeatState;
+@property BOOL consumeState;
+@property BOOL singleState;
+@property BOOL crossState;
 
 @property (strong, nonatomic) IBOutlet UISwitch *shuffle;
-@property (strong, nonatomic) IBOutlet UISwitch *random;
+@property (strong, nonatomic) IBOutlet UISwitch *repeat;
 @property (strong, nonatomic) IBOutlet UISwitch *consume;
+@property (strong, nonatomic) IBOutlet UISwitch *singleMode;
+@property (strong, nonatomic) IBOutlet UISwitch *crossfade;
+-(IBAction)shufflePush:(id)sender;
+-(IBAction)repeatPush:(id)sender;
+-(IBAction)consumePush:(id)sender;
+-(IBAction)singlePush:(id)sender;
+-(IBAction)crossfadePush:(id)sender;
 
 @end

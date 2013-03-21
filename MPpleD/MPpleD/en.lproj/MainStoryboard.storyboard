@@ -136,10 +136,10 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Now Playing" image="play.png" id="7"/>
-                    <navigationItem key="navigationItem" id="8VS-yz-5d8">
+                    <navigationItem key="navigationItem" title="Now Playing" id="8VS-yz-5d8">
                         <barButtonItem key="rightBarButtonItem" image="gear.png" id="eKZ-fw-w4C">
                             <connections>
-                                <segue destination="kJt-y5-zjR" kind="push" id="Rae-yD-EPP"/>
+                                <segue destination="kJt-y5-zjR" kind="push" identifier="movin" id="RLr-og-QOO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -207,7 +207,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Xh-fB-I9f"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Xh-fB-I9f">
+                                                    <connections>
+                                                        <action selector="repeatPush:" destination="kJt-y5-zjR" eventType="valueChanged" id="GR0-JL-kJk"/>
+                                                    </connections>
+                                                </switch>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Repeat" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xd6-gh-UE1">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -230,7 +234,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bnL-QV-xJX"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bnL-QV-xJX">
+                                                    <connections>
+                                                        <action selector="consumePush:" destination="kJt-y5-zjR" eventType="valueChanged" id="Y3X-E7-Wal"/>
+                                                    </connections>
+                                                </switch>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Consume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBi-D8-p21">
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -246,6 +254,60 @@
                                             <constraint firstAttribute="trailing" secondItem="bnL-QV-xJX" secondAttribute="trailing" constant="20" type="default" id="zqW-PR-p89"/>
                                         </constraints>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="frp-31-tRT">
+                                        <rect key="frame" x="0.0" y="132" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zAX-BF-hEV">
+                                                    <connections>
+                                                        <action selector="singlePush:" destination="kJt-y5-zjR" eventType="valueChanged" id="Es5-sj-a89"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Single Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfK-hG-ocg">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="zAX-BF-hEV" firstAttribute="top" secondItem="frp-31-tRT" secondAttribute="top" constant="8" id="9c7-9Y-rhc"/>
+                                            <constraint firstAttribute="trailing" secondItem="zAX-BF-hEV" secondAttribute="trailing" constant="20" type="default" id="X3I-fy-T4r"/>
+                                            <constraint firstItem="KfK-hG-ocg" firstAttribute="leading" secondItem="frp-31-tRT" secondAttribute="leading" constant="20" type="default" id="iXm-YU-1YT"/>
+                                            <constraint firstItem="KfK-hG-ocg" firstAttribute="centerY" secondItem="zAX-BF-hEV" secondAttribute="centerY" type="default" id="qaq-rx-mWz"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" id="ZyL-jh-uN0">
+                                        <rect key="frame" x="0.0" y="176" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5qI-wx-3so">
+                                                    <connections>
+                                                        <action selector="crossfadePush:" destination="kJt-y5-zjR" eventType="valueChanged" id="joS-Fa-YqB"/>
+                                                    </connections>
+                                                </switch>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Crossfade (5 sec)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OWv-uA-x2a">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="5qI-wx-3so" secondAttribute="trailing" constant="20" type="default" id="8Da-Zk-3KN"/>
+                                            <constraint firstItem="5qI-wx-3so" firstAttribute="top" secondItem="ZyL-jh-uN0" secondAttribute="top" constant="8" id="hmd-QI-Rsy"/>
+                                            <constraint firstItem="OWv-uA-x2a" firstAttribute="leading" secondItem="ZyL-jh-uN0" secondAttribute="leading" constant="20" type="default" id="kJl-i4-62Z"/>
+                                            <constraint firstItem="OWv-uA-x2a" firstAttribute="centerY" secondItem="5qI-wx-3so" secondAttribute="centerY" type="default" id="qEN-Kx-xyO"/>
+                                        </constraints>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -259,8 +321,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="consume" destination="bnL-QV-xJX" id="af2-71-3Xt"/>
-                        <outlet property="random" destination="8Xh-fB-I9f" id="KpF-OJ-rdd"/>
+                        <outlet property="crossfade" destination="5qI-wx-3so" id="wEL-wt-bq0"/>
+                        <outlet property="repeat" destination="8Xh-fB-I9f" id="0XH-zD-QCS"/>
                         <outlet property="shuffle" destination="hpC-hM-Gir" id="1cV-f8-53G"/>
+                        <outlet property="singleMode" destination="zAX-BF-hEV" id="IPr-ts-r47"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pcE-Yq-pGr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -807,8 +871,10 @@
         <class className="mpdNowPlayingViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdNowPlayingViewController.h"/>
             <relationships>
-                <relationship kind="action" name="backToNowPlayingClick:" candidateClass="UIStoryboardSegue"/>
+                <relationship kind="action" name="nextPush:"/>
+                <relationship kind="action" name="playPausePush:"/>
                 <relationship kind="action" name="positionValueChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="prevPush:"/>
                 <relationship kind="action" name="sliderValueChanged:"/>
                 <relationship kind="outlet" name="albumText" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="artViewer" candidateClass="UIImageView"/>
@@ -828,10 +894,16 @@
         <class className="mpdPlaybackSettingsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/mpdPlaybackSettingsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="consumePush:"/>
+                <relationship kind="action" name="crossfadePush:"/>
+                <relationship kind="action" name="repeatPush:"/>
                 <relationship kind="action" name="shufflePush:"/>
+                <relationship kind="action" name="singlePush:"/>
                 <relationship kind="outlet" name="consume" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="random" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="crossfade" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="repeat" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="shuffle" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="singleMode" candidateClass="UISwitch"/>
             </relationships>
         </class>
         <class className="mpdPlaylistTableViewController" superclassName="UITableViewController">
