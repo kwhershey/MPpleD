@@ -145,7 +145,7 @@
             @catch (NSException *e) {
                 self.trackText.text = @"";
             }
-            [self getArtwork:self.artistText.text :self.albumText.text];
+            [self getArtwork];
             //self.artViewer.image = self.artwork;
             [self.artViewer setImage:self.artwork];
             //[self.artViewer ]
@@ -314,7 +314,7 @@
 }
 
 
--(void)getArtwork:(NSString *) artist: (NSString *) album
+-(void)getArtwork
 {
     UIImage *newArtwork;
     
