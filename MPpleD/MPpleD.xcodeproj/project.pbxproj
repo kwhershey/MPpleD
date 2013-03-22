@@ -12,11 +12,8 @@
 		1A0E578C16DFD0BE004D0FA9 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A0E578516DFD0BE004D0FA9 /* pause.png */; };
 		1A0E578D16DFD0BE004D0FA9 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A0E578616DFD0BE004D0FA9 /* play.png */; };
 		1A0E578E16DFD0BE004D0FA9 /* queue.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A0E578716DFD0BE004D0FA9 /* queue.png */; };
-		1A0E578F16DFD0BE004D0FA9 /* shuffle-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A0E578816DFD0BE004D0FA9 /* shuffle-on.png */; };
-		1A0E579016DFD0BE004D0FA9 /* shuffle.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A0E578916DFD0BE004D0FA9 /* shuffle.png */; };
 		1A1EFD9E16CD5C8B0081B395 /* mpdPlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EFD9D16CD5C8B0081B395 /* mpdPlaylistTableViewController.m */; };
 		1A1EFDA116CD5CA10081B395 /* mpdMusicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EFDA016CD5CA10081B395 /* mpdMusicTableViewController.m */; };
-		1A4FF50716F0141B0008B880 /* mute.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4FF50616F0141B0008B880 /* mute.png */; };
 		1A4FF50A16F0150F0008B880 /* volume.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4FF50916F0150F0008B880 /* volume.png */; };
 		1A74460B16CD53C70005AE05 /* mpdServerSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A74460A16CD53C70005AE05 /* mpdServerSettingsViewController.m */; };
 		1A87F36B16EF8F2D00847A63 /* mpdArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3027716D5C16900B72660 /* mpdArtistViewController.m */; };
@@ -24,7 +21,6 @@
 		1AD3027B16D5C44800B72660 /* mpdAlbumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3027A16D5C44800B72660 /* mpdAlbumViewController.m */; };
 		1ADFD1E116D690C2005DCBD0 /* artistList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADFD1E016D690C2005DCBD0 /* artistList.m */; };
 		1ADFD1E816D69AF0005DCBD0 /* albumList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADFD1E716D69AF0005DCBD0 /* albumList.m */; };
-		1AF43B5C16F235FA00A24C45 /* defaultArt.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1AF43B5B16F235FA00A24C45 /* defaultArt.jpg */; };
 		1AF6938816FAA2BA00A8BD69 /* mpdPlaybackSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF6938716FAA2BA00A8BD69 /* mpdPlaybackSettingsViewController.m */; };
 		5017D2CC16C960080046DB49 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5017D2CB16C960080046DB49 /* UIKit.framework */; };
 		5017D2CE16C960080046DB49 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5017D2CD16C960080046DB49 /* Foundation.framework */; };
@@ -64,13 +60,10 @@
 		1A0E578516DFD0BE004D0FA9 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		1A0E578616DFD0BE004D0FA9 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		1A0E578716DFD0BE004D0FA9 /* queue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = queue.png; sourceTree = "<group>"; };
-		1A0E578816DFD0BE004D0FA9 /* shuffle-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shuffle-on.png"; sourceTree = "<group>"; };
-		1A0E578916DFD0BE004D0FA9 /* shuffle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuffle.png; sourceTree = "<group>"; };
 		1A1EFD9C16CD5C8B0081B395 /* mpdPlaylistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdPlaylistTableViewController.h; sourceTree = "<group>"; };
 		1A1EFD9D16CD5C8B0081B395 /* mpdPlaylistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdPlaylistTableViewController.m; sourceTree = "<group>"; };
 		1A1EFD9F16CD5CA10081B395 /* mpdMusicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdMusicTableViewController.h; sourceTree = "<group>"; };
 		1A1EFDA016CD5CA10081B395 /* mpdMusicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdMusicTableViewController.m; sourceTree = "<group>"; };
-		1A4FF50616F0141B0008B880 /* mute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mute.png; sourceTree = "<group>"; };
 		1A4FF50916F0150F0008B880 /* volume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volume.png; sourceTree = "<group>"; };
 		1A74460916CD53C70005AE05 /* mpdServerSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdServerSettingsViewController.h; sourceTree = "<group>"; };
 		1A74460A16CD53C70005AE05 /* mpdServerSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdServerSettingsViewController.m; sourceTree = "<group>"; };
@@ -82,7 +75,6 @@
 		1ADFD1E016D690C2005DCBD0 /* artistList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = artistList.m; sourceTree = "<group>"; };
 		1ADFD1E616D69AF0005DCBD0 /* albumList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = albumList.h; sourceTree = "<group>"; };
 		1ADFD1E716D69AF0005DCBD0 /* albumList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = albumList.m; sourceTree = "<group>"; };
-		1AF43B5B16F235FA00A24C45 /* defaultArt.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = defaultArt.jpg; sourceTree = "<group>"; };
 		1AF6938616FAA2BA00A8BD69 /* mpdPlaybackSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdPlaybackSettingsViewController.h; sourceTree = "<group>"; };
 		1AF6938716FAA2BA00A8BD69 /* mpdPlaybackSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdPlaybackSettingsViewController.m; sourceTree = "<group>"; };
 		5017D2C816C960080046DB49 /* MPpleD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MPpleD.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,16 +136,12 @@
 		1A0E578216DFD0BE004D0FA9 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				1AF43B5B16F235FA00A24C45 /* defaultArt.jpg */,
 				1A4FF50916F0150F0008B880 /* volume.png */,
-				1A4FF50616F0141B0008B880 /* mute.png */,
 				1A0E578316DFD0BE004D0FA9 /* gear.png */,
 				1A0E578416DFD0BE004D0FA9 /* note.png */,
 				1A0E578516DFD0BE004D0FA9 /* pause.png */,
 				1A0E578616DFD0BE004D0FA9 /* play.png */,
 				1A0E578716DFD0BE004D0FA9 /* queue.png */,
-				1A0E578816DFD0BE004D0FA9 /* shuffle-on.png */,
-				1A0E578916DFD0BE004D0FA9 /* shuffle.png */,
 			);
 			path = Buttons;
 			sourceTree = SOURCE_ROOT;
@@ -340,11 +328,7 @@
 				1A0E578C16DFD0BE004D0FA9 /* pause.png in Resources */,
 				1A0E578D16DFD0BE004D0FA9 /* play.png in Resources */,
 				1A0E578E16DFD0BE004D0FA9 /* queue.png in Resources */,
-				1A0E578F16DFD0BE004D0FA9 /* shuffle-on.png in Resources */,
-				1A0E579016DFD0BE004D0FA9 /* shuffle.png in Resources */,
-				1A4FF50716F0141B0008B880 /* mute.png in Resources */,
 				1A4FF50A16F0150F0008B880 /* volume.png in Resources */,
-				1AF43B5C16F235FA00A24C45 /* defaultArt.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
