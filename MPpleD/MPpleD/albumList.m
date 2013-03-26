@@ -84,7 +84,6 @@
     
     mpd_connection_free(self.conn);
     [self.albums sortUsingSelector:@selector(compare:)];
-    [self.albums removeObjectAtIndex:0];
 }
 
 -(void)initializeArtistDataList:(NSString *)artist

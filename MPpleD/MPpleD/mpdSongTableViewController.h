@@ -14,5 +14,7 @@
 @property (strong, nonatomic) songList *dataController;
 @property (strong, nonatomic) NSString *artistFilter;
 @property (strong, nonatomic) NSString *albumFilter;
+@property BOOL sorted;
+@property NSArray *sections;
 
 @end

@@ -12,6 +12,7 @@
 @interface mpdArtistViewController : UITableViewController
 
 @property (strong, nonatomic) artistList *dataController;
+@property NSArray *sections;
 
 -(IBAction)backToArtistClick:(UIStoryboardSegue *)segue;
 

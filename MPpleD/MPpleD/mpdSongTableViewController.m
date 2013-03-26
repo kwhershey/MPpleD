@@ -36,6 +36,7 @@
         _albumFilter = newAlbumFilter;
         self.dataController = [[songList alloc] initWithAlbum:newAlbumFilter];
     }
+    self.sorted = FALSE;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -50,6 +51,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.sorted = TRUE;
+    self.sections = [NSArray arrayWithObjects:@"#", @"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z", nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,12 +65,43 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    if(self.sorted)
+        return 27;
+    else
+        return 1;
 }
+
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return self.sections;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString*)title atIndex:(NSInteger)index {
+    return index;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if(self.sorted)
+    {
+        NSArray *sectionArray = [self.dataController.songs filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]]];
+        NSUInteger rowCount = [sectionArray count];
+        if(rowCount == 0)
+            return nil;
+        return [self.sections objectAtIndex:section];
+    }
+    else return nil;
+}
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.dataController songCount];
+    if(self.sorted)
+    {
+        NSArray *sectionArray = [self.dataController.songs filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]]];
+        //rowCount = [sectionArray count];
+        return [sectionArray count];
+    }
+    else return [self.dataController songCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
