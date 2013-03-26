@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller - Now Playing-->
@@ -160,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1229" y="-634"/>
+            <point key="canvasLocation" x="1085" y="-679"/>
         </scene>
         <!--Mpd Playback Settings View Controller - Playback Settings-->
         <scene sceneID="haD-CE-htb">
@@ -329,7 +329,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pcE-Yq-pGr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1681" y="-634"/>
+            <point key="canvasLocation" x="1509" y="-679"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="15">
@@ -350,7 +350,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="40" y="254"/>
+            <point key="canvasLocation" x="84" y="378"/>
         </scene>
         <!--Mpd Server Settings View Controller - Server-->
         <scene sceneID="sdn-za-buy">
@@ -433,7 +433,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k2o-7F-cSJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="655" y="1355"/>
+            <point key="canvasLocation" x="655" y="1384"/>
         </scene>
         <!--Mpd Artist View Controller - Artists-->
         <scene sceneID="FUg-ME-98I">
@@ -623,6 +623,37 @@
                                             <segue destination="HRc-DO-u9y" kind="push" id="nEM-co-jWp"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" rowHeight="234" id="dnS-G6-MXl">
+                                        <rect key="frame" x="0.0" y="132" width="320" height="234"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="233"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="VwR-wi-YfN">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="73" id="BZC-iP-TdH"/>
+                                                    </constraints>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="Long hold items to add them to the play queue">
+                                                            <attributes>
+                                                                <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <font key="NSFont" size="17" name="Helvetica"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="VwR-wi-YfN" secondAttribute="trailing" constant="20" type="default" id="5fa-rW-6sX"/>
+                                            <constraint firstItem="VwR-wi-YfN" firstAttribute="leading" secondItem="dnS-G6-MXl" secondAttribute="leading" constant="20" type="default" id="lkF-jT-Zo2"/>
+                                            <constraint firstItem="VwR-wi-YfN" firstAttribute="top" secondItem="dnS-G6-MXl" secondAttribute="top" constant="80" id="pnJ-IR-Kul"/>
+                                        </constraints>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -631,7 +662,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVy-Rh-0mi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1189" y="693"/>
+            <point key="canvasLocation" x="1085" y="693"/>
         </scene>
         <!--Navigation Controller - Music-->
         <scene sceneID="09d-Sf-TPh">
@@ -647,7 +678,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IGN-C0-BlP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="655" y="693"/>
+            <point key="canvasLocation" x="653" y="693"/>
         </scene>
         <!--Mpd Playlist Table View Controller - Play Queue-->
         <scene sceneID="r4U-4N-2pD">
@@ -694,7 +725,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="16Y-dW-YdQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1189" y="6"/>
+            <point key="canvasLocation" x="1085" y="6"/>
         </scene>
         <!--Navigation Controller - Queue-->
         <scene sceneID="wfG-SF-Czq">
