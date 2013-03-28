@@ -159,6 +159,24 @@
     return [self.songs objectAtIndex:row];
 }
 
+-(NSString*)songAtSectionAndIndex:(NSUInteger)section row:(NSUInteger)row
+{
+    NSArray *sections = [NSArray arrayWithObjects:@"#", @"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z", nil];
+    NSPredicate *evaluator= [NSPredicate alloc];
+    if(section==0)
+    {
+        NSString *filter = @"^[A-Za-z]";
+        evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", filter];
+    }
+    else
+        evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [sections objectAtIndex:section]];
+    
+    //NSPredicate *evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", filter];
+    NSMutableArray *sectionArray = [[NSMutableArray alloc] initWithArray:[self.songs filteredArrayUsingPredicate:evaluator]];
+    
+    return [sectionArray objectAtIndex:row];
+}
+
 -(NSUInteger)songCount
 {
     return [self.songs count];

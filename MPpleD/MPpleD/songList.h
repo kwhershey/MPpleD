@@ -21,6 +21,7 @@
 -(id)initWithArtist:(NSString *)artist;
 -(id)initWithAlbum:(NSString *)album;
 -(NSString*)songAtIndex:(NSUInteger)row;
+-(NSString*)songAtSectionAndIndex:(NSUInteger)section row:(NSUInteger)row;
 -(NSUInteger)songCount;
 -(void)addSongAtIndexToQueue:(NSUInteger)row artist:(NSString *)artist album:(NSString *)album;
 

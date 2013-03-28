@@ -18,11 +18,12 @@
 {
     [super awakeFromNib];
         self.dataController = [[songList alloc] init];
+    NSLog(@"awaking");
+    self.sorted = true;
 }
 
 -(void)setArtistFilter:(NSString *)newArtistFilter
 {
-    
     if (_artistFilter != newArtistFilter) {
         _artistFilter = newArtistFilter;        
         self.dataController = [[songList alloc] initWithArtist:newArtistFilter];        
@@ -36,8 +37,8 @@
         _albumFilter = newAlbumFilter;
         self.dataController = [[songList alloc] initWithAlbum:newAlbumFilter];
     }
-    //self.sorted = FALSE;
-    //NSLog(@"album filtered");
+    self.sorted = false;
+    NSLog(@"album filtered");
     //[self.tableView reloadData];
 }
 
@@ -53,8 +54,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //self.sorted = TRUE;
-    //self.sections = [NSArray arrayWithObjects:@"#", @"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z", nil];
+    NSLog(@"view loading");
+    //self.sorted = false;
+    self.sections = [NSArray arrayWithObjects:@"#", @"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z", nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,12 +69,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    //if(self.sorted)
-    //    return 27;
-    //else
+    NSLog(@"determining sections");
+    if(self.sorted)
+        return 27;
+    else
         return 1;
 }
-/*
+
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     return self.sections;
 }
@@ -82,9 +85,24 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    //NSLog(@"making headers");
     if(self.sorted)
     {
-        NSArray *sectionArray = [self.dataController.songs filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]]];
+        //NSArray *sectionArray = [self.dataController.songs filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]]];
+        
+        NSPredicate *evaluator= [NSPredicate alloc];
+        if(section==0)
+        {
+            NSString *filter = @"^[A-Za-z]";
+            evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", filter];
+        }
+        else
+            evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]];
+        
+        //NSPredicate *evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", filter];
+        NSMutableArray *sectionArray = [[NSMutableArray alloc] initWithArray:[self.dataController.songs filteredArrayUsingPredicate:evaluator]];
+
+        
         NSUInteger rowCount = [sectionArray count];
         if(rowCount == 0)
             return nil;
@@ -92,22 +110,33 @@
     }
     else return nil;
 }
-*/
+
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    /*
+    
     if(self.sorted)
     {
-        NSArray *sectionArray = [self.dataController.songs filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]]];
+        //NSArray *sectionArray = [self.dataController.songs filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]]];
         //rowCount = [sectionArray count];
+        //return [sectionArray count];
+        
+        NSPredicate *evaluator= [NSPredicate alloc];
+        if(section==0)
+        {
+            NSString *filter = @"^[A-Za-z]";
+            evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", filter];
+        }
+        else
+            evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]];
+        
+        //NSPredicate *evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", filter];
+        NSMutableArray *sectionArray = [[NSMutableArray alloc] initWithArray:[self.dataController.songs filteredArrayUsingPredicate:evaluator]];
         return [sectionArray count];
     }
      else
-     */
-    
-     return [self.dataController songCount];
+         return [self.dataController songCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,7 +145,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    [[cell textLabel] setText:[self.dataController songAtIndex:indexPath.row]];
+    if(self.sorted)
+    {
+        [[cell textLabel] setText:[self.dataController songAtSectionAndIndex:indexPath.section row:indexPath.row]];
+    }
+    else
+    {
+        [[cell textLabel] setText:[self.dataController songAtIndex:indexPath.row]];
+    }
+    
     
     UILongPressGestureRecognizer *longPressGesture =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
