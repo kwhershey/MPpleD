@@ -82,7 +82,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    [[cell textLabel] setText:[self.dataController artistAtIndex:indexPath.row]];
+    //[[cell textLabel] setText:[self.dataController artistAtIndex:indexPath.row]];
+    [[cell textLabel] setText:[self.dataController artistAtSectionAndIndex:indexPath.section row:indexPath.row]];
+    
     
     UILongPressGestureRecognizer *longPressGesture =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
@@ -106,8 +108,10 @@
         
         
         
-        albumViewController.artistFilter = [self.dataController artistAtIndex:[self.tableView indexPathForSelectedRow].row];
-        albumViewController.navigationItem.title = [self.dataController artistAtIndex:[self.tableView indexPathForSelectedRow].row];
+        //albumViewController.artistFilter = [self.dataController artistAtIndex:[self.tableView indexPathForSelectedRow].row];
+        //albumViewController.navigationItem.title = [self.dataController artistAtIndex:[self.tableView indexPathForSelectedRow].row];
+        albumViewController.artistFilter = [self.dataController artistAtSectionAndIndex:[self.tableView indexPathForSelectedRow].section row:[self.tableView indexPathForSelectedRow].row];
+        albumViewController.navigationItem.title = [self.dataController artistAtSectionAndIndex:[self.tableView indexPathForSelectedRow].section row:[self.tableView indexPathForSelectedRow].row];
         
     }
     
@@ -131,7 +135,8 @@
 		NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
 		// do something with this action
-        [self.dataController addArtistAtIndexToQueue:indexPath.row];
+        //[self.dataController addArtistAtIndexToQueue:indexPath.row];
+        [self.dataController addArtistAtSectionAndIndexToQueue:indexPath.section row:indexPath.row];
 	}
 }
 

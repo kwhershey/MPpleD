@@ -36,7 +36,9 @@
         _albumFilter = newAlbumFilter;
         self.dataController = [[songList alloc] initWithAlbum:newAlbumFilter];
     }
-    self.sorted = FALSE;
+    //self.sorted = FALSE;
+    //NSLog(@"album filtered");
+    //[self.tableView reloadData];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -51,8 +53,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.sorted = TRUE;
-    self.sections = [NSArray arrayWithObjects:@"#", @"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z", nil];
+    //self.sorted = TRUE;
+    //self.sections = [NSArray arrayWithObjects:@"#", @"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z", nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,12 +67,12 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if(self.sorted)
-        return 27;
-    else
+    //if(self.sorted)
+    //    return 27;
+    //else
         return 1;
 }
-
+/*
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     return self.sections;
 }
@@ -90,18 +92,22 @@
     }
     else return nil;
 }
-
+*/
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    /*
     if(self.sorted)
     {
         NSArray *sectionArray = [self.dataController.songs filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]]];
         //rowCount = [sectionArray count];
         return [sectionArray count];
     }
-    else return [self.dataController songCount];
+     else
+     */
+    
+     return [self.dataController songCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

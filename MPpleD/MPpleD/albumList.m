@@ -127,6 +127,13 @@
     return [self.albums objectAtIndex:row];
 }
 
+-(NSString*)albumAtSectionAndIndex:(NSUInteger)section row:(NSUInteger)row
+{
+    NSArray *sections = [NSArray arrayWithObjects:@"#", @"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z", nil];
+    NSArray *sectionArray = [self.albums filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [sections objectAtIndex:section]]];
+    return [sectionArray objectAtIndex:row];
+}
+
 -(NSUInteger)albumCount
 {
     return [self.albums count];
@@ -155,6 +162,40 @@
     {
         mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ALBUM, [[self albumAtIndex:row] UTF8String]);
     }
+    mpd_search_commit(self.conn);
+    mpd_command_list_end(self.conn);
+    mpd_connection_free(self.conn);
+    
+}
+
+-(void)addAlbumAtSectionAndIndexToQueue:(NSUInteger)section row:(NSUInteger)row artist:(NSString *)artist
+{
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    
+    mpd_command_list_begin(self.conn, true);
+    
+    mpd_search_add_db_songs(self.conn, TRUE);
+    
+    if(artist!=NULL)
+    {
+        mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ARTIST, [artist UTF8String]);
+        NSLog(@"artist");
+    }
+    if([self albumAtSectionAndIndex:section row:row]!=@"All")
+    {
+        mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ALBUM, [[self albumAtSectionAndIndex:section row:row] UTF8String]);
+        NSLog(@"album");
+    }
+
+    
+    
     mpd_search_commit(self.conn);
     mpd_command_list_end(self.conn);
     mpd_connection_free(self.conn);

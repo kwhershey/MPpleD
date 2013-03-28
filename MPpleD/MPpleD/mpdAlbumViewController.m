@@ -66,6 +66,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 27;
+    //return 1;
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -87,9 +88,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
     NSArray *sectionArray = [self.dataController.albums filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]]];
     //rowCount = [sectionArray count];
     return [sectionArray count];
+     
     //return [self.dataController albumCount];
 }
 
@@ -97,9 +100,10 @@
 {
     static NSString *CellIdentifier = @"albumItem";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+
     // Configure the cell...
-    [[cell textLabel] setText:[self.dataController albumAtIndex:indexPath.row]];
+    //[[cell textLabel] setText:[self.dataController albumAtIndex:indexPath.row]];
+    [[cell textLabel] setText:[self.dataController albumAtSectionAndIndex:indexPath.section row:indexPath.row]];
     
     UILongPressGestureRecognizer *longPressGesture =
     [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
@@ -108,7 +112,7 @@
     return cell;
 
     
-    return cell;
+    //return cell;
 }
 
 #pragma mark - Table view delegate
@@ -123,14 +127,18 @@
         mpdSongTableViewController *songViewController = [segue destinationViewController];
         
         
-        if(self.artistFilter && [self.tableView indexPathForSelectedRow].row==0)
+        //if(self.artistFilter && [self.tableView indexPathForSelectedRow].row==0)
+        if(self.artistFilter && ([self.dataController albumAtSectionAndIndex:[self.tableView indexPathForSelectedRow].section row:[self.tableView indexPathForSelectedRow].row]==@"All"))
         {
             songViewController.artistFilter = self.artistFilter;
             songViewController.navigationItem.title = self.artistFilter;
+            
         }
         else{
-            songViewController.albumFilter = [self.dataController albumAtIndex:[self.tableView indexPathForSelectedRow].row];
-            songViewController.navigationItem.title = [self.dataController albumAtIndex:[self.tableView indexPathForSelectedRow].row];
+            //songViewController.albumFilter = [self.dataController albumAtIndex:[self.tableView indexPathForSelectedRow].row];
+            //songViewController.navigationItem.title = [self.dataController albumAtIndex:[self.tableView indexPathForSelectedRow].row];
+            songViewController.albumFilter = [self.dataController albumAtSectionAndIndex:[self.tableView indexPathForSelectedRow].section row:[self.tableView indexPathForSelectedRow].row];
+            songViewController.navigationItem.title = [self.dataController albumAtSectionAndIndex:[self.tableView indexPathForSelectedRow].section row:[self.tableView indexPathForSelectedRow].row];
         }
     }
     
@@ -153,7 +161,7 @@
 		NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
 		// do something with this action
-        [self.dataController addAlbumAtIndexToQueue:indexPath.row artist:self.artistFilter];
+        [self.dataController addAlbumAtSectionAndIndexToQueue:indexPath.section row:indexPath.row artist:self.artistFilter];
 	}
 }
 
