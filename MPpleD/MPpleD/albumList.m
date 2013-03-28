@@ -129,8 +129,12 @@
 
 -(NSString*)albumAtSectionAndIndex:(NSUInteger)section row:(NSUInteger)row
 {
-    NSArray *sections = [NSArray arrayWithObjects:@"#", @"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z", nil];
-    NSArray *sectionArray = [self.albums filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [sections objectAtIndex:section]]];
+    NSArray *sections = [NSArray arrayWithObjects:@"all",@"#", @"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z", nil];
+    NSMutableArray *sectionArray = [[NSMutableArray alloc] initWithArray:[self.albums filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [sections objectAtIndex:section]]]];
+    if(section==2)
+    {
+        [sectionArray removeObjectAtIndex:0];
+    }
     return [sectionArray objectAtIndex:row];
 }
 
