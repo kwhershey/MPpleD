@@ -147,7 +147,7 @@
         
         
         //if(self.artistFilter && [self.tableView indexPathForSelectedRow].row==0)
-        if(self.artistFilter && ([self.dataController albumAtSectionAndIndex:[self.tableView indexPathForSelectedRow].section row:[self.tableView indexPathForSelectedRow].row]==@"All"))
+        if(self.artistFilter && ([[self.dataController albumAtSectionAndIndex:[self.tableView indexPathForSelectedRow].section row:[self.tableView indexPathForSelectedRow].row]isEqual:@"All"]))
         {
             songViewController.artistFilter = self.artistFilter;
             songViewController.navigationItem.title = self.artistFilter;

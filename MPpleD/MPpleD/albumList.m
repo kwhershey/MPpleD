@@ -192,7 +192,7 @@
         mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ARTIST, [artist UTF8String]);
         NSLog(@"artist");
     }
-    if([self albumAtSectionAndIndex:section row:row]!=@"All")
+    if([[self albumAtSectionAndIndex:section row:row] isEqualToString:@"All"])
     {
         mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ALBUM, [[self albumAtSectionAndIndex:section row:row] UTF8String]);
         NSLog(@"album");
