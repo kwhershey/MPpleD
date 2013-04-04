@@ -19,10 +19,9 @@
 
 @property NSMutableArray *artists;
 
-//-(NSString*)artistAtIndex:(NSUInteger)row;
 -(NSString*)artistAtSectionAndIndex:(NSUInteger)section row:(NSUInteger)row;
 -(NSUInteger)artistCount;
-//-(void)addArtistAtIndexToQueue:(NSUInteger)row;
 -(void)addArtistAtSectionAndIndexToQueue:(NSUInteger)section row:(NSUInteger)row;
+-(NSArray*)sectionArray:(NSUInteger)section;
 
 @end

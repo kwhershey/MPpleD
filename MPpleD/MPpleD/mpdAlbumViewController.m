@@ -66,7 +66,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 28;
-    //return 1;
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
@@ -84,8 +83,7 @@
     }
     else
     {
-        NSArray *sectionArray = [self.dataController.albums filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]]];
-        NSUInteger rowCount = [sectionArray count];
+        NSUInteger rowCount = [[self.dataController sectionArray:section] count];
         if(section==2 && self.artistFilter)
             rowCount = rowCount-1;
         if(rowCount <= 0)
@@ -98,20 +96,21 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(section==0 && self.artistFilter)
-        return 1;
+    if(section==0) //all section
+    {
+        if(self.artistFilter) //if artist filtered, display all
+            return 1;
+        else
+            return 0;
+    }
     else if(section==2 && self.artistFilter)
     {
-        //NSArray *sectionArray = [self.dataController.albums filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]]];
-        //rowCount = [sectionArray count];
         return [[self.dataController sectionArray:section] count]-1;
-                
     }
     else
     {
         return [[self.dataController sectionArray:section] count];
     }
-    //return [self.dataController albumCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -120,7 +119,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
     // Configure the cell...
-    //[[cell textLabel] setText:[self.dataController albumAtIndex:indexPath.row]];
     [[cell textLabel] setText:[self.dataController albumAtSectionAndIndex:indexPath.section row:indexPath.row]];
     
     UILongPressGestureRecognizer *longPressGesture =
@@ -128,9 +126,6 @@
     [cell addGestureRecognizer:longPressGesture];
     
     return cell;
-
-    
-    //return cell;
 }
 
 #pragma mark - Table view delegate
@@ -144,8 +139,6 @@
         
         mpdSongTableViewController *songViewController = [segue destinationViewController];
         
-        
-        //if(self.artistFilter && [self.tableView indexPathForSelectedRow].row==0)
         if(self.artistFilter && ([[self.dataController albumAtSectionAndIndex:[self.tableView indexPathForSelectedRow].section row:[self.tableView indexPathForSelectedRow].row]isEqual:@"All"]))
         {
             songViewController.artistFilter = self.artistFilter;
@@ -153,8 +146,6 @@
             
         }
         else{
-            //songViewController.albumFilter = [self.dataController albumAtIndex:[self.tableView indexPathForSelectedRow].row];
-            //songViewController.navigationItem.title = [self.dataController albumAtIndex:[self.tableView indexPathForSelectedRow].row];
             songViewController.albumFilter = [self.dataController albumAtSectionAndIndex:[self.tableView indexPathForSelectedRow].section row:[self.tableView indexPathForSelectedRow].row];
             songViewController.navigationItem.title = [self.dataController albumAtSectionAndIndex:[self.tableView indexPathForSelectedRow].section row:[self.tableView indexPathForSelectedRow].row];
         }

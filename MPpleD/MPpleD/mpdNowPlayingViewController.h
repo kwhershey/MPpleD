@@ -46,7 +46,6 @@
 
 -(IBAction) sliderValueChanged:(id)sender;
 -(IBAction) positionValueChanged:(UISlider *)sender;
-//-(IBAction)backToNowPlayingClick:(UIStoryboardSegue *)segue;
 -(IBAction)playPausePush:(id)sender;
 -(IBAction)nextPush:(id)sender;
 -(IBAction)prevPush:(id)sender;

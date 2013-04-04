@@ -143,34 +143,6 @@
     return [self.albums count];
 }
 
--(void)addAlbumAtIndexToQueue:(NSUInteger)row artist:(NSString *)artist;
-{
-    [self initializeConnection];
-    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
-    {
-        NSLog(@"Connection error");
-        mpd_connection_free(self.conn);
-        [self initializeConnection];
-        return;
-    }
-    
-    mpd_command_list_begin(self.conn, true);
-
-    mpd_search_add_db_songs(self.conn, TRUE); 
-    
-    if(artist!=NULL)
-    {
-        mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ARTIST, [artist UTF8String]);
-    }
-    if((self.artist!=NULL && row!=0)|| self.artist==NULL )
-    {
-        mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ALBUM, [[self albumAtIndex:row] UTF8String]);
-    }
-    mpd_search_commit(self.conn);
-    mpd_command_list_end(self.conn);
-    mpd_connection_free(self.conn);
-    
-}
 
 -(void)addAlbumAtSectionAndIndexToQueue:(NSUInteger)section row:(NSUInteger)row artist:(NSString *)artist
 {
@@ -187,18 +159,16 @@
     
     mpd_search_add_db_songs(self.conn, TRUE);
     
-    if(artist!=NULL)
+    if(artist!=NULL) //we are in an artists list, so add that constraint
     {
         mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ARTIST, [artist UTF8String]);
         NSLog(@"artist");
     }
-    if([[self albumAtSectionAndIndex:section row:row] isEqualToString:@"All"])
+    if(![[self albumAtSectionAndIndex:section row:row] isEqualToString:@"All"])  //only add album if it is not all
     {
         mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ALBUM, [[self albumAtSectionAndIndex:section row:row] UTF8String]);
         NSLog(@"album");
     }
-
-    
     
     mpd_search_commit(self.conn);
     mpd_command_list_end(self.conn);
@@ -216,8 +186,6 @@
     }
     if(section==1)
     {
-        //NSString *filter = @"'[A-Za-z]'";
-        //evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", filter];
         NSMutableArray *albums = [[NSMutableArray alloc] initWithArray:self.albums];
         char first;
         for (int i = [albums count]-1; i>=0; i--)
@@ -232,12 +200,10 @@
         return albums;
     }
     else
+    {
         evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [sections objectAtIndex:section]];
-    
-    //NSPredicate *evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", filter];
-    return [[NSMutableArray alloc] initWithArray:[self.albums filteredArrayUsingPredicate:evaluator]];
-    //return [sectionArray objectAtIndex:row];
-    
+        return [[NSMutableArray alloc] initWithArray:[self.albums filteredArrayUsingPredicate:evaluator]];
+    }
 }
 
 @end

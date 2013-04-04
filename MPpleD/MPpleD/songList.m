@@ -137,7 +137,6 @@
     
     const char *cAlbum = [album UTF8String];
     mpd_command_list_begin(self.conn, true);
-    //mpd_search_db_tags(self.conn, MPD_TAG_TITLE);
     mpd_search_db_songs(self.conn, true);
     mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ALBUM, cAlbum);
 
@@ -223,8 +222,6 @@
     NSPredicate *evaluator= [NSPredicate alloc];
     if(section==0)
     {
-        //NSString *filter = @"'[A-Za-z]'";
-        //evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", filter];
         NSMutableArray *songs = [[NSMutableArray alloc] initWithArray:self.songs];
         char first;
         for (int i = [songs count]-1; i>=0; i--)
@@ -241,9 +238,7 @@
     else
         evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [sections objectAtIndex:section]];
     
-    //NSPredicate *evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", filter];
     return [[NSMutableArray alloc] initWithArray:[self.songs filteredArrayUsingPredicate:evaluator]];
-    //return [sectionArray objectAtIndex:row];
     
 }
 

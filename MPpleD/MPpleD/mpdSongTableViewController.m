@@ -37,7 +37,6 @@
         self.dataController = [[songList alloc] initWithAlbum:newAlbumFilter];
     }
     self.sorted = false;
-    //[self.tableView reloadData];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -52,7 +51,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //self.sorted = false;
     self.sections = [NSArray arrayWithObjects:@"#", @"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z", nil];
 }
 
@@ -81,7 +79,6 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    //NSLog(@"making headers");
     if(self.sorted)
     {
         if([[self.dataController sectionArray:section] count]==0)

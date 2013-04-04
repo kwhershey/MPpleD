@@ -34,6 +34,15 @@
     mpdConnectionData *globalConnection = [mpdConnectionData sharedManager];
     self.ipTextField.text = globalConnection.host;
     self.portTextField.text = [NSString stringWithFormat:@"%@", globalConnection.port];
+    [self connectPush:NULL];
+    if([self.connectionLabel.text isEqualToString:@"Connected to MPD!"] )
+    {
+        [self.updateDB setEnabled:YES];
+    }
+    else
+    {
+        [self.updateDB setEnabled:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,6 +82,13 @@ static int handle_error(struct mpd_connection *c)
     mpd_connection_free(conn);
 }
 
+-(IBAction)updatePush:(id)sender
+{
+    mpdConnectionData *connection = [mpdConnectionData sharedManager];
+    struct mpd_connection *conn = mpd_connection_new([connection.host UTF8String], [connection.port intValue], 3000);
+    mpd_run_update(conn, NULL);
+    mpd_connection_free(conn);
+}
 
 
 

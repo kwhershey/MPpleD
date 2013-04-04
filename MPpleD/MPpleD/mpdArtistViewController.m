@@ -61,8 +61,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSArray *sectionArray = [self.dataController.artists filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]]];
-    NSUInteger rowCount = [sectionArray count];
+    NSUInteger rowCount = [[self.dataController sectionArray:section ] count];
     if(rowCount == 0)
         return nil;
     return [self.sections objectAtIndex:section];
@@ -71,9 +70,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSArray *sectionArray = [self.dataController.artists filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]]];
-    //rowCount = [sectionArray count];
-    return [sectionArray count];
+    return [[self.dataController sectionArray:section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,7 +79,6 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    //[[cell textLabel] setText:[self.dataController artistAtIndex:indexPath.row]];
     [[cell textLabel] setText:[self.dataController artistAtSectionAndIndex:indexPath.section row:indexPath.row]];
     
     
@@ -106,10 +102,6 @@
         
          mpdAlbumViewController *albumViewController = [segue destinationViewController];
         
-        
-        
-        //albumViewController.artistFilter = [self.dataController artistAtIndex:[self.tableView indexPathForSelectedRow].row];
-        //albumViewController.navigationItem.title = [self.dataController artistAtIndex:[self.tableView indexPathForSelectedRow].row];
         albumViewController.artistFilter = [self.dataController artistAtSectionAndIndex:[self.tableView indexPathForSelectedRow].section row:[self.tableView indexPathForSelectedRow].row];
         albumViewController.navigationItem.title = [self.dataController artistAtSectionAndIndex:[self.tableView indexPathForSelectedRow].section row:[self.tableView indexPathForSelectedRow].row];
         
@@ -135,7 +127,6 @@
 		NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
 		// do something with this action
-        //[self.dataController addArtistAtIndexToQueue:indexPath.row];
         [self.dataController addArtistAtSectionAndIndexToQueue:indexPath.section row:indexPath.row];
 	}
 }

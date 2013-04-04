@@ -19,8 +19,7 @@
 {
     [super viewDidLoad];
     [self updateView];
-    //self.artwork = NULL;
-    //[self getArtwork:self.artistText.text :self.albumText.text];
+    self.artwork = [UIImage alloc];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -82,18 +81,7 @@
         self.totTime.text = [NSString stringWithFormat:@"%u:%02u",self.totalTime/60,self.totalTime%60 ];
         self.progressSlider.maximumValue = self.totalTime;
         self.progressSlider.value = self.currentTime;
-        /*
-        if(mpd_status_get_random(status))
-        {
-            [self.shuffle setImage:[UIImage imageNamed:@"shuffle-on.png"] forState:UIControlStateNormal];
-            self.random = TRUE;
-        }
-        else
-        {
-            [self.shuffle setImage:[UIImage imageNamed:@"shuffle.png"] forState:UIControlStateNormal];
-            self.random = FALSE;
-        }
-         */
+
         enum mpd_state playerState;
         if((playerState= mpd_status_get_state(status)) == MPD_STATE_PLAY || mpd_status_get_state(status) == MPD_STATE_PAUSE)
         {
@@ -146,9 +134,7 @@
                 self.trackText.text = @"";
             }
             [self getArtwork];
-            //self.artViewer.image = self.artwork;
             [self.artViewer setImage:self.artwork];
-            //[self.artViewer ]
             
         }
         else
@@ -341,11 +327,5 @@
     }
 }
 
-/*
--(IBAction)backToNowPlayingClick:(UIStoryboardSegue *)segue
-{
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
-*/
 
 @end

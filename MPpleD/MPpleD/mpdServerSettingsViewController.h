@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *portTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passTextField;
 @property (weak, nonatomic) IBOutlet UILabel *connectionLabel;
+@property (strong, nonatomic) IBOutlet UIButton *updateDB;
 @property const char *host;
 @property int port;
 
