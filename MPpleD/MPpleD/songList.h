@@ -24,6 +24,7 @@
 -(NSString*)songAtSectionAndIndex:(NSUInteger)section row:(NSUInteger)row;
 -(NSUInteger)songCount;
 -(void)addSongAtIndexToQueue:(NSUInteger)row artist:(NSString *)artist album:(NSString *)album;
+-(void)addSongAtSectionAndIndexToQueue:(NSUInteger)section row:(NSUInteger)row artist:(NSString *)artist album:(NSString *)album;
 -(NSArray*)sectionArray:(NSUInteger)section;
 
 @end

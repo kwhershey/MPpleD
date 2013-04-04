@@ -146,7 +146,14 @@
 		NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
         
 		// do something with this action
-        [self.dataController addSongAtIndexToQueue:indexPath.row artist:self.artistFilter album:self.albumFilter];
+        if(self.sorted)
+        {
+            [self.dataController addSongAtSectionAndIndexToQueue:indexPath.section row:indexPath.row artist:self.artistFilter album:self.albumFilter];
+        }
+        else
+        {
+            [self.dataController addSongAtIndexToQueue:indexPath.row artist:self.artistFilter album:self.albumFilter];
+        }
 	}
 }
 

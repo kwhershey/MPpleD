@@ -206,5 +206,39 @@
     
 }
 
+-(NSArray*)sectionArray:(NSUInteger)section
+{
+    NSArray *sections = [NSArray arrayWithObjects:@"all",@"#", @"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z", nil];
+    NSPredicate *evaluator= [NSPredicate alloc];
+    if(section==0)
+    {
+        return [NSArray arrayWithObject:@"All"];
+    }
+    if(section==1)
+    {
+        //NSString *filter = @"'[A-Za-z]'";
+        //evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", filter];
+        NSMutableArray *albums = [[NSMutableArray alloc] initWithArray:self.albums];
+        char first;
+        for (int i = [albums count]-1; i>=0; i--)
+        {
+            first=[((NSString*)[albums objectAtIndex:i]) UTF8String][0];
+            if(isalpha(first))
+            {
+                [albums removeObjectAtIndex:i];
+            }
+            
+        }
+        return albums;
+    }
+    else
+        evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [sections objectAtIndex:section]];
+    
+    //NSPredicate *evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", filter];
+    return [[NSMutableArray alloc] initWithArray:[self.albums filteredArrayUsingPredicate:evaluator]];
+    //return [sectionArray objectAtIndex:row];
+    
+}
+
 @end
 

@@ -169,7 +169,7 @@
     return [self.songs count];
 }
 
--(void)addSongAtIndexToQueue:(NSUInteger)row artist:(NSString *)artist album:(NSString *)album;
+-(void)addSongAtIndexToQueue:(NSUInteger)row artist:(NSString *)artist album:(NSString *)album
 {
     [self initializeConnection];
     if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
@@ -193,6 +193,29 @@
     mpd_connection_free(self.conn);
 }
 
+-(void)addSongAtSectionAndIndexToQueue:(NSUInteger)section row:(NSUInteger)row artist:(NSString *)artist album:(NSString *)album
+{
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return;
+    }
+    
+    mpd_command_list_begin(self.conn, true);
+    mpd_search_add_db_songs(self.conn, TRUE);
+    
+    if(artist!=NULL)
+        mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ARTIST, [artist UTF8String]);
+    if(album!=NULL)
+        mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ALBUM, [album UTF8String]);
+    mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_TITLE, [[self songAtSectionAndIndex:section row:row] UTF8String]);
+    mpd_search_commit(self.conn);
+    mpd_command_list_end(self.conn);
+    mpd_connection_free(self.conn);
+}
 
 -(NSArray*)sectionArray:(NSUInteger)section
 {
@@ -204,7 +227,7 @@
         //evaluator = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", filter];
         NSMutableArray *songs = [[NSMutableArray alloc] initWithArray:self.songs];
         char first;
-        for (int i = 0; i<[songs count]; i++)
+        for (int i = [songs count]-1; i>=0; i--)
         {
             first=[((NSString*)[songs objectAtIndex:i]) UTF8String][0];
             if(isalpha(first))
