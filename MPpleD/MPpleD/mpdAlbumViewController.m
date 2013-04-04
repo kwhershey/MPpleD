@@ -102,15 +102,14 @@
         return 1;
     else if(section==2 && self.artistFilter)
     {
-        NSArray *sectionArray = [self.dataController.albums filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]]];
+        //NSArray *sectionArray = [self.dataController.albums filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]]];
         //rowCount = [sectionArray count];
-        return [sectionArray count]-1;
+        return [[self.dataController sectionArray:section] count]-1;
+                
     }
     else
     {
-        NSArray *sectionArray = [self.dataController.albums filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", [self.sections objectAtIndex:section]]];
-        //rowCount = [sectionArray count];
-        return [sectionArray count];
+        return [[self.dataController sectionArray:section] count];
     }
     //return [self.dataController albumCount];
 }
