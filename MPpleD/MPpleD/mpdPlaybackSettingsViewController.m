@@ -29,12 +29,6 @@
     [self updateView];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 -(void)viewDidAppear:(BOOL)animated
 {
     [self updateView];
@@ -49,6 +43,18 @@
     [self.updateTimer invalidate];
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+/*
+ * Passive Connection Data loading
+ *
+ */
+
 -(void)initializeConnection
 {
     mpdConnectionData *connection = [mpdConnectionData sharedManager];
@@ -56,7 +62,6 @@
     self.port = [connection.port intValue];
     self.conn = mpd_connection_new(self.host, self.port, 3000);
 }
-
 
 -(void)updateView
 {
@@ -138,6 +143,13 @@
     }
     mpd_connection_free(self.conn);
 }
+
+
+/*
+ * User Interactions
+ *
+ */
+
 
 -(IBAction)shufflePush:(id)sender
 {
@@ -242,19 +254,6 @@
     }
     mpd_connection_free(self.conn);
     [self updateView];
-}
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
 }
 
 

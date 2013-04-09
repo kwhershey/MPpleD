@@ -69,13 +69,6 @@
     
 }
 
-/*
--(NSString*)artistAtIndex:(NSUInteger)row
-{
-    return [self.artists objectAtIndex:row];
-}
- */
-
 -(NSString*)artistAtSectionAndIndex:(NSUInteger)section row:(NSUInteger)row
 {
     return [[self sectionArray:section] objectAtIndex:row];
@@ -85,8 +78,6 @@
 {
     return [self.artists count];
 }
-
-
 
 -(void)addArtistAtSectionAndIndexToQueue:(NSUInteger)section row:(NSUInteger)row;
 {
@@ -115,8 +106,10 @@
     NSArray *sections = [NSArray arrayWithObjects:@"#", @"a", @"b", @"c", @"d", @"e", @"f", @"g", @"h", @"i", @"j", @"k", @"l", @"m", @"n", @"o", @"p", @"q", @"r", @"s", @"t", @"u", @"v", @"w", @"x", @"y", @"z", nil];
     NSPredicate *evaluator= [NSPredicate alloc];
 
+    //Special Character Section
     if(section==1)
     {
+        //This can all probably done with filteredArrayUsingPredicate, but I couldn't get the reg expression to work.
         NSMutableArray *artists = [[NSMutableArray alloc] initWithArray:self.artists];
         char first;
         for (int i = [artists count]-1; i>=0; i--)

@@ -43,11 +43,23 @@
     [self.updateTimer invalidate];
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
+//I know this is pretty useless, but needed for the timer in viewDidAppear
 -(void)updateInfo
 {
     [self.tableView reloadData];
 }
+
+/*
+ * Passive Connection Data loading
+ *
+ */
+
 
 -(void)initializeConnection
 {
@@ -57,11 +69,7 @@
     self.conn = mpd_connection_new(self.host, self.port, 3000);
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 #pragma mark - Table view data source
 
@@ -103,12 +111,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-
     static NSString *CellIdentifier = @"playlistItem";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     [self updateRowCount];
+    //should probably use queue number instead, but this works fine, especially with the timer
     if(self.rowCount!=self.prevRowCount)
     {
         [self.tableView reloadData];
@@ -211,6 +218,8 @@
 
 #pragma mark - Table view delegate
 
+
+//Plays song at that position
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {   
     [self initializeConnection];
@@ -258,6 +267,8 @@
     
 }
 
+
+//Clear the Play Queue
 -(IBAction)clearQueue:(id)sender
 {
     [self initializeConnection];

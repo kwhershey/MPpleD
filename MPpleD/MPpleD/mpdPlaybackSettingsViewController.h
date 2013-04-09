@@ -13,10 +13,19 @@
 
 @interface mpdPlaybackSettingsViewController : UITableViewController
 
+//Outlets
+@property (strong, nonatomic) IBOutlet UISwitch *shuffle;
+@property (strong, nonatomic) IBOutlet UISwitch *repeat;
+@property (strong, nonatomic) IBOutlet UISwitch *consume;
+@property (strong, nonatomic) IBOutlet UISwitch *singleMode;
+@property (strong, nonatomic) IBOutlet UISwitch *crossfade;
+
+//Connection Settings
 @property struct mpd_connection *conn;
 @property const char* host;
 @property int port;
 
+//Data
 @property NSTimer *updateTimer;
 
 @property BOOL randomState;
@@ -25,11 +34,7 @@
 @property BOOL singleState;
 @property BOOL crossState;
 
-@property (strong, nonatomic) IBOutlet UISwitch *shuffle;
-@property (strong, nonatomic) IBOutlet UISwitch *repeat;
-@property (strong, nonatomic) IBOutlet UISwitch *consume;
-@property (strong, nonatomic) IBOutlet UISwitch *singleMode;
-@property (strong, nonatomic) IBOutlet UISwitch *crossfade;
+//Actions
 -(IBAction)shufflePush:(id)sender;
 -(IBAction)repeatPush:(id)sender;
 -(IBAction)consumePush:(id)sender;

@@ -38,6 +38,21 @@
     [self.clockTimer invalidate];
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+}
+
+
+/*
+ * Passive Connection Data loading
+ *
+ */
+
+
+//Called to setup self.conn. Used by all database interactions.
+//It is best not to reuse the connection for multiple interactions, so setup and
+//released each time.
 -(void)initializeConnection
 {
     mpdConnectionData *connection = [mpdConnectionData sharedManager];
@@ -46,6 +61,7 @@
     self.conn = mpd_connection_new(self.host, self.port, 3000);
 }
 
+//Called every 5 seconds to sync with database info.
 -(void)updateView
 {
     [self initializeConnection];
@@ -83,6 +99,7 @@
         self.progressSlider.value = self.currentTime;
 
         enum mpd_state playerState;
+        //If playing or paused, load all song info.  Else clear all fields.
         if((playerState= mpd_status_get_state(status)) == MPD_STATE_PLAY || mpd_status_get_state(status) == MPD_STATE_PAUSE)
         {
             if(playerState==MPD_STATE_PAUSE)
@@ -106,6 +123,8 @@
             mpd_status_free(status);
             mpd_response_next(self.conn);
             song = mpd_recv_song(self.conn);
+            //These are all wrapped in try catch statements because if the tag is empty, the
+            //function doesn't handle well
             @try {
                 self.songTitle.text = [[NSString alloc] initWithUTF8String:mpd_song_get_tag(song, MPD_TAG_TITLE, 0)];
             }
@@ -149,6 +168,36 @@
     mpd_connection_free(self.conn);
 }
 
+//uses last.fm web api to fetch the picture.  UpdateView then loads this info into the uiimageview
+-(void)getArtwork
+{
+    UIImage *newArtwork;
+    //get the album xml page
+    NSMutableString *fetcherString=[[NSMutableString alloc] initWithString:@"http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=892d8cc27ce29468dc4da6d03afc5da9"];
+    [fetcherString appendString:@"&artist="];
+    [fetcherString appendString:[self.artistText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    [fetcherString appendString:@"&album="];
+    [fetcherString appendString:[self.albumText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSError *error = [[NSError alloc] init];
+    NSString *lfmpage = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:fetcherString] encoding:NSUTF8StringEncoding error:&error];
+    //find the medium image url in the xml
+    NSString *search = @"<image size=\"medium\">";
+    NSString *sub = [lfmpage substringFromIndex:NSMaxRange([lfmpage rangeOfString:search])];
+    NSString *endSearch = @"</image>";
+    sub=[sub substringToIndex:[sub rangeOfString:endSearch].location];
+    
+    id path = sub;
+    //only fetch the artwork again if the album has changed.  Minimizes data usage.  only fetch each image once.
+    if(path!=self.artworkPath)
+    {
+        self.artworkPath = path;
+        NSURL *url = [NSURL URLWithString:path];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        newArtwork = [[UIImage alloc] initWithData:data];
+        self.artwork = newArtwork;
+    }
+}
+
 
 //updates the position bar and timers when playing
 -(void)artificialClock
@@ -167,10 +216,10 @@
     }
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-}
+/*
+ * User Interactions
+ *
+ */
 
 -(IBAction)playPausePush:(id)sender
 {
@@ -182,6 +231,8 @@
         [self initializeConnection];
         return;
     }
+    
+    
     struct mpd_status * status;
     mpd_command_list_begin(self.conn, true);
     mpd_send_status(self.conn);
@@ -197,6 +248,7 @@
     }
     else
     {
+        //if status worked, this is the real action.
         if(mpd_status_get_state(status) == MPD_STATE_PLAY || mpd_status_get_state(status) == MPD_STATE_PAUSE)
         {
 
@@ -212,6 +264,8 @@
         }
     }
     mpd_connection_free(self.conn);
+    //Rather than update all the info, we just update the view.
+    //Doesn't duplicate code, and will only show a state change if call actually worked.
     [self updateView];
 }
 
@@ -245,24 +299,7 @@
     [self updateView];
 }
 
--(IBAction)shufflePush:(id)sender
-{
-    [self initializeConnection];
-    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
-    {
-        NSLog(@"Connection error");
-        mpd_connection_free(self.conn);
-        [self initializeConnection];
-        return;
-    }
-    if(self.random)
-        mpd_run_random(self.conn, FALSE);
-    else
-        mpd_run_random(self.conn, TRUE);
-    mpd_connection_free(self.conn);
-    [self updateView];
-}
-
+//Volume Slider
 - (IBAction) sliderValueChanged:(UISlider *)sender {
     [self initializeConnection];
     if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
@@ -276,6 +313,7 @@
     mpd_connection_free(self.conn);
 }
 
+//Track Time Position
 -(IBAction)positionValueChanged:(UISlider *)sender
 {
     [self initializeConnection];
@@ -300,32 +338,7 @@
 }
 
 
--(void)getArtwork
-{
-    UIImage *newArtwork;
-    
-    NSMutableString *fetcherString=[[NSMutableString alloc] initWithString:@"http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=892d8cc27ce29468dc4da6d03afc5da9"];
-    [fetcherString appendString:@"&artist="];
-    [fetcherString appendString:[self.artistText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    [fetcherString appendString:@"&album="];
-    [fetcherString appendString:[self.albumText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSError *error = [[NSError alloc] init];
-    NSString *lfmpage = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:fetcherString] encoding:NSUTF8StringEncoding error:&error];
-    NSString *search = @"<image size=\"medium\">";
-    NSString *sub = [lfmpage substringFromIndex:NSMaxRange([lfmpage rangeOfString:search])];
-    NSString *endSearch = @"</image>";
-    sub=[sub substringToIndex:[sub rangeOfString:endSearch].location];
-    
-    id path = sub;
-    if(path!=self.artworkPath)
-    {
-        self.artworkPath = path;
-        NSURL *url = [NSURL URLWithString:path];
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        newArtwork = [[UIImage alloc] initWithData:data];
-        self.artwork = newArtwork;
-    }
-}
+
 
 
 @end

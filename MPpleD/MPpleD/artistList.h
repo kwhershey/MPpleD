@@ -13,12 +13,15 @@
 
 @interface artistList : NSObject
 
+//Connection Settings
 @property struct mpd_connection *conn;
 @property const char* host;
 @property int port;
 
+//Data
 @property NSMutableArray *artists;
 
+//Functions
 -(NSString*)artistAtSectionAndIndex:(NSUInteger)section row:(NSUInteger)row;
 -(NSUInteger)artistCount;
 -(void)addArtistAtSectionAndIndexToQueue:(NSUInteger)section row:(NSUInteger)row;

@@ -27,17 +27,14 @@
     }
 }
 
+//when called from an artist
 -(void)setArtistFilter:(NSString *)newArtistFilter
 {
-    
-    if (_artistFilter != newArtistFilter) {
-        
+    if (_artistFilter != newArtistFilter) 
+    {
         _artistFilter = newArtistFilter;
-        
-        self.dataController = [[albumList alloc] initWithArtist:newArtistFilter];
-        
-    }
-    
+        self.dataController = [[albumList alloc] initWithArtist:newArtistFilter];        
+    }    
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -77,20 +74,32 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    /*
     if(section==0)
     {
-        return nil;
+        return nil; //Don't put a section header for all
     }
     else
     {
         NSUInteger rowCount = [[self.dataController sectionArray:section] count];
+        //This is the 'a' Section.  If artistFilter, all is first element and we don't want it
         if(section==2 && self.artistFilter)
-            rowCount = rowCount-1;
+            rowCount = rowCount-1; //Don't count it
+        //Don't display headers for empty sections
         if(rowCount <= 0)
             return nil;
         else
             return [self.sections objectAtIndex:section];
     }
+     */
+    NSInteger rowCount = [self.tableView numberOfRowsInSection:section];
+    if(rowCount==0)
+    {
+        return nil;
+    }
+    else return [self.sections objectAtIndex:section];
+
+
 }
 
 
@@ -103,6 +112,7 @@
         else
             return 0;
     }
+    //This is the 'a' section.  If artistFiltered, all will be the first element and we don't want it
     else if(section==2 && self.artistFilter)
     {
         return [[self.dataController sectionArray:section] count]-1;
@@ -130,9 +140,11 @@
 
 #pragma mark - Table view delegate
 
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 }
+ */
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"ShowAlbumSongs"]) {

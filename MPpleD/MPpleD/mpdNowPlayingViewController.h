@@ -13,6 +13,7 @@
 
 @interface mpdNowPlayingViewController : UIViewController
 
+//Outlets
 @property (weak, nonatomic) IBOutlet UILabel *songTitle;
 @property (weak, nonatomic) IBOutlet UILabel *artistText;
 @property (weak, nonatomic) IBOutlet UILabel *albumText;
@@ -22,21 +23,21 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *prev;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *play;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *next;
-@property (weak, nonatomic) IBOutlet UIButton *shuffle;
 @property (weak, nonatomic) IBOutlet UISlider *volume;
 @property (weak, nonatomic) IBOutlet UISlider *progressSlider;
 @property (strong, nonatomic) IBOutlet UIImageView *artViewer;
 
-
+//Connection Settings:
 @property struct mpd_connection *conn;
 @property const char* host;
 @property int port;
 
-@property BOOL random;
-@property BOOL playing;
-
+//Timers
 @property NSTimer *updateTimer;
 @property NSTimer *clockTimer;
+
+//Data
+@property BOOL playing;
 
 @property int currentTime;
 @property int totalTime;
@@ -44,10 +45,11 @@
 @property UIImage *artwork;
 @property id artworkPath;
 
--(IBAction) sliderValueChanged:(id)sender;
--(IBAction) positionValueChanged:(UISlider *)sender;
+//Actions
 -(IBAction)playPausePush:(id)sender;
 -(IBAction)nextPush:(id)sender;
 -(IBAction)prevPush:(id)sender;
+-(IBAction)sliderValueChanged:(id)sender; //Volume
+-(IBAction)positionValueChanged:(UISlider *)sender;
 
 @end

@@ -11,10 +11,12 @@
 
 @interface mpdAlbumViewController : UITableViewController
 
+//Data
 @property (strong, nonatomic) albumList *dataController;
 @property (strong, nonatomic) NSString *artistFilter;
 @property NSArray *sections;
 
+//Actions
 -(IBAction)backToAlbumClick:(UIStoryboardSegue *)segue;
 
 @end
