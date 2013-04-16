@@ -152,12 +152,14 @@
     mpd_connection_free(self.conn);
 }
 
-
+//At index functions are used when unsorted
 -(NSString*)songAtIndex:(NSUInteger)row
 {
     return [self.songs objectAtIndex:row];
 }
 
+
+//When sorted
 -(NSString*)songAtSectionAndIndex:(NSUInteger)section row:(NSUInteger)row
 {
     return [[self sectionArray:section] objectAtIndex:row];

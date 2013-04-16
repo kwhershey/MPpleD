@@ -92,7 +92,24 @@
             return [self.sections objectAtIndex:section];
     }
      */
-    NSInteger rowCount = [self.tableView numberOfRowsInSection:section];
+    //NSInteger rowCount = [self.tableView numberOfRowsInSection:section];
+    NSInteger rowCount;
+    if(section==0) //all section
+    {
+        if(self.artistFilter) //if artist filtered, display all
+            rowCount= 1;
+        else
+            rowCount= 0;
+    }
+    //This is the 'a' section.  If artistFiltered, all will be the first element and we don't want it
+    else if(section==2 && self.artistFilter)
+    {
+        rowCount= [[self.dataController sectionArray:section] count]-1;
+    }
+    else
+    {
+        rowCount= [[self.dataController sectionArray:section] count];
+    }
     if(rowCount==0)
     {
         return nil;

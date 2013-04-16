@@ -13,11 +13,15 @@
 
 @interface songList : NSObject
 
+//Server Settings
 @property struct mpd_connection *conn;
 @property const char* host;
 @property int port;
+
+//data
 @property NSMutableArray *songs;
 
+//Methods
 -(id)initWithArtist:(NSString *)artist;
 -(id)initWithAlbum:(NSString *)album;
 -(NSString*)songAtIndex:(NSUInteger)row;

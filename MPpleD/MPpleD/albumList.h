@@ -13,15 +13,19 @@
 
 @interface albumList : NSObject
 
+//Server Settings
 @property struct mpd_connection *conn;
 @property const char* host;
 @property int port;
 
+//Data
 @property NSMutableArray *albums;
 @property NSString *artist;
 
+
+//Methods
 -(id)initWithArtist:(NSString *)artist;
--(NSString*)albumAtIndex:(NSUInteger)row;
+//-(NSString*)albumAtIndex:(NSUInteger)row;
 -(NSString*)albumAtSectionAndIndex:(NSUInteger)section row:(NSUInteger)row;
 -(NSUInteger)albumCount;
 -(void)addAlbumAtSectionAndIndexToQueue:(NSUInteger)section row:(NSUInteger)row artist:(NSString *)artist;

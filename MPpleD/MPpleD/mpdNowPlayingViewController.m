@@ -147,8 +147,10 @@
                 self.albumText.text = @"";
             }
             @try {
-                self.trackText.text = [[NSString alloc] initWithUTF8String:mpd_song_get_tag(song, MPD_TAG_TRACK, 0)];
-            }
+                NSMutableString *trackString=[[NSMutableString alloc] initWithUTF8String:mpd_song_get_tag(song, MPD_TAG_TRACK, 0)];
+                [trackString appendString:@" of "];
+                [trackString appendString:[NSString stringWithFormat:@"%d",[self maxTrackNum:self.artistText.text album:self.albumText.text]]];
+                self.trackText.text = trackString;            }
             @catch (NSException *e) {
                 self.trackText.text = @"";
             }
@@ -196,6 +198,49 @@
         newArtwork = [[UIImage alloc] initWithData:data];
         self.artwork = newArtwork;
     }
+}
+
+-(NSInteger)maxTrackNum:(NSString*)artist album:(NSString*)album
+{
+    //NSMutableArray *list = [[NSMutableArray alloc] init];
+    NSInteger max=0;
+    
+    [self initializeConnection];
+    if (mpd_connection_get_error(self.conn) != MPD_ERROR_SUCCESS)
+    {
+        NSLog(@"Connection error");
+        mpd_connection_free(self.conn);
+        [self initializeConnection];
+        return 0;
+    }
+    
+    const char *cArtist = [artist UTF8String];
+    const char *cAlbum = [album UTF8String];
+    mpd_command_list_begin(self.conn, true);
+    mpd_search_db_tags(self.conn, MPD_TAG_TRACK);
+    mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ARTIST, cArtist);
+    mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ALBUM, cAlbum);
+    mpd_search_commit(self.conn);
+    mpd_command_list_end(self.conn);
+    
+    struct mpd_pair *pair;
+    
+    
+    while ((pair = mpd_recv_pair_tag(self.conn, MPD_TAG_TRACK)) != NULL)
+    {
+        NSString *trackNum = [[NSString alloc] initWithUTF8String:pair->value];
+        if([trackNum intValue]>max)
+        {
+            max=[trackNum intValue];
+        }
+        mpd_return_pair(self.conn, pair);
+    }
+    
+    
+    
+    
+    //mpd_connection_free(self.conn);
+    return max;
 }
 
 
@@ -337,7 +382,22 @@
     mpd_connection_free(self.conn);
 }
 
+-(IBAction)artClick:(id)sender
+{
+    NSMutableString *fetcherString=[[NSMutableString alloc] initWithString:@"http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=892d8cc27ce29468dc4da6d03afc5da9"];
+    [fetcherString appendString:@"&artist="];
+    [fetcherString appendString:[self.artistText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    [fetcherString appendString:@"&album="];
+    [fetcherString appendString:[self.albumText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSError *error = [[NSError alloc] init];
+    NSString *lfmpage = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:fetcherString] encoding:NSUTF8StringEncoding error:&error];
+    //find the medium image url in the xml
+    NSString *search = @"<url>";
+    NSString *sub = [lfmpage substringFromIndex:NSMaxRange([lfmpage rangeOfString:search])];
+    NSString *endSearch = @"</url>";
+    sub=[sub substringToIndex:[sub rangeOfString:endSearch].location];
 
+}
 
 
 

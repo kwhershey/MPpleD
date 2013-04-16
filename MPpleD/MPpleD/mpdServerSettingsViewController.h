@@ -12,11 +12,14 @@
 #import "mpdConnectionData.h"
 
 @interface mpdServerSettingsViewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UITextField *ipTextField;
 @property (weak, nonatomic) IBOutlet UITextField *portTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passTextField;
 @property (weak, nonatomic) IBOutlet UILabel *connectionLabel;
 @property (strong, nonatomic) IBOutlet UIButton *updateDB;
+
+//Server Settings
 @property const char *host;
 @property int port;
 

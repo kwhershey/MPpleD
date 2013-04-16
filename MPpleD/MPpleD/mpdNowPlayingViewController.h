@@ -51,5 +51,6 @@
 -(IBAction)prevPush:(id)sender;
 -(IBAction)sliderValueChanged:(id)sender; //Volume
 -(IBAction)positionValueChanged:(UISlider *)sender;
+-(IBAction)artClick:(id)sender;
 
 @end

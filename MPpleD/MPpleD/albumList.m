@@ -17,6 +17,10 @@
 
 @implementation albumList
 
+//
+//Initializers
+//
+
 - (id)init {
     
     if (self = [super init]) {
@@ -122,10 +126,16 @@
     [self.albums insertObject:@"All" atIndex:0];
 }
 
+//
+//Data retreival
+//
+
+/*
 -(NSString*)albumAtIndex:(NSUInteger)row
 {
     return [self.albums objectAtIndex:row];
 }
+ */
 
 -(NSString*)albumAtSectionAndIndex:(NSUInteger)section row:(NSUInteger)row
 {
@@ -134,7 +144,6 @@
     {
         [sectionArray removeObjectAtIndex:0];
     }
-    //return [sectionArray objectAtIndex:row];
     return [sectionArray objectAtIndex:row];
 }
 
@@ -162,12 +171,10 @@
     if(artist!=NULL) //we are in an artists list, so add that constraint
     {
         mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ARTIST, [artist UTF8String]);
-        NSLog(@"artist");
     }
     if(![[self albumAtSectionAndIndex:section row:row] isEqualToString:@"All"])  //only add album if it is not all
     {
         mpd_search_add_tag_constraint(self.conn, MPD_OPERATOR_DEFAULT, MPD_TAG_ALBUM, [[self albumAtSectionAndIndex:section row:row] UTF8String]);
-        NSLog(@"album");
     }
     
     mpd_search_commit(self.conn);

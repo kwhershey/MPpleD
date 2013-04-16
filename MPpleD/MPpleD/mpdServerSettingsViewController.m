@@ -82,6 +82,9 @@ static int handle_error(struct mpd_connection *c)
     mpd_connection_free(conn);
 }
 
+
+//Updates the MPD database.  The view is updated whenever you go into it,
+//but mpd does not detect when new music is added, so you have to manually rescan
 -(IBAction)updatePush:(id)sender
 {
     mpdConnectionData *connection = [mpdConnectionData sharedManager];
