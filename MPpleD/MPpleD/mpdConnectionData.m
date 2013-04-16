@@ -27,7 +27,7 @@
 - (id)init {
     if (self = [super init]) {
         host = @"0.0.0.0";
-        port = @6600;
+        port = [[NSNumber alloc] initWithInt:6600];
     }
     
     
@@ -42,12 +42,13 @@
      NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"data.plist"];
      if ([fileManager fileExistsAtPath:filePath] == YES)
      {
-     NSMutableArray *data = [[NSMutableArray alloc]initWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:filePath]];
-     self.host=data[0];
-     self.port=data[1];
-     //NSLog(@"here");
+         NSMutableArray *data = [[NSMutableArray alloc]initWithArray:[NSKeyedUnarchiver unarchiveObjectWithFile:filePath]];
+         host=data[0];
+         port=data[1];
      }
-     
+    //NSLog(self.host);
+    //NSLog(self.port);
+    
     
     return self;
 }
@@ -59,7 +60,23 @@
 }
 
 
-
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    //NSLog(@"Entering Background");
+    
+    mpdConnectionData *globalConnection = [mpdConnectionData sharedManager];
+    //NSLog(@"here");
+    NSArray *data = [[NSArray alloc] initWithObjects:globalConnection.host, globalConnection.port, nil];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docDir = [paths objectAtIndex:0];
+    NSString *fullFileName = [NSString stringWithFormat:@"%@/data.plist", docDir];
+    [NSKeyedArchiver archiveRootObject:data toFile:fullFileName];
+    //NSLog(@"here2");
+    
+    //globalConnection.host = self.ipTextField.text;
+    //globalConnection.port = [[NSNumber alloc] initWithInt:[self.portTextField.text intValue]];
+    
+    
+}
 
 
 @end

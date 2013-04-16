@@ -396,6 +396,9 @@
     NSString *sub = [lfmpage substringFromIndex:NSMaxRange([lfmpage rangeOfString:search])];
     NSString *endSearch = @"</url>";
     sub=[sub substringToIndex:[sub rangeOfString:endSearch].location];
+    
+    NSLog(@"Art click");
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: sub]];
 
 }
 
