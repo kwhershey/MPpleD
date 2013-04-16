@@ -52,5 +52,6 @@
 -(IBAction)sliderValueChanged:(id)sender; //Volume
 -(IBAction)positionValueChanged:(UISlider *)sender;
 -(IBAction)artClick:(id)sender;
+-(IBAction)artistClick:(id)sender;
 
 @end
