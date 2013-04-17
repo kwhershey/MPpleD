@@ -389,7 +389,6 @@
     [fetcherString appendString:[self.artistText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     [fetcherString appendString:@"&album="];
     [fetcherString appendString:[self.albumText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(fetcherString);
     NSError *error = [[NSError alloc] init];
     NSString *lfmpage = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:fetcherString] encoding:NSUTF8StringEncoding error:&error];
     //find the medium image url in the xml
@@ -404,16 +403,12 @@
 
 -(IBAction)artistClick:(id)sender
 {
-    NSMutableString *fetcherString=[[NSMutableString alloc] initWithString:@"http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=892d8cc27ce29468dc4da6d03afc5da9"];
+    NSMutableString *fetcherString=[[NSMutableString alloc] initWithString:@"http://ws.audioscrobbler.com/2.0/?method=artist.getinfo"];
     [fetcherString appendString:@"&artist="];
     [fetcherString appendString:[self.artistText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    //[fetcherString appendString:@"&album="];
-    //[fetcherString appendString:[self.albumText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(fetcherString);
+    [fetcherString appendString:@"&api_key=892d8cc27ce29468dc4da6d03afc5da9"];
     NSError *error = [[NSError alloc] init];
     NSString *lfmpage = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:fetcherString] encoding:NSUTF8StringEncoding error:&error];
-    NSLog(lfmpage);
-    //find the medium image url in the xml
     NSString *search = @"<url>";
     NSString *sub = [lfmpage substringFromIndex:NSMaxRange([lfmpage rangeOfString:search])];
     NSString *endSearch = @"</url>";
