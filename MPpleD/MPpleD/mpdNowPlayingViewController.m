@@ -149,6 +149,7 @@
             @try {
                 NSMutableString *trackString=[[NSMutableString alloc] initWithUTF8String:mpd_song_get_tag(song, MPD_TAG_TRACK, 0)];
                 [trackString appendString:@" of "];
+                mpd_connection_free(self.conn);
                 [trackString appendString:[NSString stringWithFormat:@"%d",[self maxTrackNum:self.artistText.text album:self.albumText.text]]];
                 self.trackText.text = trackString;            }
             @catch (NSException *e) {
@@ -167,7 +168,7 @@
             self.playing=false;
         }
     }
-    mpd_connection_free(self.conn);
+    //mpd_connection_free(self.conn);
 }
 
 //uses last.fm web api to fetch the picture.  UpdateView then loads this info into the uiimageview
@@ -183,7 +184,7 @@
     NSError *error = [[NSError alloc] init];
     NSString *lfmpage = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:fetcherString] encoding:NSUTF8StringEncoding error:&error];
     //find the medium image url in the xml
-    NSString *search = @"<image size=\"medium\">";
+    NSString *search = @"<image size=\"extralarge\">";
     NSString *sub = [lfmpage substringFromIndex:NSMaxRange([lfmpage rangeOfString:search])];
     NSString *endSearch = @"</image>";
     sub=[sub substringToIndex:[sub rangeOfString:endSearch].location];
@@ -239,7 +240,7 @@
     
     
     
-    //mpd_connection_free(self.conn);
+    mpd_connection_free(self.conn);
     return max;
 }
 
