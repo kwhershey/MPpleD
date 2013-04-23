@@ -384,6 +384,7 @@
 
 -(IBAction)artClick:(id)sender
 {
+
     NSMutableString *fetcherString=[[NSMutableString alloc] initWithString:@"http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=892d8cc27ce29468dc4da6d03afc5da9"];
     [fetcherString appendString:@"&artist="];
     [fetcherString appendString:[self.artistText.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
@@ -398,6 +399,7 @@
     sub=[sub substringToIndex:[sub rangeOfString:endSearch].location];
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString: sub]];
+
 
 }
 
@@ -417,5 +419,8 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString: sub]];
     
 }
+
+    
+
 
 @end
