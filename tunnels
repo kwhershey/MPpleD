@@ -1,4 +1,3 @@
-ssh -fnN -R6600:localhost:6600 kyle@kwhershey.adultdns.net 
-ssh -fnN -L6600:localhost:6600 kyle@kwhershey.adultdns.net 
+ssh -fnN -L6600:localhost:6600 172.16.14.112 
 
 
