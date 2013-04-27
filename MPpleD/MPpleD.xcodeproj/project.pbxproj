@@ -15,6 +15,7 @@
 		1A1EFD9E16CD5C8B0081B395 /* mpdPlaylistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EFD9D16CD5C8B0081B395 /* mpdPlaylistTableViewController.m */; };
 		1A1EFDA116CD5CA10081B395 /* mpdMusicTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EFDA016CD5CA10081B395 /* mpdMusicTableViewController.m */; };
 		1A208F42172C6693007F7CC1 /* libMpdDispatch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A208F41172C6693007F7CC1 /* libMpdDispatch.a */; };
+		1A208F44172C6B2E007F7CC1 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A208F43172C6B2E007F7CC1 /* logo.png */; };
 		1A4FF50A16F0150F0008B880 /* volume.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A4FF50916F0150F0008B880 /* volume.png */; };
 		1A74460B16CD53C70005AE05 /* mpdServerSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A74460A16CD53C70005AE05 /* mpdServerSettingsViewController.m */; };
 		1A87F36B16EF8F2D00847A63 /* mpdArtistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3027716D5C16900B72660 /* mpdArtistViewController.m */; };
@@ -65,6 +66,7 @@
 		1A1EFD9F16CD5CA10081B395 /* mpdMusicTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdMusicTableViewController.h; sourceTree = "<group>"; };
 		1A1EFDA016CD5CA10081B395 /* mpdMusicTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdMusicTableViewController.m; sourceTree = "<group>"; };
 		1A208F41172C6693007F7CC1 /* libMpdDispatch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMpdDispatch.a; path = "../../../Library/Developer/Xcode/DerivedData/MPpledWorkspace-ewzceagsrbahkbdxeukjtkftxlbl/Build/Products/Debug-iphonesimulator/libMpdDispatch.a"; sourceTree = "<group>"; };
+		1A208F43172C6B2E007F7CC1 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		1A4FF50916F0150F0008B880 /* volume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volume.png; sourceTree = "<group>"; };
 		1A74460916CD53C70005AE05 /* mpdServerSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mpdServerSettingsViewController.h; sourceTree = "<group>"; };
 		1A74460A16CD53C70005AE05 /* mpdServerSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mpdServerSettingsViewController.m; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		1A0E578216DFD0BE004D0FA9 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				1A208F43172C6B2E007F7CC1 /* logo.png */,
 				1A4FF50916F0150F0008B880 /* volume.png */,
 				1A0E578316DFD0BE004D0FA9 /* gear.png */,
 				1A0E578416DFD0BE004D0FA9 /* note.png */,
@@ -329,6 +332,7 @@
 				1A0E578D16DFD0BE004D0FA9 /* play.png in Resources */,
 				1A0E578E16DFD0BE004D0FA9 /* queue.png in Resources */,
 				1A4FF50A16F0150F0008B880 /* volume.png in Resources */,
+				1A208F44172C6B2E007F7CC1 /* logo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
